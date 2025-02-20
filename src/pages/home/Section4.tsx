@@ -1,36 +1,3 @@
-// import React from 'react'
-
-// export default function Section4() {
-//   return (
-//     <section className='w-full  mx-auto flex items-center justify-between py-0 px-0 h-[700px]'>
-    
-//       {/* Left Part */}
-//       <div className="w-full md:w-1/2">
-//       <img
-//       src="/backimage3.jpeg"  // Replace with the actual image path
-//       alt="Rectangle Image"
-//       className="object-cover w-full h-full rounded-tr-xl rounded-br-xl"
-//     />
-//       </div>
-
-//       {/* Right Part (Rectangles and Owl Image Section) */}
-//       <div className="w-full md:w-1/2 px-20">
-//       <h2 className="text-5xl font-semibold text-gray-900 mb-6 leading-[60px]">
-//   Comprehensive Care for<br /> 
-//   <span className="pt-2 text-[#92A7B0]">Your IT Ecosystem.</span>
-// </h2>
-//         <p className="text-lg text-gray-900 mb-8">
-//         Explore Our Portfolio to Discover Our Previous Projects.        </p>
-//         <button className="px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-3xl flex items-center space-x-3">
-//           <span className='mr-3'>Portfolio</span>
-//           <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 bg-gray-500 opacity-60 rounded-full p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5-5 5M18 12H6" />
-//           </svg>
-//         </button>
-//       </div>
-//    </section>
-//   )
-// }
 import React from 'react';
 
 export default function Section4() {
