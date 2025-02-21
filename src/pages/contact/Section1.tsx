@@ -1,56 +1,52 @@
 import React from 'react'
+import { FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
 export default function Section1() {
-    const images = [
-        "./image1.png",
-        "./image2.png",
-        "./image3.png",
-        "./image4.png",
-        "./image5.png",
-        "./image6.png",
-      ];
   return (
-    <section className="w-full px-4 md:px-0 bg-[#043A53] h-[946px]">
-         <div className="w-full mx-auto flex flex-col items-center py-10 md:py-20">
+    <section className="w-full px-4 md:px-0 bg-[#043A53] h-[880px]">
+         <div className="w-full mx-auto flex flex-col items-center">
           <div className='text-center text-white w-full'>
-          <h1 className='text-5xl font-bold pt-[150px]'>Help is here when you need it</h1>
+          <h1 className='text-5xl font-bold pt-[200px]'>Help is here when you need it</h1>
           <h2 className='text-[#97F03F] pt-8 text-[18px]'>Support is available seven days a week. Contact our team.</h2>
           </div>
            <div className="max-w-6xl mx-auto p-6 text-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[180px]">
         
         {/* Contact Support */}
         <div className="p-4 ">
           <h3 className="text-xl font-semibold mb-2">Contact Support</h3>
-          <p className="text-white"> Email support 7 days a week, 
+          <p className="text-white text-left text-sm text-[#A9CAE7]"> Email support 7 days a week, 
 with live chat on weekdays 
 from 9AM-6PM Eastern Time.</p>
-          <p className="font-bold mt-2">support@example.com</p>
+          
         </div>
 
         {/* Connect with Us */}
         <div className="p-4 ">
           <h3 className="text-xl font-semibold mb-2">Connect with Us</h3>
-          <p className="text-gray-600">Follow us on social media</p>
-          <div className="flex justify-center space-x-4 mt-2 text-blue-600">
-            <a href="#" className="hover:underline">Facebook</a>
-            <a href="#" className="hover:underline">Twitter</a>
-            <a href="#" className="hover:underline">LinkedIn</a>
+        
+          <div className="flex justify-left space-x-4 mt-2 text-blue-600">
+            <FaTwitter className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-600'></FaTwitter>
+            <FaInstagram className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-800'></FaInstagram>
+            <FaLinkedinIn className='bg-blue-800 p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-white'></FaLinkedinIn>
+           
           </div>
         </div>
 
         {/* Corporate Office */}
         <div className="p-4 ">
           <h3 className="text-xl font-semibold mb-2">Corporate Office</h3>
-          <p className="text-gray-600">123 Business Street, New York, USA</p>
-          <p className="font-bold mt-2">+1 123 456 7890</p>
+          <p className="text-left text-sm text-[#A9CAE7]"> California, USA
+          </p>
+          <p className="text-left text-sm text-[#A9CAE7]">support@lirisoft.com</p>
         </div>
 
         {/* India Office */}
         <div className="p-4 ">
           <h3 className="text-xl font-semibold mb-2">India Office</h3>
-          <p className="text-gray-600">456 Tech Park, Bangalore, India</p>
-          <p className="font-bold mt-2">+91 98765 43210</p>
+          <p className="text-left text-sm text-[#A9CAE7]"> 1660, 18th Cross Rd, MC Layout, 
+          Vijayanagar, Bengaluru</p>
+          <p className="text-left text-sm text-[#A9CAE7] mt-2"> support.india@lirisoft.com</p>
         </div>
 
       </div>
