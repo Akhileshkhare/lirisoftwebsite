@@ -7,7 +7,8 @@ import Section5 from './home/Section5';
 import Section6 from './home/Section6';
 import Section7 from './home/Section7';
 import Section8 from './home/Section8';
-import Footer from './home/Footer';
+import Footer from './Footer';
+
 
 const HomePageSection = () => {
   return (

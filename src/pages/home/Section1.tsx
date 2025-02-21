@@ -61,7 +61,7 @@ export default function Section1() {
   </div>
 
   {/* Rectangle 4 */}
-  <div className="w-0 h-[687px] absolute top-[93px] left-[197px] rounded-[180.5px] bg-[#043A5333] opacity-100 z-10 
+  <div className="w-0 h-[687px] absolute top-[93px] left-[197px] rounded-[180.5px] bg-[#043A5333] opacity-100 z-9 
     sm:w-[290px] sm:h-[530px] sm:top-[70px] sm:left-[100px]
     md:w-[373px] md:h-[687px] md:top-[93px] md:left-[197px]">
   </div>

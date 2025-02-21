@@ -1,5 +1,4 @@
 import React from 'react'
-import CustomSlider from './CustomSlider'
 
 export default function Footer() {
   return (
