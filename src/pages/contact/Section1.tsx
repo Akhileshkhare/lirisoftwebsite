@@ -14,7 +14,7 @@ export default function Section1() {
         
         {/* Contact Support */}
         <div className="p-4 ">
-          <h3 className="text-xl font-semibold mb-2">Contact Support</h3>
+          <h3 className="text-xl font-semibold mb-4">Contact Support</h3>
           <p className="text-white text-left text-sm text-[#A9CAE7]"> Email support 7 days a week, 
 with live chat on weekdays 
 from 9AM-6PM Eastern Time.</p>
@@ -23,7 +23,7 @@ from 9AM-6PM Eastern Time.</p>
 
         {/* Connect with Us */}
         <div className="p-4 ">
-          <h3 className="text-xl font-semibold mb-2">Connect with Us</h3>
+          <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
         
           <div className="flex justify-left space-x-4 mt-2 text-blue-600">
             <FaTwitter className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-600'></FaTwitter>
@@ -35,7 +35,7 @@ from 9AM-6PM Eastern Time.</p>
 
         {/* Corporate Office */}
         <div className="p-4 ">
-          <h3 className="text-xl font-semibold mb-2">Corporate Office</h3>
+          <h3 className="text-xl font-semibold mb-4">Corporate Office</h3>
           <p className="text-left text-sm text-[#A9CAE7]"> California, USA
           </p>
           <p className="text-left text-sm text-[#A9CAE7]">support@lirisoft.com</p>
@@ -43,7 +43,7 @@ from 9AM-6PM Eastern Time.</p>
 
         {/* India Office */}
         <div className="p-4 ">
-          <h3 className="text-xl font-semibold mb-2">India Office</h3>
+          <h3 className="text-xl font-semibold mb-4">India Office</h3>
           <p className="text-left text-sm text-[#A9CAE7]"> 1660, 18th Cross Rd, MC Layout, 
           Vijayanagar, Bengaluru</p>
           <p className="text-left text-sm text-[#A9CAE7] mt-2"> support.india@lirisoft.com</p>

@@ -4,9 +4,9 @@ import Navbar from "./component/Navbar";
 import HomePageSection from "./pages/Home";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
+import Portfolio from "./pages/Portfolio";
 
 const Services = () => <div className="w-4/5 mx-auto py-10">Services Page</div>;
-const Portfolio = () => <div className="w-4/5 mx-auto py-10">Portfolio Page</div>;
 
 const App = () => {
   return (
