@@ -3,19 +3,19 @@ import { FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
 export default function Section1() {
   return (
-    <section className="w-full px-4 md:px-0 bg-[#043A53] h-[880px]">
+    <section className="w-full px-4 md:px-0 bg-[#043A53] h-[900px] md:h-[880px]">
          <div className="w-full mx-auto flex flex-col items-center">
           <div className='text-center text-white w-full'>
-          <h1 className='text-5xl font-bold pt-[200px]'>Help is here when you need it</h1>
+          <h1 className='text-[38px] md:text-5xl font-bold pt-[80px] md:pt-[200px]'>Help is here when you need it</h1>
           <h2 className='text-[#97F03F] pt-8 text-[18px]'>Support is available seven days a week. Contact our team.</h2>
           </div>
            <div className="max-w-6xl mx-auto p-6 text-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[180px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[20px] md:pt-[180px]">
         
         {/* Contact Support */}
         <div className="p-4 ">
           <h3 className="text-xl font-semibold mb-4">Contact Support</h3>
-          <p className="text-white text-left text-sm text-[#A9CAE7]"> Email support 7 days a week, 
+          <p className="text-left text-sm text-[#A9CAE7]"> Email support 7 days a week, 
 with live chat on weekdays 
 from 9AM-6PM Eastern Time.</p>
           

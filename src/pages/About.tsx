@@ -17,6 +17,7 @@ const About = () => {
      <Section4></Section4>
      <Section5></Section5>
      <Section6></Section6>
+           <Footer></Footer>
     
      </>
   );

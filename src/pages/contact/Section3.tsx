@@ -6,10 +6,10 @@ export default function Section3() {
     <section className="w-full px-4 md:px-0 ">
          <div className="w-full mx-auto flex flex-col items-center">
          <div className="max-w-4xl mx-auto p-6 text-center">
-          <h1 className='text-5xl font-bold pt-[100px]'>Do you have <span className='text-[#043A53]'>Questions?</span> </h1>
+          <h1 className='text-5xl font-bold pt-[100px] leading-normal'>Do you have <span className='text-[#043A53]'>Questions?</span> </h1>
           <h2 className='pt-8 text-md'>We have answers (well, most of the times!)
             </h2>
-            <h2 className='px-12 py-4 text-md'>
+            <h2 className='px-6 text-left md:text-center md:px-12 py-4 text-md'>
           Below you'll find answer to the most common questions you may have on AdEspresso & Online Advertising. Also, please feel free to check out our. If you still can't find the answer you're looking for, just Contact us!</h2>
   
     </div>
