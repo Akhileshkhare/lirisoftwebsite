@@ -15,9 +15,12 @@ export default function Portfolio() {
 <Section3/>
 <Section4/>
 <Section5/>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b7a7c968231b4dbce09731e7cd3b520ee134d71f
 <Section6/>
 <Footer></Footer>
 

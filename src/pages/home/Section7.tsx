@@ -45,10 +45,15 @@ export default function Section7() {
             </div>
             <img src="./Icons2.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[5px] bottom-[20px]" />
           <div
+<<<<<<< HEAD
             // className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
             // style={{ backgroundImage: "url('/backimage5.png')" }}
             className="relative w-[723px] h-[805px] "
             style={{ backgroundImage: "url('/backimage5.png')",backgroundPosition:'-158px -53px',backgroundSize:'155%' }}
+=======
+            className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
+            style={{ backgroundImage: "url('/backimage5.png')" }}
+>>>>>>> b7a7c968231b4dbce09731e7cd3b520ee134d71f
           >
       
           </div>
