@@ -20,7 +20,7 @@ export default function Section3() {
           </div>
 
           {/* Right Part (70%) */}
-          <div className="w-full md:w-3/4 flex flex-col sm:flex-row gap-6 py-8 md:gap-3">
+          <div className="w-full md:w-3/4 flex flex-col items-center md:items-stretch  sm:flex-row gap-6 py-8 md:gap-3">
             {[{
               img: '/back-1.svg',
               title: 'User Experience',

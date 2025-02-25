@@ -1,12 +1,13 @@
 import React from "react";
+import backimage5 from './assets/backimage5.png';
 
 export default function Section7() {
   return (
     <section className="w-full bg-[#12141D]">
-      <div className="w-4/5 mx-auto flex items-center justify-between py-0 h-[520px]">
+      <div className="w-4/5 mx-auto flex flex-col md:flex-row items-center justify-between py-0 h-auto md:h-[520px]">
         {/* Left Part */}
-        <div className="w-full md:w-1/2 pl-20">
-          <h2 className="text-5xl font-semibold text-gray-100 mb-6 leading-tight">
+        <div className="w-full md:w-1/2 pl-10 md:pl-20">
+          <h2 className="text-4xl md:text-5xl pt-10 md:pt-0 md:text-5xl font-semibold text-gray-100 mb-6 leading-tight">
             We are Committed to our customer service
           </h2>
 
@@ -31,7 +32,7 @@ export default function Section7() {
         </div>
 
         {/* Right Part (Image) */}
-        <div className="relative h-[520px] w-full md:w-1/2 overflow-hidden">
+        <div className="relative h-auto md:h-[520px] w-full md:w-1/2 overflow-hidden">
               {/* Yellow Bar Div */}
               <div className="absolute w-[104px] h-[502px] top-[160px] left-[500px] bg-[#F0B73F] rounded-[1000px]">
               <img src="./Icons.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[15px] top-[15px]" />
@@ -44,8 +45,8 @@ export default function Section7() {
             </div>
             <img src="./Icons2.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[5px] bottom-[20px]" />
           <div
-            className="relative w-[723px] h-[805px] "
-            style={{ backgroundImage: "url('/backimage5.png')",backgroundPosition:'-158px -53px',backgroundSize:'155%' }}
+            className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
+            style={{ backgroundImage: "url('/backimage5.png')" }}
           >
       
           </div>
