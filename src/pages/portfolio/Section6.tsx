@@ -87,7 +87,8 @@ export default function Section6() {
                
               </div>
              
-              <div className={`w-full flex flex-row text-[18px] text-gray-700 py-8 h-[${index===5?'128px':'160px'}]`}>{tab.description}</div>
+              <div className={`w-full flex flex-row text-[18px] text-gray-700 py-8 ${index === 5 ? 'h-[128px]' : 'h-[160px]'}`}>
+              {tab.description}</div>
               <div className="w-full flex flex-row font-bold items-center justify-end cursor-pointer text-[14px] text-[#043A53]">
                 READ MORE
                 <svg
