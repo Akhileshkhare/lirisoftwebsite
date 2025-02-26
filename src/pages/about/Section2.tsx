@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 export default function Section2() {
   return (
     <section className="w-full px-4 md:px-0">
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center py-10 md:py-20 mb-[20px]">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center md:pt-24 pt-16 pb-4">
        <div className='text-left w-full'>
        <h1 className='text-3xl font-bold pt-4'>About Us</h1>
        </div>

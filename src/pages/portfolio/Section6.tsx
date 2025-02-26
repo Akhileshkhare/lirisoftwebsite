@@ -59,7 +59,7 @@ export default function Section6() {
   ];
 
   return (
-    <section className="w-full py-10 px-4 md:px-0 h-auto">
+    <section className="w-full py-[120px] px-4 md:px-0 h-auto">
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center">
       <h2 className="text-4xl md:text-5xl font-normal text-left text-[#043A53] pb-16">
       We <span className="text-[#043A53] font-bold">Cover</span>, almost all <span className="text-[#043A53] font-bold">Industries</span>

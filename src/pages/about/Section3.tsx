@@ -34,6 +34,23 @@ export default function Section3() {
             ))}
           </div>
         </div>
+        <button className="px-6 py-3 mt-10 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2">
+            <span>Know More</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 7l5 5-5 5M18 12H6"
+              />
+            </svg>
+          </button>
       </div>
     </section>
   );

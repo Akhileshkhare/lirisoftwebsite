@@ -25,7 +25,7 @@ export default function Section5() {
               <h1 className="text-4xl sm:text-5xl text-[#753BBD] font-bold py-2">
                 {value.Text}
               </h1>
-              <p className="text-md font-semibold text-center">
+              <p className="text-lg font-bold text-center">
                 {value.Description}
               </p>
             </div>

@@ -24,7 +24,7 @@ export default function Section5() {
             {images.map((value, index) => (
               <div
                 key={index}
-                className="w-full sm:w-[280px] h-[220px] flex flex-col items-center justify-center bg-white shadow-md rounded-md p-4"
+                className="w-[300px] m-auto  md:w-[280px] h-[220px] flex flex-col items-center justify-center bg-white  rounded-md p-4"
               >
                 <img
                   src={value.Image}
