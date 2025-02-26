@@ -18,7 +18,7 @@ const CustomSlider = () => {
     <div className="w-full md:w-[850px] mx-auto ">
       <Slider {...settings}>
         {/* Slide 1 */}
-        <div className="md:h-[227px] h-[287px] bg-white p-8 flex flex-col items-center justify-center rounded-lg shadow-md">
+        <div className="md:h-[227px] h-[277px] bg-white p-8 flex flex-col items-center justify-center rounded-lg shadow-md">
           {/* Text Content */}
           <p className="text-8xl font-['arial'] text-yellow-300 text-left p-0 m-0 mb-[-50px]">“</p>
           <p className="text-1xl text-gray-700 text-left">

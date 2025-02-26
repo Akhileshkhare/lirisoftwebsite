@@ -3,9 +3,9 @@ import React from 'react'
 export default function Section3() {
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto">
-    <div className="w-full max-w-7xl mx-auto flex flex-row items-center gap-10 md:gap-20">
-    <div className="w-full md:w-1/2 pl-0  md:h-[800px] flex justify-center items-start flex-col ">
-        <div className="w-full h-[591px] md:h-[662.27px]">
+    <div className="w-full max-w-7xl mx-auto flex  md:flex-row flex-col items-center gap-10 md:gap-20">
+    <div className="w-full md:w-1/2 pl-0  md:h-[800px] flex justify-center items-start ">
+        <div className="w-full h-[391px] md:h-[662.27px]">
               <img
                 src={`/Group138.png`}
                 alt="Feature Icon"

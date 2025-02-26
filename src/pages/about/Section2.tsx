@@ -8,7 +8,7 @@ export default function Section2() {
        <div className='text-left w-full'>
        <h1 className='text-3xl font-bold pt-4'>About Us</h1>
        </div>
-       <div className='w-full pt-6 text-right pl-[300px]'>
+       <div className='w-full pt-6 text-right md:pl-[300px] pl-[10px]'>
             <p className='text-left mb-4'>Founded in 2017, Lirisoft has been a provider of IT consulting and software development services. We have helped non-IT organizations and software product companies improve business performance and quickly win new customers.</p>
             <ul className="space-y-4 text-left">
                 <li className="flex items-start gap-2"><FaCheck className="text-white bg-[#043A53] rounded-full p-1 mt-1 mr-1" size={18} />Help you create and manage any process for your business needs.</li>
