@@ -6,6 +6,7 @@ import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Portfolio from "./pages/Portfolio";
 import Services from "./pages/Services";
+import Product from "./pages/Product";
 
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePageSection />} />
         <Route path="/home" element={<HomePageSection />} />
-
+        <Route path="/product" element={<Product />} />
         <Route path="/services" element={<Services />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
