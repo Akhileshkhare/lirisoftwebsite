@@ -55,7 +55,7 @@ export default function Section6() {
   
           {/* Message */}
           <div>
-            <label className="block text-white text-sm font-semibold mb-2">Your Message</label>
+            <label className="block text-white text-sm font-semibold mb-2">Project Description</label>
             <textarea
               className="w-full p-2 border border-gray-300"
               rows={4}
