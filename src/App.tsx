@@ -5,8 +5,8 @@ import HomePageSection from "./pages/Home";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Portfolio from "./pages/Portfolio";
+import Services from "./pages/Services";
 
-const Services = () => <div className="w-4/5 mx-auto py-10">Services Page</div>;
 
 const App = () => {
   return (
