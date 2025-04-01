@@ -7,6 +7,9 @@ import ContactUs from "./pages/ContactUs";
 import Portfolio from "./pages/Portfolio";
 import Services from "./pages/Services";
 import Product from "./pages/Product";
+import Career from "./pages/Career";
+import CaseStudies from "./pages/home/CaseStudies";
+import CaseStudyDetails from "./pages/home/CaseStudyDetails";
 
 
 const App = () => {
@@ -21,6 +24,10 @@ const App = () => {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/casestudies" element={<ContactUs />} />
+        <Route path="/case-studies/:id" element={<CaseStudyDetails />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/carrer" element={<Career />} />
       </Routes>
     </Router>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Section6() {
   return (
@@ -8,7 +9,10 @@ export default function Section6() {
           <h2 className="text-3xl md:text-6xl font-semibold text-left text-gray-900">
             Read our <span className="text-[#043A53]">Case Studies</span>
           </h2>
-          <div className="flex flex-row font-semibold items-center cursor-pointer text-lg">
+          <Link
+            to="/case-studies"
+            className="flex flex-row font-semibold items-center cursor-pointer text-lg"
+          >
             See All
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +28,7 @@ export default function Section6() {
                 d="M13 7l5 5-5 5M18 12H6"
               />
             </svg>
-          </div>
+          </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-start w-full gap-6 px-4 md:px-20">
           {[1, 2, 3].map((item, index) => (
@@ -50,7 +54,7 @@ export default function Section6() {
                 <p className="text-gray-900 text-sm md:text-md">
                   I'm totally unconvinced that two people can find a person they haven't known previously...
                 </p>
-                <div className="flex flex-row font-semibold items-center cursor-pointer text-md">
+                  <Link to={`/case-studies/${item}`} className="flex flex-row font-semibold items-center cursor-pointer text-md">
                   Read Story
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +70,7 @@ export default function Section6() {
                       d="M13 7l5 5-5 5M18 12H6"
                     />
                   </svg>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
