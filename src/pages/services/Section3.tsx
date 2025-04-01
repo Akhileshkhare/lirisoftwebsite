@@ -5,7 +5,7 @@ import { FaPlay } from 'react-icons/fa';
 export default function Section3() {
   return (
     <section className="w-full py-20 px-4 md:px-0 h-auto">
-    <div className="w-full max-w-7xl mx-auto flex  md:flex-row flex-col items-center  gap-10 md:gap-20 relative px-20">
+    <div className="w-full max-w-7xl mx-auto flex  md:flex-row flex-col items-center  gap-10 md:gap-20 relative px-8 md:px-20">
     <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
     <FaPlay size={12} className="rotate-180" />
     </button>

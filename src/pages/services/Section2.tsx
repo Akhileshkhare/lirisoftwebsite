@@ -7,7 +7,7 @@ import Database from '../../assets/Database.png';
 
 export default function Section2() {
   return (
-    <section className="w-full py-20 px-4 md:px-0 h-auto bg-gray-100">
+    <section className="w-full py-4 md:py-20 px-4 md:px-0 h-auto bg-gray-100">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-10">
         <div className="w-full  pl-0 flex justify-center items-start flex-col">
           <p className="text-3xl md:text-[34px] font-normal text-left text-[#043A53] leading-snug md:leading-normal">
