@@ -135,7 +135,10 @@ export default function Product() {
             Contact us to learn more about our product and how it can benefit
             your business.
           </p>
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700">
+          <button
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700"
+            onClick={() => window.location.href = '/contact'}
+          >
             Contact Us
           </button>
         </section>

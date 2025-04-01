@@ -9,7 +9,7 @@ export default function Section2() {
       <h2 className="text-4xl md:text-5xl font-bold text-left text-[#043A53] pb-16">
         Life at Liri
         </h2>        
-        <div className="w-[80%] flex flex-row justify-center gap-6">
+        <div className="w-[80%] flex flex-col md:flex-row justify-center gap-6">
           <div className="w-full md:w-1/3 flex justify-center">
             <img src="carrer-1.png" alt="Career 1" className="w-full h-auto object-cover" />
           </div>
