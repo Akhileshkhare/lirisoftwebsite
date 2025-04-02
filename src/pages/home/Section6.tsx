@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Section6() {
+  interface Section6Data {
+    heading: {
+      title: string;
+      highlight: string;
+    };
+    caseStudies: {
+      id: string;
+      image: string;
+      date: string;
+      author: string;
+      title: string;
+      description: string;
+    }[];
+  }
+
+  const [section6, setSection6] = useState<Section6Data | null>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3005/api/homepage")
+      .then((response) => response.json())
+      .then((data) => setSection6(data.Home.section6));
+  }, []);
+
+  if (!section6) return null;
+
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-10 md:gap-20">
         <div className="flex flex-col md:flex-row justify-between items-center mt-10 md:mt-[90px] w-full px-4 md:px-20">
           <h2 className="text-3xl md:text-6xl font-semibold text-left text-gray-900">
-            Read our <span className="text-[#043A53]">Case Studies</span>
+            {section6.heading.title} <span className="text-[#043A53]">{section6.heading.highlight}</span>
           </h2>
           <Link
             to="/case-studies"
@@ -31,12 +56,15 @@ export default function Section6() {
           </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-start w-full gap-6 px-4 md:px-20">
-          {[1, 2, 3].map((item, index) => (
-            <div key={index} className="flex flex-col bg-white shadow-md rounded-xl w-full max-w-[358px] h-auto">
+          {section6.caseStudies.map((study) => (
+            <div
+              key={study.id}
+              className="flex flex-col bg-white shadow-md rounded-xl w-full max-w-[358px] h-auto"
+            >
               {/* Image Part */}
               <div className="w-full h-[200px] md:h-[257px]">
                 <img
-                  src={`/backimage4${item}.jpeg`}
+                  src={study.image}
                   alt="Feature Icon"
                   className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl"
                 />
@@ -45,16 +73,19 @@ export default function Section6() {
               {/* Text Part */}
               <div className="text-left p-4 md:p-6 space-y-3">
                 <h3 className="text-gray-900 text-sm md:text-md">
-                  <span className="font-bold">{index === 0 ? '23 Sep 2024' : index === 1 ? '17 Sep 2024' : '15 Aug 2024'}, </span>
-                  {index === 0 ? 'by Amanda Hugh' : index === 1 ? 'by Sofia Kent' : 'by Jason Bone'}
+                  <span className="font-bold">{study.date}, </span>
+                  {study.author}
                 </h3>
                 <p className="text-gray-900 text-lg md:text-xl font-semibold">
-                  {index === 0 ? 'What Makes an Authentic Employee Profile?' : index === 1 ? 'Why Does It Matter to be Authentic Employee?' : 'What Makes an Authentic Employee Profile?'}
+                  {study.title}
                 </p>
                 <p className="text-gray-900 text-sm md:text-md">
-                  I'm totally unconvinced that two people can find a person they haven't known previously...
+                  {study.description}
                 </p>
-                  <Link to={`/case-studies/${item}`} className="flex flex-row font-semibold items-center cursor-pointer text-md">
+                <Link
+                  to={`/case-studies/${study.id}`}
+                  className="flex flex-row font-semibold items-center cursor-pointer text-md"
+                >
                   Read Story
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

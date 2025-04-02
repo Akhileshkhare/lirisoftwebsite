@@ -1,0 +1,140 @@
+{
+  "section1": {
+    "title": "Turning Vision Into Innovation",
+    "description": "Fueled by a passion for digital transformation, we harness the latest technological breakthroughs to craft solutions that solve today’s challenges and future-proof your business. With deep insight into your industry and unique needs, we design smart, tailored strategies that drive growth and align with your long-term goals.",
+    "buttonText": "Request a Consultation",
+    "buttonIcon": true,
+    "imageSrc": "/backimage1.jpeg"
+  },
+  "section2": {
+    "backgroundColor": "#043A53",
+    "heading": {
+      "title": "Elite Teams",
+      "highlight": "& Expert Professionals"
+    },
+    "description": "Watch Our Video to See How We Tackle Business Challenges with Integrity and Deliver Quality Solutions on Time.",
+    "images": {
+      "left": "/bresis1.svg",
+      "center": "/backimage2.jpeg",
+      "right": "/bresis2.svg"
+    }
+  },
+  "section3": {
+    "buttonText": "Why choose us",
+    "heading": "We Make Your Work Effortless",
+    "description": "We get your business. By understanding your needs and staying ahead of market trends, we deliver smarter, tailored solutions that elevate your product.",
+    "features": [
+      {
+        "img": "/back-1.svg",
+        "title": "User Experience",
+        "desc": "Our certified experts ensure your product delivers a seamless, user-centered experience from start to finish."
+      },
+      {
+        "img": "/back-2.svg",
+        "title": "Web Development",
+        "desc": "No matter the platform, we deliver the perfect solution tailored to your needs."
+      },
+      {
+        "img": "/back-3.svg",
+        "title": "Cyber Security",
+        "desc": "Our solution safeguards your systems and data from threats like hacking and malware, ensuring protection and continuity in the digital world."
+      }
+    ]
+  },
+  "section4": {
+    "imageSrc": "/backimage3.jpeg",
+    "imageAlt": "Rectangle Image",
+    "title": "Comprehensive Care for",
+    "subtitle": "Your IT Ecosystem.",
+    "description": "Explore Our Portfolio to Discover Our Previous Projects.",
+    "buttonText": "Portfolio"
+  },
+  "section5": {
+    "heading": "Trust is at the Core of Everything We Do.",
+    "slides": [
+        {
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "userImage": "/user.png",
+          "userName": "Andrew Wilkins",
+          "userTitle": "Managing Director, ABC Company"
+        },
+        {
+          "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "userImage": "/user.png",
+          "userName": "Jane Doe",
+          "userTitle": "CEO, XYZ Corporation"
+        }
+      ]  
+    },
+    "section6": {
+      "heading": {
+        "title": "Read our",
+        "highlight": "Case Studies"
+      },
+    "caseStudies": [
+      {
+        "id": 1,
+        "date": "23 Sep 2024",
+        "author": "Amanda Hugh",
+        "title": "What Makes an Authentic Employee Profile?",
+        "description":
+          "I'm totally unconvinced that two people can find a person they haven't known previously...",
+        "image": "/backimage41.jpeg"
+      },
+      {
+        "id": 2,
+        "date": "17 Sep 2024",
+        "author": "Sofia Kent",
+        "title": "Why Does It Matter to be Authentic Employee?",
+        "description":
+          "I'm totally unconvinced that two people can find a person they haven't known previously...",
+        "image": "/backimage42.jpeg"
+      },
+      {
+        "id": 3,
+        "date": "15 Aug 2024",
+        "author": "Jason Bone",
+        "title": "What Makes an Authentic Employee Profile?",
+        "description":
+          "I'm totally unconvinced that two people can find a person they haven't known previously...",
+        "image": "/backimage43.jpeg"
+      }
+    ]
+  },
+  "section7":  {
+    "title": "We are Committed to our customer service",
+    "buttonText": "Connect us",
+    "buttonIcon": {
+      "path": "M13 7l5 5-5 5M18 12H6"
+    },
+    "contactText": "Call us on 1800-123-4567",
+    "images": {
+      "yellowBar": {
+        "src": "./Icons.svg",
+        "style": "absolute left-[15px] top-[15px]"
+      },
+      "blueRounded": {
+        "src": "./Icons1.svg",
+        "style": "absolute left-[15px] top-[15px]"
+      },
+      "bottomIcon": {
+        "src": "./Icons2.svg",
+        "style": "absolute left-[5px] bottom-[20px]"
+      },
+      "background": "/backimage5.png"
+    }
+  },
+  "section8":{
+    "title": "Lirisoft",
+    "subtitleHighlight": ".",
+    "icons": ["/SIcon1.svg", "/SIcon2.svg", "/SIcon3.svg"],
+    "description": "Since our founding in 2017, Lirisoft has specialized in IT consulting and software development. We empower non-IT organizations and software companies to enhance business performance and rapidly attract new customers.",
+    "menuItems": ["Home", "Solutions", "Services", "About", "Contact"],
+    "about": {
+      "title": "About Us",
+      "email": "support@lirisoft.com"
+    }
+  }
+  
+}
+

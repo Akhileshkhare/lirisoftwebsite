@@ -1,0 +1,15 @@
+{
+  "section2": {
+    "backgroundColor": "#043A53",
+    "heading": {
+      "title": "Elite Teams",
+      "highlight": "& Expert Professionals"
+    },
+    "description": "Watch Our Video to See How We Tackle Business Challenges with Integrity and Deliver Quality Solutions on Time.",
+    "images": {
+      "left": "/bresis1.svg",
+      "center": "/backimage2.jpeg",
+      "right": "/bresis2.svg"
+    }
+  }
+}

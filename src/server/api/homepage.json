@@ -1,0 +1,369 @@
+{
+  "Home":{
+    "section1": {
+      "title": "Lirisoft Vision Into Innovation",
+      "description": "Fueled by a passion for digital transformation, we harness the latest technological breakthroughs to craft solutions that solve today’s challenges and future-proof your business. With deep insight into your industry and unique needs, we design smart, tailored strategies that drive growth and align with your long-term goals.",
+      "buttonText": "Request a Consultation",
+      "buttonIcon": true,
+      "imageSrc": "/backimage1.jpeg"
+    },
+    "section2": {
+      "backgroundColor": "#043A53",
+      "heading": {
+        "title": "Elite Teams",
+        "highlight": "& Expert Professionals"
+      },
+      "description": "Watch Our Video to See How We Tackle Business Challenges with Integrity and Deliver Quality Solutions on Time.",
+      "images": {
+        "left": "/bresis1.svg",
+        "center": "/backimage2.jpeg",
+        "right": "/bresis2.svg"
+      }
+    },
+    "section3": {
+      "buttonText": "Why choose us",
+      "heading": "We Make Your Work Effortless",
+      "description": "We get your business. By understanding your needs and staying ahead of market trends, we deliver smarter, tailored solutions that elevate your product.",
+      "features": [
+        {
+          "img": "/back-1.svg",
+          "title": "User Experience",
+          "desc": "Our certified experts ensure your product delivers a seamless, user-centered experience from start to finish."
+        },
+        {
+          "img": "/back-2.svg",
+          "title": "Web Development",
+          "desc": "No matter the platform, we deliver the perfect solution tailored to your needs."
+        },
+        {
+          "img": "/back-3.svg",
+          "title": "Cyber Security",
+          "desc": "Our solution safeguards your systems and data from threats like hacking and malware, ensuring protection and continuity in the digital world."
+        }
+      ]
+    },
+    "section4": {
+      "imageSrc": "/backimage3.jpeg",
+      "imageAlt": "Rectangle Image",
+      "title": "Comprehensive Care for",
+      "subtitle": "Your IT Ecosystem.",
+      "description": "Explore Our Portfolio to Discover Our Previous Projects.",
+      "buttonText": "Portfolio"
+    },
+    "section5": {
+      "heading": "Trust is at the Core of Everything We Do.",
+      "slides": [
+        {
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "userImage": "/user.png",
+          "userName": "Andrew Wilkins",
+          "userTitle": "Managing Director, ABC Company"
+        },
+        {
+          "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "userImage": "/user.png",
+          "userName": "Jane Doe",
+          "userTitle": "CEO, XYZ Corporation"
+        }
+      ]
+    },
+    "section6": {
+      "heading": {
+        "title": "Read our",
+        "highlight": "Case Studies"
+      },
+      "caseStudies": [
+        {
+          "id": 1,
+          "date": "23 Sep 2024",
+          "author": "Amanda Hugh",
+          "title": "What Makes an Authentic Employee Profile?",
+          "description": "I'm totally unconvinced that two people can find a person they haven't known previously...",
+          "image": "/backimage41.jpeg"
+        },
+        {
+          "id": 2,
+          "date": "17 Sep 2024",
+          "author": "Sofia Kent",
+          "title": "Why Does It Matter to be Authentic Employee?",
+          "description": "I'm totally unconvinced that two people can find a person they haven't known previously...",
+          "image": "/backimage42.jpeg"
+        },
+        {
+          "id": 3,
+          "date": "15 Aug 2024",
+          "author": "Jason Bone",
+          "title": "What Makes an Authentic Employee Profile?",
+          "description": "I'm totally unconvinced that two people can find a person they haven't known previously...",
+          "image": "/backimage43.jpeg"
+        }
+      ]
+    },
+    "section7": {
+      "title": "We are Committed to our customer service",
+      "buttonText": "Connect us",
+      "buttonIcon": {
+        "path": "M13 7l5 5-5 5M18 12H6"
+      },
+      "contactText": "Call us on 1800-123-4567",
+      "images": {
+        "yellowBar": {
+          "src": "./Icons.svg",
+          "style": "absolute left-[15px] top-[15px]"
+        },
+        "blueRounded": {
+          "src": "./Icons1.svg",
+          "style": "absolute left-[15px] top-[15px]"
+        },
+        "bottomIcon": {
+          "src": "./Icons2.svg",
+          "style": "absolute left-[5px] bottom-[20px]"
+        },
+        "background": "/backimage5.png"
+      }
+    },
+    "section8": {
+      "title": "Lirisoft",
+      "subtitleHighlight": ".",
+      "icons": [
+        "/SIcon1.svg",
+        "/SIcon2.svg",
+        "/SIcon3.svg"
+      ],
+      "description": "Since our founding in 2017, Lirisoft has specialized in IT consulting and software development. We empower non-IT organizations and software companies to enhance business performance and rapidly attract new customers.",
+      "menuItems": [
+        "Home",
+        "Solutions",
+        "Services",
+        "About",
+        "Contact"
+      ],
+      "about": {
+        "title": "About Us",
+        "email": "support@lirisoft.com"
+      }
+    }
+  },
+  "About": {
+      "section1": {
+        "title1": "What",
+        "highlight1": "drives",
+        "title2": "us",
+        "imageSrc": "/Rectangle18.png",
+        "imageAlt": "About Lirisoft",
+        "highlight2": "defines",
+        "title3": "us"
+      }
+      ,
+      "section2": {
+        "heading": "About Us",
+        "description": "Founded in 2017, Lirisoft has been a provider of IT consulting and software development services. We have helped non-IT organizations and software product companies improve business performance and quickly win new customers.",
+        "listItems": [
+          "Help you create and manage any process for your business needs.",
+          "Improve your business performance, optimize customer service, and tap into digital transformation.",
+          "Expertise in Messaging, VoIP, Automation, Internet of Things and Computer Vision technologies."
+        ]
+      }
+      ,     
+    "section4": {
+      "images": [
+        { "Image": "./Vector4.png", "Text": "53+", "Description": "Completed Projects" },
+        { "Image": "./Vector5.png", "Text": "37M", "Description": "Users Worldwide" },
+        { "Image": "./Vector6.png", "Text": "4.3+", "Description": "App Ratings" }
+      ]
+    },
+      
+      "section6":  {
+        "title1": "Work Culture",
+        "highlight1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "title2": "",
+        "imageSrc": "/image.png",
+        "imageAlt": "Rectangle Image",
+        "highlight2": "Explore Opportunities",
+        "title3": ""
+      },
+      "section3": {
+        "title": "Our Current Partners",
+        "images": [
+          "./image1.png",
+          "./image2.png",
+          "./image3.png",
+          "./image4.png",
+          "./image5.png",
+          "./image6.png"
+        ],
+        "buttonText": "Know More"
+      },
+      "section5": {
+        "title": "Our Team",
+        "teamMembers": [
+          { "image": "./Ellipse39.png", "name": "John Doe", "post": "CEO" },
+          { "image": "./Ellipse40.png", "name": "Jane Smith", "post": "CTO" },
+          { "image": "./Ellipse41.png", "name": "Alice Johnson", "post": "CFO" },
+          { "image": "./Ellipse42.png", "name": "Bob Brown", "post": "COO" },
+          { "image": "./Ellipse43.png", "name": "Charlie Davis", "post": "CMO" },
+          { "image": "./Ellipse44.png", "name": "Eve Wilson", "post": "HR Head" }
+        ]
+      }
+  },
+  "Service": {
+    "sections": {
+      "section1": {
+        "title": "Our Services",
+        "description": "Explore the wide range of IT services we offer to meet your business needs.",
+        "services": [
+          {
+            "title": "Custom Software Development",
+            "description": "Tailored software solutions to fit your unique requirements."
+          },
+          {
+            "title": "Cloud Solutions",
+            "description": "Scalable and secure cloud services for your business."
+          },
+          {
+            "title": "IT Consulting",
+            "description": "Expert advice to optimize your IT infrastructure."
+          }
+        ]
+      },
+      "section2": {
+        "title": "Managed IT Services",
+        "description": "Comprehensive IT management to keep your business running smoothly."
+      },
+      "section3": {
+        "title": "Data Analytics",
+        "description": "Transform your data into actionable insights."
+      },
+      "section4": {
+        "title": "Cybersecurity",
+        "description": "Protect your business from digital threats with our robust security solutions."
+      },
+      "section5": {
+        "title": "Mobile App Development",
+        "description": "Create user-friendly mobile applications for your business."
+      },
+      "section6": {
+        "title": "E-commerce Solutions",
+        "description": "Build scalable and secure e-commerce platforms."
+      }
+    }
+  },
+  "Portfolio": {
+    "sections": {
+      "section1": {
+        "title": "Our Work",
+        "description": "Take a look at some of the projects we have successfully delivered.",
+        "projects": [
+          {
+            "title": "E-commerce Platform",
+            "description": "A scalable and user-friendly e-commerce solution.",
+            "imageSrc": "/portfolio1.jpeg"
+          },
+          {
+            "title": "Mobile App",
+            "description": "A feature-rich mobile application for on-the-go users.",
+            "imageSrc": "/portfolio2.jpeg"
+          }
+        ]
+      },
+      "section2": {
+        "title": "Healthcare Solutions",
+        "description": "Innovative IT solutions for the healthcare industry.",
+        "imageSrc": "/portfolio3.jpeg"
+      },
+      "section3": {
+        "title": "Education Platforms",
+        "description": "Custom platforms for online learning and education.",
+        "imageSrc": "/portfolio4.jpeg"
+      },
+      "section4": {
+        "title": "Retail Systems",
+        "description": "Streamlined IT systems for retail businesses.",
+        "imageSrc": "/portfolio5.jpeg"
+      },
+      "section5": {
+        "title": "Finance Applications",
+        "description": "Secure and efficient financial software solutions.",
+        "imageSrc": "/portfolio6.jpeg"
+      },
+      "section6": {
+        "title": "Logistics Platforms",
+        "description": "IT solutions to optimize logistics and supply chain management.",
+        "imageSrc": "/portfolio7.jpeg"
+      }
+    }
+  },
+  "Career": {
+    "sections": {
+      "section1": {
+        "title": "Join Our Team",
+        "description": "Be a part of our innovative and dynamic team. Explore career opportunities at Lirisoft.",
+        "jobOpenings": [
+          {
+            "title": "Software Engineer",
+            "location": "Tech City",
+            "type": "Full-Time"
+          },
+          {
+            "title": "Project Manager",
+            "location": "Tech City",
+            "type": "Full-Time"
+          }
+        ]
+      },
+      "section2": {
+        "title": "Internship Opportunities",
+        "description": "Kickstart your career with our internship programs."
+      },
+      "section3": {
+        "title": "Employee Benefits",
+        "description": "Discover the perks of working with us."
+      }
+    }
+  },
+  "Contact": {
+    "sections": {
+      "section1": {
+        "title": "Get in Touch",
+        "description": "We are here to help. Reach out to us for any inquiries or support.",
+        "contactDetails": {
+          "phone": "1800-123-4567",
+          "email": "contact@lirisoft.com",
+          "address": "123 Lirisoft Street, Tech City"
+        }
+      },
+      "section2": {
+        "title": "Support",
+        "description": "Contact our support team for assistance with our services."
+      },
+      "section3": {
+        "title": "Feedback",
+        "description": "We value your feedback to improve our services."
+      }
+    }
+  },
+  "Product": {
+    "sections": {
+      "section1": {
+        "title": "Our Products",
+        "description": "Explore the innovative products we offer to enhance your business."
+      },
+      "section2": {
+        "title": "Product A",
+        "description": "A cutting-edge solution for modern businesses."
+      },
+      "section3": {
+        "title": "Product B",
+        "description": "Streamline your operations with our advanced tools."
+      },
+      "section4": {
+        "title": "Product C",
+        "description": "Enhance productivity with our user-friendly software."
+      },
+      "section5": {
+        "title": "Product D",
+        "description": "Secure and scalable solutions for your enterprise."
+      }
+    }
+  }
+}
