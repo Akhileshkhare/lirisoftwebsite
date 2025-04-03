@@ -37,7 +37,7 @@ export default function Section2() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3005/api/homepage")
+    fetch("https://liriapis.onrender.com/api/homepage")
       .then((response) => response.json())
       .then((data) => {
         if (data?.Service?.section2) {

@@ -20,7 +20,7 @@ export default function Section6() {
   const [section6, setSection6] = useState<Section6Data | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3005/api/homepage")
+    fetch("https://liriapis.onrender.com/api/homepage")
       .then((response) => response.json())
       .then((data) => setSection6(data.Home.section6));
   }, []);

@@ -13,7 +13,7 @@ const CMSDashboard = () => {
 
   // Fetch main pages and their data
   const getPages = () => {
-    fetch("http://localhost:3005/api/homepage")
+    fetch("https://liriapis.onrender.com/api/homepage")
       .then((response) => response.json())
       .then((data) => {
         const pageIcons = {
@@ -90,7 +90,7 @@ const CMSDashboard = () => {
   };
 
   const handleSave = () => {
-    axios.post("http://localhost:3005/api/homepage", formData).then(() => {
+    axios.post("https://liriapis.onrender.com/api/homepage", formData).then(() => {
       alert("Changes saved successfully!");
     });
   };

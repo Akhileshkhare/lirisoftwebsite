@@ -14,7 +14,7 @@ const CustomSlider = () => {
   const [slides, setSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3005/api/homepage")
+    fetch("https://liriapis.onrender.com/api/homepage")
       .then((response) => response.json())
       .then((data) => setSlides(data.Home.section5.slides))
       .catch((error) => console.error("Error fetching slider data:", error));

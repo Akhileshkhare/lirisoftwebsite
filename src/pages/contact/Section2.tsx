@@ -9,7 +9,7 @@ export default function ContactForm() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3005/api/homepage")
+    fetch("https://liriapis.onrender.com/api/homepage")
       .then((response) => response.json())
       .then((data) => setSectionData(data.Contact.section2))
       .catch((error) => console.error("Error fetching JSON:", error));
