@@ -122,7 +122,7 @@ const CMSDashboard = () => {
                   onClick={() => {
                     localStorage.clear(); // Clear storage
                     sessionStorage.clear(); // Clear session storage if used
-                    window.location.href = "/login"; // Redirect to login page
+                    window.location.href = "/liri-cms-login"; // Redirect to login page
                   }}
                 >
                   Logout

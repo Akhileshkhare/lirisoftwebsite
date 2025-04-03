@@ -109,7 +109,7 @@ const App = () => {
             </DefaultLayout>
           }
         />
-        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/liri-cms-login" element={<AdminLogin />} />
         <Route
           path="/admin/*"
           element={
