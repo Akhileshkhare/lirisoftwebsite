@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import DefaultLayout from "./components/DefaultLayout";
 import HomePageSection from "./pages/Home";
 import About from "./pages/About";
@@ -14,9 +14,20 @@ import CMSDashboard from "./components/CMSDashboard";
 import AdminLogin from "./pages/admin/AdminLogin"; // Import AdminLogin
 import AdminLayout from "./components/AdminLayout";
 
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
@@ -98,7 +109,7 @@ const App = () => {
             </DefaultLayout>
           }
         />
-        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/login" element={<AdminLogin />} />
         <Route
           path="/admin/*"
           element={

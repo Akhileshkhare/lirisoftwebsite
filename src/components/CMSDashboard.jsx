@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { FaUser, FaFileAlt, FaHome, FaInfoCircle, FaCogs, FaBriefcase, FaUserTie, FaEnvelope, FaBoxOpen } from "react-icons/fa"; // Import an icon for menu
 
 const CMSDashboard = () => {
   const [mainPages, setMainPages] = useState([]); // Array for main pages
@@ -15,20 +16,54 @@ const CMSDashboard = () => {
     fetch("http://localhost:3005/api/homepage")
       .then((response) => response.json())
       .then((data) => {
-        setMainPages(Object.keys(data)); // Set main pages (e.g., "Home")
+        const pageIcons = {
+          Home: <FaHome />,
+          About: <FaInfoCircle />,
+          Service: <FaCogs />,
+          Portfolio: <FaBriefcase />,
+          Career: <FaUserTie />,
+          Contact: <FaEnvelope />,
+          Product: <FaBoxOpen />,
+        };
+
+        const pagesWithIcons = Object.keys(data).map((page) => ({
+          name: page,
+          icon: pageIcons[page] || <FaFileAlt />, // Default icon if not matched
+        }));
+
+        setMainPages(pagesWithIcons); // Set main pages with icons
         setFormData(data); // Store all data
       });
   };
 
   // Load sections for the selected page
   const loadSections = (page) => {
-    setSelectedPage(page);
-    setSections(Object.keys(formData[page] || {})); // Get sections of the selected page
-    setSelectedSection(null); // Reset selected section
+    if (selectedPage === page) {
+      setSelectedPage(null); // Deselect the page if it's already selected
+      setSections([]); // Clear sections
+      setSelectedSection(null); // Reset selected section
+    } else {
+      setSelectedPage(page); // Select the new page
+      setSections(Object.keys(formData[page] || {})); // Load sections of the selected page
+      setSelectedSection(null); // Reset selected section
+    }
   };
 
   useEffect(() => {
     getPages();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".dropdown-menu") && !event.target.closest(".dropdown-button")) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   const handleInputChange = (section, keyPath, value) => {
@@ -64,26 +99,32 @@ const CMSDashboard = () => {
     <div className="flex flex-col h-screen">
       {/* Header */}
       <header className="w-full bg-white shadow-md p-4 flex justify-between items-center fixed top-0 z-10">
-        <h1 className="text-xl font-bold">CMS Dashboard</h1>
+        <div className="flex items-center space-x-3 space-y-1">
+          <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+          <h1 className="text-xl font-bold">CMS Dashboard</h1>
+        </div>
         <div className="relative">
           <button
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 dropdown-button"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            <img
-              src="https://via.placeholder.com/40"
-              alt="User Icon"
-              className="w-10 h-10 rounded-full"
-            />
-            <span className="hidden md:block">User</span>
+            <FaUser className="text-xl" />
+            <span className="hidden md:block">Admin</span>
           </button>
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md">
+            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md dropdown-menu">
               <ul>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   Profile
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <li
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => {
+                    localStorage.clear(); // Clear storage
+                    sessionStorage.clear(); // Clear session storage if used
+                    window.location.href = "/login"; // Redirect to login page
+                  }}
+                >
                   Logout
                 </li>
               </ul>
@@ -98,16 +139,17 @@ const CMSDashboard = () => {
         <aside className="w-64 bg-white shadow-md p-4 fixed h-full">
           <ul className="space-y-2">
             {mainPages.map((page) => (
-              <li key={page}>
+              <li key={page.name}>
                 <div
-                  onClick={() => loadSections(page)}
-                  className={`p-2 rounded cursor-pointer ${
-                    selectedPage === page ? "bg-blue-500 text-white" : "hover:bg-gray-100"
+                  onClick={() => loadSections(page.name)}
+                  className={`p-2 flex justify-left items-center flex-row rounded cursor-pointer ${
+                    selectedPage === page.name ? "bg-blue-500 text-white" : "hover:bg-gray-100"
                   }`}
                 >
-                  {page}
+                 <span className="ml-1"> {page.icon}</span> {/* Add icon before page name */}
+                 <span className="ml-3"> {page.name}</span>
                 </div>
-                {selectedPage === page && (
+                {selectedPage === page.name && (
                   <ul className="pl-4 space-y-1">
                     {sections.map((section) => (
                       <li
@@ -131,11 +173,11 @@ const CMSDashboard = () => {
 
         {/* Page Details */}
         <main className="flex-1 p-6 bg-gray-100 ml-64 overflow-y-auto">
-          <h2 className="text-2xl font-semibold mb-4">
-            Edit {selectedSection || "Section"}
-          </h2>
+         {selectedSection ? <h2 className="text-2xl font-semibold mb-4">
+            Edit {selectedPage || ""} {selectedSection || "Section"}
+          </h2>:""}
           <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
-            {selectedSection && (
+            {selectedSection ? (
               <form className="space-y-4">
                 {Object.entries(formData[selectedPage][selectedSection] || {}).map(
                   ([key, value]) => {
@@ -187,6 +229,10 @@ const CMSDashboard = () => {
                   Save Changes
                 </button>
               </form>
+            ) : (
+              <div className="flex justify-center items-center h-64 text-gray-500">
+                Section not Selected
+              </div>
             )}
           </div>
         </main>

@@ -14,7 +14,7 @@ export default function Section6() {
   useEffect(() => {
     fetch("http://localhost:3005/api/homepage")
       .then((response) => response.json())
-      .then((data) => setSectionData(data.About.section6))
+      .then((data) => setSectionData(data.About.section5))
       .catch((error) => console.error("Error fetching JSON:", error));
   }, []);
 
