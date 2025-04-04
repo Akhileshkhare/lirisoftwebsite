@@ -26,7 +26,7 @@ const Navbar = () => {
     >
       <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="w-[219px] h-[90px] absolute top-[-2px] " /></div>
       <div className="hidden md:flex gap-6 text-md font-semibold ">
-        {["Home","About", "Services","Product", "Portfolio",  "Contact","Liri-cms-login"].map((item) => (
+        {["Home","About", "Services","Product", "Portfolio",  "Contact"].map((item) => (
           <NavLink 
           key={item} 
           to={`/${item.toLowerCase()}`} 
