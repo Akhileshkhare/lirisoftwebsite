@@ -9,7 +9,7 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
   const navigate = useNavigate(); // Initialize navigation
 
 
-  const { title, images, buttonText } = sectionData;
+  const { title, images, buttonText }: { title: string; images: { src: string }[]; buttonText: string } = sectionData;
 
   return (
     <section className="w-full px-4 md:px-0">
@@ -20,14 +20,13 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
             {title}
           </h1>
         </div>
-
         {/* Image Grid */}
         <div className="w-full pt-12">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 md:gap-16 gap-6 p-0">
-            {images.map((src: string, index: number) => (
+            {images.map((img: { src: string }, index: number) => (
               <div key={index} className="w-full h-auto flex items-center justify-center bg-white border border-gray-300 md:px-12 px-4 py-4">
               <img
-                src={src}
+                src={img.src}
                   alt={`Partner ${index + 1}`}
                   className="w-full h-auto max-w-[150px] md:max-w-[200px] object-contain"
                 />
