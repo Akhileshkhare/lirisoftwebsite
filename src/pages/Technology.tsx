@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Added import
-import { SectionProps } from '../home/Section1';
+import Footer from "./Footer";
+import { API_BASE_URI } from "../config/apiConfig";
 
 interface Tab {
   title: string;
@@ -18,19 +19,34 @@ interface SectionData {
   tabs: Tab[];
 }
 
-
-export const Section4: React.FC<SectionProps> = ({ data }) => {   
-  const sectionData:SectionData=data || null;
+export default function Technology() {
+  const [sectionData, setSectionData] = useState<SectionData>({
+    title1: "",
+    highlight1: "",
+    title2: "",
+    imageSrc: "",
+    imageAlt: "",
+    highlight2: "",
+    title3: "",
+    tabs: [],
+  });
 
   const navigate = useNavigate(); // Added hook
 
-
+  useEffect(() => {
+    fetch(`${API_BASE_URI}/api/homepage`) 
+      .then((response) => response.json())
+      .then((data) => setSectionData(data.Portfolio.section4))
+      .catch((error) => console.error("Error fetching JSON:", error));
+  }, []);
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, tabs } = sectionData;
 
   return (
-    <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center py-8">
+   <>
+    <section className="w-full py-10 px-4 md:px-0 h-auto ">
+           <div className="w-full h-[320px] mt-[90px] bg-[#F2F5F6] absolute top-0 left-0"></div>
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center relative justify-center py-8">
         <h2 className="text-4xl md:text-5xl font-normal text-left text-[#043A53] pb-16">
           {title1} <span className="text-[#043A53] font-bold">{highlight1}</span>, {title2} <span className="text-[#043A53] font-bold">{highlight2}</span>
         </h2>
@@ -53,27 +69,10 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
             </div>
           ))}
         </div>
-        <button
-          className="px-6 mt-12 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
-          onClick={() => navigate("/technologies")} // Updated button action
-        >
-          <span>{title3}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 7l5 5-5 5M18 12H6"
-            />
-          </svg>
-        </button>
+      
       </div>
     </section>
+    <Footer/>
+   </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URI } from "../../config/apiConfig";
 
 export default function Section3() {
   const [sectionData, setSectionData] = useState({
@@ -9,7 +10,7 @@ export default function Section3() {
   });
 
   useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
+    fetch(`${API_BASE_URI}/api/homepage`) 
       .then((response) => response.json())
       .then((data) => setSectionData(data.Career.section3))
       .catch((error) => console.error("Error fetching JSON:", error));

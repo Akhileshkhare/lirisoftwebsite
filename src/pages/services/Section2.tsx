@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import brainCircuit from '../../assets/brain-circuit.png';
-import trending from '../../assets/trending-up-down.png';
-import atom from '../../assets/atom.png';
-import cable from '../../assets/cable.png';
-import Database from '../../assets/Database.png';
+import { SectionProps } from '../home/Section1';
 
-export default function Section2() {
+export const Section2: React.FC<SectionProps> = ({ data }) => {   
+
   interface Service {
     icon: string;
     name: string;
@@ -13,41 +10,9 @@ export default function Section2() {
     additionalDetails: string; // Added additional details property
     imageSrc: string; // Added imageSrc for dynamic image change
   }
-
-  const [sectionData, setSectionData] = useState<{
-    title1: string;
-    highlight1: string;
-    title2: string;
-    imageSrc: string;
-    imageAlt: string;
-    highlight2: string;
-    title3: string;
-    services: Service[];
-  }>({
-    title1: "",
-    highlight1: "",
-    title2: "",
-    imageSrc: "",
-    imageAlt: "",
-    highlight2: "",
-    title3: "",
-    services: []
-  });
-
+  const sectionData:any=data || null;
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data?.Service?.section2) {
-          setSectionData(data.Service.section2);
-        } else {
-          console.error("Invalid API response structure:", data);
-        }
-      })
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, services } = sectionData;
 
@@ -65,20 +30,20 @@ export default function Section2() {
         <div className="w-full pl-0 md:h-auto flex flex-col md:flex-row justify-center items-stretch pt-0 gap-3">
           {/* Left Column */}
           <div className="w-full md:w-1/2 flex flex-col gap-4 flex-1">
-            {services.map((service, index) => (
+            {services.map((service: Service, index: number) => (
               <div
-                key={index}
-                className={`flex items-center gap-4 bg-white space-y-1 p-4 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer ${
-                  selectedServiceIndex === index ? "bg-blue-100 border-l-4 border-blue-500" : ""
-                }`}
-                onClick={() => setSelectedServiceIndex(index)}
+              key={index}
+              className={`flex items-center gap-4 bg-white space-y-1 p-4 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer ${
+                selectedServiceIndex === index ? "bg-blue-100 border-l-4 border-blue-500" : ""
+              }`}
+              onClick={() => setSelectedServiceIndex(index)}
               >
-                <img
-                  src={service.icon}
-                  alt={service.name}
-                  className="w-4 h-4"
-                />
-                <p className="text-md text-[#043A53]">{service.name}</p>
+              <img
+                src={service.icon}
+                alt={service.name}
+                className="w-4 h-4"
+              />
+              <p className="text-md text-[#043A53]">{service.name}</p>
               </div>
             ))}
           </div>

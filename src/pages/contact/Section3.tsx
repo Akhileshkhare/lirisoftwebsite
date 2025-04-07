@@ -1,24 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlay } from 'react-icons/fa';
 
-export default function Section3() {
-  const [sectionData, setSectionData] = useState({
-    title1: "",
-    highlight1: "",
-    title2: "",
-    imageSrc: "",
-    imageAlt: "",
-    highlight2: "",
-    title3: "",
-    questions: []
-  });
+import { SectionProps } from '../home/Section1';
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Contact.section3))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+export const Section3: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, questions } = sectionData;
 
@@ -41,10 +27,10 @@ export default function Section3() {
 
         <div className="max-w-3xl mx-auto px-6 py-12 ">
           <ul className="space-y-4">
-            {questions.map((question, index) => (
+            {questions.map((question: string, index: number) => (
               <li key={index} className="flex items-start space-x-3 p-2 ">
-                <FaPlay className="text-gray-600 p-[7px] rounded-full bg-[#D9D9D9] text-xl mt-1" />
-                <span className="text-gray-700 font-medium">{question}</span>
+              <FaPlay className="text-gray-600 p-[7px] rounded-full bg-[#D9D9D9] text-xl mt-1" />
+              <span className="text-gray-700 font-medium">{question}</span>
               </li>
             ))}
           </ul>

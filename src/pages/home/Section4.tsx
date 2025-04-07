@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { SectionProps } from './Section1';
 
-export default function Section4() {
+export const Section4: React.FC<SectionProps> = ({ data }) => { 
   interface SectionData {
     imageSrc: string;
     imageAlt: string;
@@ -10,13 +12,9 @@ export default function Section4() {
     buttonText: string;
   }
 
-  const [sectionData, setSectionData] = useState<SectionData | null>(null);
+  const sectionData:SectionData=data || null;
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Home.section4));
-  }, []);
+  const navigate = useNavigate(); // Initialize navigate function
 
   if (!sectionData) return null;
 
@@ -40,7 +38,10 @@ export default function Section4() {
         <p className="text-base md:text-lg text-gray-900 mb-6 md:mb-8">
           {sectionData.description}
         </p>
-        <button className="px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-3xl flex items-center justify-center md:justify-start space-x-3 mx-auto md:mx-0">
+        <button
+          className="px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-3xl flex items-center justify-center md:justify-start space-x-3 mx-auto md:mx-0"
+          onClick={() => navigate('/portfolio')} // Add onClick handler
+        >
           <span className='mr-3'>{sectionData.buttonText}</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 bg-gray-500 opacity-60 rounded-full p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5-5 5M18 12H6" />

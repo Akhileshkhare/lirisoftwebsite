@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export default function Section4() {
+
+import { SectionProps } from '../home/Section1';
+
+export const Section4: React.FC<SectionProps> = ({ data }) => {   
+ 
   interface ImageData {
     Image: string;
     Text: string;
     Description: string;
+    images: { Image: string; Text: string; Description: string }[];
   }
-
-  const [sectionData, setSectionData] = useState<{
-    images: ImageData[];
-  }>({
-    images: [],
-  });
-
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.About.section4))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+  const sectionData:ImageData=data || null;
 
   const { images } = sectionData;
 

@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Section3() {
-  const [sectionData, setSectionData] = useState({
-    title1: "",
-    highlight1: "",
-    title2: "",
-    imageSrc: "",
-    imageAlt: "",
-    highlight2: "",
-    title3: ""
-  });
+import { SectionProps } from '../home/Section1';
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Portfolio.section3))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+export const Section3: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3 } = sectionData;
 

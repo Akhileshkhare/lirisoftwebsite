@@ -1,28 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Section1 from './home/Section1';
-import Section2 from './home/Section2';
-import Section3 from './home/Section3';
-import Section4 from './home/Section4';
-import Section5 from './home/Section5';
-import Section6 from './home/Section6';
-import Section7 from './home/Section7';
-import Section8 from './home/Section8';
+import { Section2 } from './home/Section2';
+import { Section3 } from './home/Section3';
+import { Section4 } from './home/Section4';
+import { Section5 } from './home/Section5';
+import { Section6 } from './home/Section6';
+import { Section7 } from './home/Section7';
+import { Section8 } from './home/Section8';
 import Footer from './Footer';
+import FullPageLoader from '../components/FullPageLoader'; 
+import { API_BASE_URI } from '../config/apiConfig'; // Import the API base URI
 
+type SectionData = {
+  section1?: any;
+  section2?: any;
+  section3?: any;
+  section4?: any;
+  section5?: any;
+  section6?: any;
+  section7?: any;
+  section8?: any;
+};
 
 const HomePageSection = () => {
+  const [sectionData, setSectionData] = useState<SectionData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URI}/api/homepage`) // Use the global API URI
+      .then((response) => response.json())
+      .then((data) => {
+        setSectionData(data.Home);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching JSON:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <>
+    <FullPageLoader/>
+    </>; 
+  }
+
   return (
-  <>
-  <Section1></Section1>
-  <Section2></Section2>
-  <Section3></Section3>
-  <Section4></Section4>
-  <Section5></Section5>
-  <Section6></Section6>
-  <Section7></Section7>
-  <Section8></Section8>
-<Footer></Footer>
-  </>
+    <>
+      <Section1 data={sectionData?.section1} />
+      <Section2 data={sectionData?.section2} />
+      <Section3 data={sectionData?.section3} />
+      <Section4 data={sectionData?.section4} />
+      <Section5 data={sectionData?.section5} />
+      <Section6 data={sectionData?.section6} />
+      <Section7 data={sectionData?.section7} />
+      <Section8 data={sectionData?.section8} />
+      <Footer />
+    </>
   );
 };
 

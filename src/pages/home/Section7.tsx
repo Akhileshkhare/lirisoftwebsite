@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SectionProps } from "./Section1";
 
 interface Section7Data {
   title: string;
@@ -20,20 +22,17 @@ interface Section7Data {
       src: string;
       style: string;
     };
-    background: string;
+    background: { src: string;};
   };
 }
 
-export default function Section7() {
-  const [section7, setSection7] = useState<Section7Data | null>(null);
+export const Section7: React.FC<SectionProps> = ({ data }) => { 
+  const sectionData:Section7Data=data || null;
+  const navigate = useNavigate(); // Initialize navigate function
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSection7(data.Home.section7));
-  }, []);
 
-  if (!section7) return null;
+
+  if (!sectionData) return null;
 
   return (
 
@@ -42,11 +41,11 @@ export default function Section7() {
         {/* Left Part */}
         <div className="w-full md:w-1/2 pl-10 md:pl-20">
           <h2 className="text-4xl md:text-5xl pt-10 md:pt-0 md:text-5xl font-semibold text-gray-100 mb-6 leading-tight">
-            {section7.title}
+            {sectionData.title}
           </h2>
 
-          <button className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-2">
-            <span className="mr-2">{section7.buttonText}</span>
+          <button onClick={() => navigate('/contact')}  className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-2">
+            <span className="mr-2">{sectionData.buttonText}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-8 h-8 bg-gray-500 opacity-60 rounded-full p-1"
@@ -58,11 +57,11 @@ export default function Section7() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={section7.buttonIcon.path}
+                d={sectionData.buttonIcon.path}
               />
             </svg>
           </button>
-          <p className="text-gray-400 mt-5">{section7.contactText}</p>
+          <p className="text-gray-400 mt-5">{sectionData.contactText}</p>
         </div>
 
         {/* Right Part (Image) */}
@@ -80,7 +79,7 @@ export default function Section7() {
             <img src="./Icons2.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[5px] bottom-[20px]" />
           <div
             className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
-            style={{ backgroundImage: `url('${section7.images.background}')` }}
+            style={{ backgroundImage: `url('${sectionData.images.background.src}')` }}
           ></div>
         </div>
       </div>

@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheck } from "react-icons/fa";
 
-export default function Section2() {
-  const [sectionData, setSectionData] = useState({
-    heading: "",
-    description: "",
-    listItems: []
-  });
+import { SectionProps } from '../home/Section1';
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.About.section2))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+export const Section2: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
 
   const { heading, description, listItems } = sectionData;
 
@@ -26,10 +17,10 @@ export default function Section2() {
         <div className='w-full pt-6 text-right md:pl-[300px] pl-[10px]'>
           <p className='text-left mb-4'>{description}</p>
           <ul className="space-y-4 text-left">
-            {listItems.map((item, index) => (
+            {listItems.map((item: string, index: number) => (
               <li key={index} className="flex items-start gap-2">
-                <FaCheck className="text-white bg-[#043A53] rounded-full p-1 mt-1 mr-1" size={18} />
-                {item}
+              <FaCheck className="text-white bg-[#043A53] rounded-full p-1 mt-1 mr-1" size={18} />
+              {item}
               </li>
             ))}
           </ul>

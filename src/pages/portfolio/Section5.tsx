@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { SectionProps } from '../home/Section1';
 
 interface ImageData {
   Image: string;
@@ -10,17 +11,9 @@ interface SectionData {
   images: ImageData[];
 }
 
-export default function Section5() {
-  const [sectionData, setSectionData] = useState<SectionData>({
-    images: [],
-  });
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Portfolio.section5))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+export const Section5: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:SectionData=data || null;
 
   const { images } = sectionData;
 

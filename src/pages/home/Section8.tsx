@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { SectionProps } from "./Section1";
 
-export default function Section8() {
+export const Section8: React.FC<SectionProps> = ({ data }) => { 
   interface Section8Data {
     title: string;
     subtitleHighlight: string;
@@ -13,15 +14,11 @@ export default function Section8() {
     };
   }
 
-  const [section8, setSection8] = useState<Section8Data | null>(null);
+  const sectionData:Section8Data=data || null;
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSection8(data.Home.section8));
-  }, []);
 
-  if (!section8) return null;
+
+  if (!sectionData) return null;
 
   return (
     <section className="w-full py-10 px-4 md:px-0">
@@ -30,11 +27,11 @@ export default function Section8() {
           <div className="w-full max-w-6xl flex flex-col md:flex-row gap-8 mt-10 md:mt-[40px]">
             <div className="flex flex-col w-full max-w-[247px] h-auto">
               <h3 className="text-[#043A53] text-3xl md:text-4xl font-bold">
-                {section8.title}
-                <span className="text-yellow-300">{section8.subtitleHighlight}</span>
+                {sectionData.title}
+                <span className="text-yellow-300">{sectionData.subtitleHighlight}</span>
               </h3>
               <div className="w-full flex flex-row items-center mt-6 md:mt-[40px] space-x-4">
-                {section8.icons.map((icon, index) => (
+                {sectionData.icons.map((icon, index) => (
                   <img
                     key={index}
                     src={icon}
@@ -45,11 +42,11 @@ export default function Section8() {
               </div>
             </div>
             <div className="flex flex-col w-full max-w-[395px] h-auto px-4 md:px-10">
-              <p className="text-sm md:text-base text-gray-900">{section8.description}</p>
+              <p className="text-sm md:text-base text-gray-900">{sectionData.description}</p>
             </div>
             <div className="flex flex-col w-full max-w-[114px] h-auto">
               <ul className="list-none space-y-4 md:space-y-4 text-gray-900">
-                {section8.menuItems.map((item, index) => (
+                {sectionData.menuItems.map((item, index) => (
                   <li
                     key={index}
                     className={index === 0 ? "font-semibold text-lg md:text-xl" : ""}
@@ -60,8 +57,8 @@ export default function Section8() {
               </ul>
             </div>
             <div className="flex flex-col w-full max-w-[247px] h-auto">
-              <h1 className="font-semibold text-lg md:text-xl mb-3">{section8.about.title}</h1>
-              <p className="text-sm md:text-base text-gray-900">{section8.about.email}</p>
+              <h1 className="font-semibold text-lg md:text-xl mb-3">{sectionData.about.title}</h1>
+              <p className="text-sm md:text-base text-gray-900">{sectionData.about.email}</p>
             </div>
           </div>
         </div>

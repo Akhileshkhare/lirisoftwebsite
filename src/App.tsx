@@ -13,6 +13,11 @@ import CaseStudyDetails from "./pages/home/CaseStudyDetails";
 import CMSDashboard from "./components/CMSDashboard";
 import AdminLogin from "./pages/admin/AdminLogin"; // Import AdminLogin
 import AdminLayout from "./components/AdminLayout";
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import Partners from './pages/Partners'; // Import Partners page
+import OurWork from './pages/OurWork'; // Import OurWork page
+import Technology from "./pages/Technology"; // Import Technology page
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -118,6 +123,11 @@ const App = () => {
             </AdminLayout>
           }
         />
+        <Route path="/privacy-policy" element={  <DefaultLayout><PrivacyPolicy /></DefaultLayout>} />
+        <Route path="/terms-of-service" element={  <DefaultLayout><TermsOfService /></DefaultLayout>} />
+        <Route path="/partners" element={<DefaultLayout><Partners /></DefaultLayout>} /> {/* Add Partners route */}
+        <Route path="/our-work" element={<DefaultLayout><OurWork /></DefaultLayout>} /> {/* Add OurWork route */}
+        <Route path="/technologies" element={<DefaultLayout><Technology /></DefaultLayout>} /> {/* Added route */}
       </Routes>
     </Router>
   );

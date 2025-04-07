@@ -1,6 +1,8 @@
 import React from 'react'
+import { SectionProps } from '../home/Section1';
 
-export default function Section1() {
+export const Section1: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
   return (
     <section
     className="w-full bg-gray-100 py-10 text-center relative"

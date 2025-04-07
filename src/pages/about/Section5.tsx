@@ -1,29 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-export default function Section5() {
+import { SectionProps } from '../home/Section1';
+
+export const Section5: React.FC<SectionProps> = ({ data }) => {   
   interface TeamMember {
     image: string;
     name: string;
     post: string;
   }
 
-  const [sectionData, setSectionData] = useState<{
+  interface SectionData {
     title: string;
     teamMembers: TeamMember[];
-  }>({
-    title: "",
-    teamMembers: [],
-  });
+  }
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.About.section5))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+  const sectionData: SectionData = data || { title: "", teamMembers: [] };
+
 
   const { title, teamMembers } = sectionData;
-
   return (
     <section className="w-full px-4 md:px-0">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center py-10 md:py-20">

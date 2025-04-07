@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { SectionProps } from './Section1';
 
-export default function Section3() {
+
+export const Section3: React.FC<SectionProps> = ({ data }) => {   
   interface Section3Data {
     buttonText: string;
     heading: string;
@@ -8,13 +10,9 @@ export default function Section3() {
     features: { img: string; title: string; desc: string }[];
   }
 
-  const [sectionData, setSectionData] = useState<Section3Data | null>(null);
+  const sectionData:Section3Data=data || null;
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Home.section3));
-  }, []);
+
 
   if (!sectionData) return null;
 

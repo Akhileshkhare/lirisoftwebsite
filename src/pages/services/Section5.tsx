@@ -1,30 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-export default function Section5() {
+import { SectionProps } from '../home/Section1';
+
+export const Section5: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
   interface Service {
     imageSrc: string;
     imageAlt: string;
     title: string;
   }
 
-  const [sectionData, setSectionData] = useState<{
-    title1: string;
-    highlight1: string;
-    title2: string;
-    services: Service[];
-  }>({
-    title1: "",
-    highlight1: "",
-    title2: "",
-    services: []
-  });
-
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Service.section5))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
 
   const { title1, highlight1, title2, services } = sectionData;
 
@@ -41,19 +26,19 @@ export default function Section5() {
         </div>
         <div className="w-full bg-white pt-10 md:h-auto flex flex-col md:flex-row items-center justify-center items-stretch">
           <div className="grid grid-cols-3 grid-rows-3 w-full">
-            {services.map((service, index) => (
+            {services.map((service: Service, index: number) => (
               <div
-                key={index}
-                className={`flex flex-col items-center justify-center bg-white p-6 ${
-                  index < 6 ? "border-b" : ""
-                } ${index % 3 !== 2 ? "border-r" : ""} border-[#12141D]`}
+              key={index}
+              className={`flex flex-col items-center justify-center bg-white p-6 ${
+                index < 6 ? "border-b" : ""
+              } ${index % 3 !== 2 ? "border-r" : ""} border-[#12141D]`}
               >
-                <img
-                  src={service.imageSrc}
-                  alt={service.imageAlt}
-                  className="w-12 h-12 object-cover mb-2"
-                />
-                <p className="text-center text-sm text-gray-700">{service.title}</p>
+              <img
+                src={service.imageSrc}
+                alt={service.imageAlt}
+                className="w-12 h-12 object-cover mb-2"
+              />
+              <p className="text-center text-sm text-gray-700">{service.title}</p>
               </div>
             ))}
           </div>

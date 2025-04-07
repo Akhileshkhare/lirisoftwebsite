@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function Section4() {
+import { SectionProps } from '../home/Section1';
+
+export const Section4: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
   return (
     <section className=" w-full py-10 px-5 md:px-20">
     <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-20">

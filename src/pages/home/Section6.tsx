@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { SectionProps } from "./Section1";
 
-export default function Section6() {
+export const Section6: React.FC<SectionProps> = ({ data }) => { 
   interface Section6Data {
     heading: {
       title: string;
@@ -17,22 +18,18 @@ export default function Section6() {
     }[];
   }
 
-  const [section6, setSection6] = useState<Section6Data | null>(null);
+  const sectionData:Section6Data=data || null;
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSection6(data.Home.section6));
-  }, []);
 
-  if (!section6) return null;
+
+  if (!sectionData) return null;
 
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-10 md:gap-20">
         <div className="flex flex-col md:flex-row justify-between items-center mt-10 md:mt-[90px] w-full px-4 md:px-20">
           <h2 className="text-3xl md:text-6xl font-semibold text-left text-gray-900">
-            {section6.heading.title} <span className="text-[#043A53]">{section6.heading.highlight}</span>
+            {sectionData.heading.title} <span className="text-[#043A53]">{sectionData.heading.highlight}</span>
           </h2>
           <Link
             to="/case-studies"
@@ -56,7 +53,7 @@ export default function Section6() {
           </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-start w-full gap-6 px-4 md:px-20">
-          {section6.caseStudies.map((study) => (
+          {sectionData.caseStudies.map((study) => (
             <div
               key={study.id}
               className="flex flex-col bg-white shadow-md rounded-xl w-full max-w-[358px] h-auto"

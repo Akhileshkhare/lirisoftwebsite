@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { SectionProps } from "./Section1";
+interface SectionData {
+  backgroundColor: string;
+  heading: {
+    title: string;
+    highlight: string;
+  };
+  description: string;
+  images: {
+    left:  {src: string};
+    center:  {src: string};
+    right:  {src: string};
+  };
+}
 
-export default function Section2() {
-  interface SectionData {
-    backgroundColor: string;
-    heading: {
-      title: string;
-      highlight: string;
-    };
-    description: string;
-    images: {
-      left: string;
-      center: string;
-      right: string;
-    };
-  }
-
-  const [sectionData, setSectionData] = useState<SectionData | null>(null);
-
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Home.section2));
-  }, []);
+export const Section2: React.FC<SectionProps> = ({ data }) => {  
+  const sectionData:SectionData=data || null;
 
   if (!sectionData) return null;
 
@@ -47,21 +41,21 @@ export default function Section2() {
         <div className="flex flex-col md:flex-row justify-between items-center px-0">
           <div className="mr-10 hidden md:block">
             <img
-              src={sectionData.images.left}
+              src={sectionData.images.left.src}
               alt="Lirisoft Home Page"
               className="object-cover w-full h-[511px] rounded"
             />
           </div>
           <div>
             <img
-              src={sectionData.images.center}
+              src={sectionData.images.center.src}
               alt="Lirisoft Home Page"
               className="object-cover w-full h-[636px] rounded-lg"
             />
           </div>
           <div className="ml-10 hidden md:block">
             <img
-              src={sectionData.images.right}
+              src={sectionData.images.right.src}
               alt="Lirisoft Home Page"
               className="object-cover w-full h-[511px] rounded"
             />

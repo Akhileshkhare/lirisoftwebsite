@@ -1,7 +1,10 @@
 import React from 'react'
 import { FaCloud, FaChartBar, FaCogs, FaHeadset } from "react-icons/fa";
 
-export default function Section3() {
+import { SectionProps } from '../home/Section1';
+
+export const Section3: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
   return (
     <section className="w-full  bg-gray-100">
     <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-20">

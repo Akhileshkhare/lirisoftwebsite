@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { API_BASE_URI } from "../../config/apiConfig";
 
 const CustomSlider = () => {
   interface Slide {
@@ -14,7 +15,7 @@ const CustomSlider = () => {
   const [slides, setSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
+    fetch(`${API_BASE_URI}/api/homepage`) 
       .then((response) => response.json())
       .then((data) => setSlides(data.Home.section5.slides))
       .catch((error) => console.error("Error fetching slider data:", error));

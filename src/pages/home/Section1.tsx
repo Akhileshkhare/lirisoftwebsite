@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from "react";
+ export interface SectionProps {
+  data: any; // Replace 'any' with the specific type of data if known
+}
+const Section1: React.FC<SectionProps> = ({ data }) => {
 
-export default function Section1() {
-  const [sectionData, setSectionData] = useState({
-    title: "",
-    description: "",
-    buttonText: "",
-    buttonIcon: false,
-    imageSrc: "",
-  });
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Home.section1))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
-
-  const { title, description, buttonText, buttonIcon, imageSrc } = sectionData;
+  const { title, description, buttonText, buttonIcon, imageSrc } = data;
 
   return (
     <section className="w-full bg-gray-100 dark:bg-gray-900 py-12 transition duration-300">
@@ -85,3 +74,5 @@ export default function Section1() {
     </section>
   );
 }
+
+export default Section1;

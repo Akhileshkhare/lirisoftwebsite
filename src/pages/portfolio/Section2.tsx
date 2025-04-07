@@ -1,34 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Section2() {
-  const [sectionData, setSectionData] = useState<{
-    title1: string;
-    highlight1: string;
-    title2: string;
-    imageSrc: string;
-    imageAlt: string;
-    highlight2: string;
-    title3: string;
-    appSolutions: { imageSrc: string; imageAlt: string; highlight2: string; title2: string }[]
-  }>({
-    title1: "",
-    highlight1: "",
-    title2: "",
-    imageSrc: "",
-    imageAlt: "",
-    highlight2: "",
-    title3: "",
-    appSolutions: []
-  });
+import { SectionProps } from '../home/Section1';
 
-  useEffect(() => {
-    fetch("https://liriapis.onrender.com/api/homepage")
-      .then((response) => response.json())
-      .then((data) => setSectionData(data.Portfolio.section2))
-      .catch((error) => console.error("Error fetching JSON:", error));
-  }, []);
+interface AppSolution {
+  imageSrc: string;
+  imageAlt: string;
+  highlight2: string;
+  title2: string;
+}
+
+export const Section2: React.FC<SectionProps> = ({ data }) => {   
+  const sectionData:any=data || null;
 
   const { title1, highlight1, title2, appSolutions } = sectionData;
+  const navigate = useNavigate();
 
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto">
@@ -39,45 +25,48 @@ export default function Section2() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {appSolutions.map((item, index) => (
+            {appSolutions.map((item: AppSolution, index: number) => (
             <div key={index} className="flex flex-col bg-white rounded-xl w-full h-auto">
               {/* Image Part */}
               <div className="w-full h-[200px] md:h-[257px]">
-                <img
-                  src={item.imageSrc}
-                  alt={item.imageAlt}
-                  className="w-full h-full object-cover rounded-xl"
-                />
+              <img
+                src={item.imageSrc}
+                alt={item.imageAlt}
+                className="w-full h-full object-cover rounded-xl"
+              />
               </div>
 
               {/* Text Part */}
               <div className="text-left p-4 space-y-3 text-[#043A53]">
-                <h3 className="text-sm md:text-md mt-0">
-                  {item.highlight2}
-                </h3>
-                <p className="text-lg md:text-xl font-semibold border-b border-b-gray-400 border-b-[1px] pb-[6px]">
-                  {item.title2}
-                </p>
-                <div className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]">
-                  READ MORE
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 w-5 h-5 text-[#F0B73F]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 7l5 5-5 5M18 12H6"
-                    />
-                  </svg>
-                </div>
+              <h3 className="text-sm md:text-md mt-0">
+                {item.highlight2}
+              </h3>
+              <p className="text-lg md:text-xl font-semibold border-b border-b-gray-400 border-b-[1px] pb-[6px]">
+                {item.title2}
+              </p>
+              <div
+                className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]"
+                onClick={() => navigate('/our-work')}
+              >
+                READ MORE
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 w-5 h-5 text-[#F0B73F]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 7l5 5-5 5M18 12H6"
+                />
+                </svg>
+              </div>
               </div>
             </div>
-          ))}
+            ))}
         </div>
       </div>
     </section>

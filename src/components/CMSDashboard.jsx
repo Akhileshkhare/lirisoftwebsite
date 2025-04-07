@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FaUser, FaFileAlt, FaHome, FaInfoCircle, FaCogs, FaBriefcase, FaUserTie, FaEnvelope, FaBoxOpen } from "react-icons/fa"; // Import an icon for menu
+import {
+  FaUser,
+  FaFileAlt,
+  FaHome,
+  FaInfoCircle,
+  FaCogs,
+  FaBriefcase,
+  FaUserTie,
+  FaEnvelope,
+  FaBoxOpen,
+} from "react-icons/fa";
+import { API_BASE_URI } from "../config/apiConfig";
+import CommonInputField from "./CommonInputField";
 
 const CMSDashboard = () => {
-  const [mainPages, setMainPages] = useState([]); // Array for main pages
-  const [sections, setSections] = useState([]); // Array for sections of the selected page
-  const [selectedPage, setSelectedPage] = useState(null); // Track selected main page
-  const [selectedSection, setSelectedSection] = useState(null); // Track selected section
-  const [formData, setFormData] = useState({}); // Form data for all pages and sections
+  const [mainPages, setMainPages] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [selectedPage, setSelectedPage] = useState(null);
+  const [selectedSection, setSelectedSection] = useState(null);
+  const [formData, setFormData] = useState({});
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [expandedSection, setExpandedSection] = useState(null); // State to track expanded main page
 
-  // Fetch main pages and their data
   const getPages = () => {
-    fetch("https://liriapis.onrender.com/api/homepage")
+    fetch(`${API_BASE_URI}/api/homepage`)
       .then((response) => response.json())
       .then((data) => {
+        console.log("API Response:", data); // Debugging API response
         const pageIcons = {
           Home: <FaHome />,
           About: <FaInfoCircle />,
@@ -28,72 +39,72 @@ const CMSDashboard = () => {
 
         const pagesWithIcons = Object.keys(data).map((page) => ({
           name: page,
-          icon: pageIcons[page] || <FaFileAlt />, // Default icon if not matched
+          icon: pageIcons[page] || <FaFileAlt />,
         }));
 
-        setMainPages(pagesWithIcons); // Set main pages with icons
-        setFormData(data); // Store all data
-      });
+        setMainPages(pagesWithIcons);
+        setFormData(data);
+      })
+      .catch((error) => console.error("Error fetching pages:", error));
   };
 
-  // Load sections for the selected page
   const loadSections = (page) => {
     if (selectedPage === page) {
-      setSelectedPage(null); // Deselect the page if it's already selected
-      setSections([]); // Clear sections
-      setSelectedSection(null); // Reset selected section
+      setSelectedPage(null);
+      setSections([]);
+      setSelectedSection(null);
     } else {
-      setSelectedPage(page); // Select the new page
-      setSections(Object.keys(formData[page] || {})); // Load sections of the selected page
-      setSelectedSection(null); // Reset selected section
+      setSelectedPage(page);
+      setSections(Object.keys(formData[page] || {}));
+      setSelectedSection(null);
     }
+  };
+
+  const handleInputChange = (section, keyPath, value, index = null) => {
+    setFormData((prevData) => {
+      const updatedData = { ...prevData };
+      const keys = keyPath.split(".");
+      let current = updatedData[selectedPage][section];
+
+      keys.forEach((key, idx) => {
+        if (key.includes("[")) {
+          // Handle array indexing
+          const [arrayKey, arrayIndex] = key.match(/(\w+)\[(\d+)\]/).slice(1);
+          if (!current[arrayKey]) current[arrayKey] = [];
+          if (idx === keys.length - 1) {
+            current[arrayKey][parseInt(arrayIndex, 10)] = value;
+          } else {
+            current = current[arrayKey][parseInt(arrayIndex, 10)];
+          }
+        } else {
+          if (idx === keys.length - 1) {
+            current[key] = value;
+          } else {
+            if (!current[key]) current[key] = {};
+            current = current[key];
+          }
+        }
+      });
+
+      return updatedData;
+    });
+  };
+
+  const handleSave = () => {
+    const transformedData = Object.keys(formData).reduce((acc, page) => {
+      acc[page] = formData[page]; // Adjust transformation logic as needed
+      return acc;
+    }, {});
+
+    axios
+      .post(`${API_BASE_URI}/api/homepage`, transformedData)
+      .then(() => alert("Changes saved successfully!"))
+      .catch((error) => console.error("Error saving changes:", error));
   };
 
   useEffect(() => {
     getPages();
   }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!event.target.closest(".dropdown-menu") && !event.target.closest(".dropdown-button")) {
-        setDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  const handleInputChange = (section, keyPath, value) => {
-    setFormData((prevData) => {
-      const keys = keyPath.split(".");
-      const updatedSection = { ...prevData[selectedPage][section] };
-      let current = updatedSection;
-
-      keys.slice(0, -1).forEach((key) => {
-        current[key] = { ...current[key] };
-        current = current[key];
-      });
-
-      current[keys[keys.length - 1]] = value;
-
-      return {
-        ...prevData,
-        [selectedPage]: {
-          ...prevData[selectedPage],
-          [section]: updatedSection,
-        },
-      };
-    });
-  };
-
-  const handleSave = () => {
-    axios.post("https://liriapis.onrender.com/api/homepage", formData).then(() => {
-      alert("Changes saved successfully!");
-    });
-  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -173,54 +184,135 @@ const CMSDashboard = () => {
 
         {/* Page Details */}
         <main className="flex-1 p-6 bg-gray-100 ml-64 overflow-y-auto">
-         {selectedSection ? <h2 className="text-2xl font-semibold mb-4">
-            Edit {selectedPage || ""} {selectedSection || "Section"}
-          </h2>:""}
+          {selectedSection ? (
+            <h2 className="text-2xl font-semibold mb-4">
+              Edit {selectedPage || ""} {selectedSection || "Section"}
+            </h2>
+          ) : (
+            ""
+          )}
           <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
             {selectedSection ? (
-              <form className="space-y-4">
-                {Object.entries(formData[selectedPage][selectedSection] || {}).map(
-                  ([key, value]) => {
-                    if (typeof value === "object" && value !== null) {
-                      return (
-                        <div key={key} className="space-y-4">
-                          <h3 className="font-medium">{key}</h3>
-                          {Object.entries(value).map(([childKey, childValue]) => (
-                            <div key={childKey} className="flex flex-col">
-                              <label className="font-medium">{`${key}.${childKey}`}</label>
-                              <input
-                                type="text"
-                                value={childValue}
-                                onChange={(e) =>
-                                  handleInputChange(
-                                    selectedSection,
-                                    `${key}.${childKey}`,
-                                    e.target.value
-                                  )
+                     <form className="space-y-4">
+                     {Object.entries(formData[selectedPage][selectedSection] || {}).map(([key, value]) => {
+                       if ((key === "images" ||key === "services" ||key === "budgetOptions" || key === "tabs" || key === "appSolutions" || key === "features" || key === "slides" || key === "caseStudies") && Array.isArray(value)) {
+                         return (
+                           <div key={key} className="space-y-4">
+                             <h3 className="font-medium">{key}</h3>
+                             {value.map((item, index) => (
+                               <div key={index} className="space-y-4 border p-2 rounded">
+                                 {Object.entries(item).map(([itemKey, itemValue]) => (
+                                   <div key={itemKey} className="flex flex-col">
+                                     <label className="font-medium">{`${key}[${index}].${itemKey}`}</label>
+                                     <CommonInputField
+                                       itemKey={itemKey}
+                                       itemValue={itemValue}
+                                       handleInputChange={(keyPath, value, idx) => {
+                                        console.log('First ',selectedSection, keyPath, value, idx);
+
+                                         const updatedKeyPath = `${key}[${index}].${itemKey}`;
+                                         handleInputChange(selectedSection, updatedKeyPath, value, idx);
+                                       }}
+                                       keyPath={`${key}[${index}].${itemKey}`}
+                                       index={index}
+                                     />
+                                   </div>
+                                 ))}
+                               </div>
+                             ))}
+                           </div>
+                         );
+                       } else if (key === "images" && typeof value === "object" && !Array.isArray(value)) {
+                         return (
+                           <div key={key} className="space-y-4">
+                             <h3 className="font-medium">{key}</h3>
+                             {Object.entries(value).map(([imageKey, imageValue]) => (
+                               <div key={imageKey} className="space-y-4 border p-2 rounded">
+                                 <h4 className="font-medium">{imageKey}</h4>
+                                 {Object.entries(imageValue).map(([nestedKey, nestedValue]) => (
+                                   <div key={nestedKey} className="flex flex-col">
+                                     <label className="font-medium">{`${key}.${imageKey}.${nestedKey}`}</label>
+                                     <CommonInputField
+                                       itemKey={nestedKey}
+                                       itemValue={nestedValue}
+                                       handleInputChange={(keyPath, value, idx) =>{
+                                        console.log('Second',selectedSection, keyPath, value, idx);
+                                         handleInputChange(selectedSection, keyPath, value, idx);
+                                        }
+                                       }
+                                       keyPath={`${key}.${imageKey}.${nestedKey}`}
+                                     />
+                                   </div>
+                                 ))}
+                               </div>
+                             ))}
+                           </div>
+                         );
+                       } else if (key === "sections" && typeof value === "object") {
+                         return (
+                           <div key={key} className="space-y-4">
+                             <h3 className="font-medium">{key}</h3>
+                             {Object.entries(value).map(([sectionKey, sectionValue]) => (
+                               <div key={sectionKey} className="space-y-4">
+                                 <h4 className="font-medium">{sectionKey}</h4>
+                                 {Object.entries(sectionValue).map(([childKey, childValue]) => (
+                                   <div key={childKey} className="flex flex-col">
+                                     <label className="font-medium">{`${sectionKey}.${childKey}`}</label>
+                                     <CommonInputField
+                                       itemKey={childKey}
+                                       itemValue={childValue}
+                                       handleInputChange={(keyPath, value, idx) =>{
+                                        console.log('Third ',selectedSection, keyPath, value, idx);
+                                         handleInputChange(selectedSection, keyPath, value, idx);
+                                        }
+                                       }
+                                       keyPath={`${key}.${sectionKey}.${childKey}`}
+                                     />
+                                   </div>
+                                 ))}
+                               </div>
+                             ))}
+                           </div>
+                         );
+                       } else if (typeof value === "object" && value !== null) {
+                         return (
+                           <div key={key} className="space-y-4">
+                             <h3 className="font-medium">{key}</h3>
+                             {Object.entries(value).map(([childKey, childValue]) => (
+                               <div key={childKey} className="flex flex-col">
+                                 <label className="font-medium">{`${key}.${childKey}`}</label>
+                                 <CommonInputField
+                                   itemKey={childKey}
+                                   itemValue={childValue}
+                                   handleInputChange={(keyPath, value, idx) =>{
+                                    console.log('Fourth ',selectedSection, keyPath, value, idx);
+                                     handleInputChange(selectedSection, keyPath, value, idx);
+                                    }
+                                   }
+                                   keyPath={`${key}.${childKey}`}
+                                 />
+                               </div>
+                             ))}
+                           </div>
+                         );
+                       } else {
+                         return (
+                           <div key={key} className="flex flex-col">
+                             <label className="font-medium">{key}</label>
+                             <CommonInputField
+                               itemKey={key}
+                               itemValue={value}
+                               handleInputChange={(keyPath, value, idx) =>{
+                                console.log('Five ',selectedSection, keyPath, value, idx);
+                                 handleInputChange(selectedSection, keyPath, value, idx);
                                 }
-                                className="border rounded p-2"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div key={key} className="flex flex-col">
-                          <label className="font-medium">{key}</label>
-                          <input
-                            type="text"
-                            value={value}
-                            onChange={(e) =>
-                              handleInputChange(selectedSection, key, e.target.value)
-                            }
-                            className="border rounded p-2"
-                          />
-                        </div>
-                      );
-                    }
-                  }
-                )}
+                               }
+                               keyPath={key}
+                             />
+                           </div>
+                         );
+                       }
+                     })}
                 <button
                   type="button"
                   onClick={handleSave}
