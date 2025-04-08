@@ -45,9 +45,10 @@ const AboutPage = () => {
     <>
      <Section1 data={sectionData?.section1} />
       <Section2 data={sectionData?.section2} />
-      <Section3 data={sectionData?.section3} />
       <Section4 data={sectionData?.section4} />
-      <Section6 data={sectionData?.section5} />
+      <Section3 data={sectionData?.section3} />
+     
+      {/* <Section6 data={sectionData?.section5} /> */}
       <Footer />
     </>
   );

@@ -20,11 +20,11 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
           </p>
         </div>
         <div className="w-full rounded-md bg-white pl-0 md:h-auto flex flex-col md:flex-row items-center justify-center items-stretch pt-0 gap-3">
-          <div className="w-full p-0 h-[640px] md:h-[640px] relative flex items-start flex-col">
+          <div className="w-full p-0 h-[670px] md:h-[680px] relative flex items-start flex-col">
             <div className="flex w-full justify-center items-center flex-col">
-              <button className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
+              {/* <button className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
                 <FaPlay size={12} className="rotate-180" />
-              </button>
+              </button> */}
               <img
                 src={imageSrc}
                 alt={imageAlt}
@@ -32,13 +32,13 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                 }}
-                className="w-[80%] h-full object-cover pt-10"
+                className="w-[90%] h-full object-cover pt-10"
               />
-              <button className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
+              {/* <button className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
                 <FaPlay size={12} />
-              </button>
+              </button> */}
             </div>
-            <div className="p-10 pl-24 text-[#12141D] flex flex-col gap-4">
+            <div className="p-10 pl-12 text-[#12141D] flex flex-col gap-4">
               <h1 className="font-bold">{highlight2}</h1>
               <p>{title3}</p>
             </div>
