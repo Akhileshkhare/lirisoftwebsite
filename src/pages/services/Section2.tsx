@@ -91,11 +91,9 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
               </>
             ) : (
               <>
-                <img
-                  src={imageSrc || ""}
-                  alt={imageAlt || "Default Image"}
-                  className="w-16 h-auto"
-                />
+               <span style={{ fontSize: '60px',color: '#043A53'  }}>
+                  {updatedServices[0]?.icon}
+                </span>
                 <h3 className="text-xl md:text-[20px] font-bold text-[#043A53]">
                   {highlight2 || "Default Highlight"}
                 </h3>
