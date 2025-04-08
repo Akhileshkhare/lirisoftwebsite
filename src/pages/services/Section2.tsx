@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SectionProps } from '../home/Section1';
+import { FaChartLine, FaCogs, FaFlask, FaProjectDiagram, FaRobot } from 'react-icons/fa';
 
 export const Section2: React.FC<SectionProps> = ({ data }) => {   
 
@@ -10,10 +11,35 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
     additionalDetails: string; // Added additional details property
     imageSrc: string; // Added imageSrc for dynamic image change
   }
+  interface ServiceIcon {
+    icon: React.ReactNode;
+   
+  }
   const sectionData:any=data || null;
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
 
-
+  const updatedServices: ServiceIcon[] = [
+    {
+      icon: <FaRobot />,
+      
+    },
+    {
+      icon: <FaChartLine />,
+      
+    },
+    {
+      icon: <FaCogs />,
+      
+    },
+    {
+      icon: <FaProjectDiagram />,
+      
+    },
+    {
+      icon: <FaFlask />,
+      
+    },
+  ];
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, services } = sectionData;
 
   return (
@@ -38,11 +64,9 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
               }`}
               onClick={() => setSelectedServiceIndex(index)}
               >
-              <img
-                src={service.icon}
-                alt={service.name}
-                className="w-4 h-4"
-              />
+                 <span style={{ fontSize: '24px',color: '#043A53' }}>
+              {updatedServices[index]?.icon}
+              </span>
               <p className="text-md text-[#043A53]">{service.name}</p>
               </div>
             ))}
@@ -52,11 +76,9 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
           <div className="w-full md:w-1/2 flex flex-col items-start gap-4 bg-white p-6 flex-1">
             {selectedServiceIndex !== null ? (
               <>
-                <img
-                  src={services[selectedServiceIndex]?.icon || ""}
-                  alt={services[selectedServiceIndex]?.name || "Service Image"}
-                  className="w-16 h-auto"
-                />
+                <span style={{ fontSize: '60px',color: '#043A53'  }}>
+                  {updatedServices[selectedServiceIndex]?.icon}
+                </span>
                 <h3 className="text-xl md:text-[20px] font-bold text-[#043A53]">
                   {services[selectedServiceIndex]?.name || "Service Name"}
                 </h3>
