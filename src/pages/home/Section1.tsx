@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
- export interface SectionProps {
+import { useNavigate } from "react-router-dom";
+
+export interface SectionProps {
   data: any; // Replace 'any' with the specific type of data if known
 }
-const Section1: React.FC<SectionProps> = ({ data }) => {
 
+const Section1: React.FC<SectionProps> = ({ data }) => {
+  const navigate = useNavigate();
 
   const { title, description, buttonText, buttonIcon, imageSrc } = data;
 
@@ -18,7 +21,10 @@ const Section1: React.FC<SectionProps> = ({ data }) => {
           <p className="text-md text-gray-500 mb-8">
             {description}
           </p>
-          <button className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2">
+          <button
+            className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
+            onClick={() => navigate("/consultation")}
+          >
             <span>{buttonText}</span>
             {buttonIcon && (
               <svg

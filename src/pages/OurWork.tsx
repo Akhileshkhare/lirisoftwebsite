@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import { API_BASE_URI } from '../config/apiConfig';
+import { useNavigate } from 'react-router-dom';
 
 export default function OurWork() {
   const [sectionData, setSectionData] = useState<{
@@ -22,6 +23,8 @@ export default function OurWork() {
     title3: "",
     appSolutions: []
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`${API_BASE_URI}/api/homepage`) 
@@ -64,7 +67,10 @@ export default function OurWork() {
                 <p className="text-lg md:text-xl font-semibold border-b border-b-gray-400 border-b-[1px] pb-[6px]">
                   {item.title2}
                 </p>
-                <div className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]">
+                <div
+                  className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]"
+                  onClick={() => navigate(`/app-details`, { state: { app: item } })}
+                >
                   READ MORE
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

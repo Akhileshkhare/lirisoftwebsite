@@ -29,9 +29,11 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
             {services.map((service: Service, index: number) => (
               <div
               key={index}
-              className={`flex flex-col items-center justify-center bg-white p-6 ${
+              className={`flex flex-col items-center justify-center  p-6 ${
                 index < 6 ? "border-b" : ""
-              } ${index % 3 !== 2 ? "border-r" : ""} border-[#12141D]`}
+              } ${index % 3 !== 2 ? "border-r" : ""} ${
+                index === 4 ? "bg-white" : "bg-white"
+              } border-[#12141D]`}
               >
               <img
                 src={service.imageSrc}

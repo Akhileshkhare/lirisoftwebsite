@@ -46,7 +46,7 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
               </p>
               <div
                 className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]"
-                onClick={() => navigate('/our-work')}
+                onClick={() => navigate(`/app-details`, { state: { app: item } })}
               >
                 READ MORE
                 <svg

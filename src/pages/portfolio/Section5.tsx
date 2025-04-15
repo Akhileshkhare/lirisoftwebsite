@@ -25,7 +25,7 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
           {images.map((value, index) => (
             <div
               key={index}
-              className="w-full sm:w-[300px] h-[200px] flex flex-col items-center bg-[#e0f7fa] rounded-md justify-center shadow-md px-6 py-4"> {/* Updated card background color */}
+              className="w-full sm:w-[300px] h-[200px] flex flex-col items-center bg-white rounded-md justify-center shadow-md px-6 py-4"> {/* Updated card background color */}
               <img
                 src={value.Image}
                 alt={value.Description}

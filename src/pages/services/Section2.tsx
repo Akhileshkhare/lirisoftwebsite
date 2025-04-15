@@ -59,8 +59,8 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
             {services.map((service: Service, index: number) => (
               <div
               key={index}
-              className={`flex items-center gap-4 bg-white space-y-1 p-4 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer ${
-                selectedServiceIndex === index ? "bg-blue-100 border-l-4 border-blue-500" : ""
+              className={`flex items-center gap-4  space-y-1 p-4 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer ${
+                selectedServiceIndex === index ? "bg-gray-50 border-l-4 border-gray-600 shadow-lg" : "bg-white"
               }`}
               onClick={() => setSelectedServiceIndex(index)}
               >

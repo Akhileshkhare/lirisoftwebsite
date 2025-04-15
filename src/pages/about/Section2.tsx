@@ -10,7 +10,7 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full px-4 md:px-0">
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center md:pt-24 pt-16 pb-4">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center md:pt-24 pt-16 pb-24">
         <div className='text-left w-full'>
           <h1 className='text-3xl font-bold pt-4'>{heading}</h1>
         </div>

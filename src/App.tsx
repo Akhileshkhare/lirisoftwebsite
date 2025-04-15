@@ -18,6 +18,8 @@ import TermsOfService from './pages/TermsOfService';
 import Partners from './pages/Partners'; // Import Partners page
 import OurWork from './pages/OurWork'; // Import OurWork page
 import Technology from "./pages/Technology"; // Import Technology page
+import ConsultationForm from "./pages/consultation/ConsultationForm"; // Import ConsultationForm page
+import AppDetails from './pages/portfolio/AppDetails'; // Import AppDetails page
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -128,6 +130,8 @@ const App = () => {
         <Route path="/partners" element={<DefaultLayout><Partners /></DefaultLayout>} /> {/* Add Partners route */}
         <Route path="/our-work" element={<DefaultLayout><OurWork /></DefaultLayout>} /> {/* Add OurWork route */}
         <Route path="/technologies" element={<DefaultLayout><Technology /></DefaultLayout>} /> {/* Added route */}
+        <Route path="/consultation" element={<DefaultLayout><ConsultationForm /></DefaultLayout>} /> {/* Add ConsultationForm route */}
+        <Route path="/app-details" element={<DefaultLayout><AppDetails /></DefaultLayout>} /> {/* Add AppDetails route */}
       </Routes>
     </Router>
   );
