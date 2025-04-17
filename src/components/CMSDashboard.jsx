@@ -55,8 +55,15 @@ const CMSDashboard = () => {
       setSelectedSection(null);
     } else {
       setSelectedPage(page);
-      setSections(Object.keys(formData[page] || {}));
-      setSelectedSection(null);
+      if (page === "contacts") {
+        const contactsData = Object.values(formData[page] || {});
+        setSections([]); // Clear sections as we are displaying a table
+        setSelectedSection("contacts"); // Set a special section for contacts
+        console.log("Contacts Data:", contactsData); // Debugging contacts data
+      } else {
+        setSections(Object.keys(formData[page] || {}));
+        setSelectedSection(null);
+      }
     }
   };
 
@@ -100,6 +107,24 @@ const CMSDashboard = () => {
       .post(`${API_BASE_URI}/api/homepage`, transformedData)
       .then(() => alert("Changes saved successfully!"))
       .catch((error) => console.error("Error saving changes:", error));
+  };
+
+  const deleteContact = (id) => {
+    if (!id) {
+      console.error("Contact ID is undefined. Cannot delete contact.");
+      return;
+    }
+  
+    axios
+      .delete(`${API_BASE_URI}/api/contact/${id}`)
+      .then(() => {
+        alert("Contact deleted successfully!");
+        setFormData((prevData) => {
+          const updatedContacts = prevData.contacts.filter((contact) => contact.id !== id);
+          return { ...prevData, contacts: updatedContacts };
+        });
+      })
+      .catch((error) => console.error("Error deleting contact:", error));
   };
 
   useEffect(() => {
@@ -158,7 +183,15 @@ const CMSDashboard = () => {
                   }`}
                 >
                  <span className="ml-1"> {page.icon}</span> {/* Add icon before page name */}
-                 <span className="ml-3"> {page.name}</span>
+                 <span className="ml-3">
+                  {page.name === "PrivacyPolicy"
+                    ? "Privacy Policy"
+                    : page.name === "TermsOfService"
+                    ? "Terms Of Service"
+                    : page.name === "contacts"
+                    ? "Contacts"
+                    : page.name}
+                </span>
                 </div>
                 {selectedPage === page.name && (
                   <ul className="pl-4 space-y-1">
@@ -184,7 +217,44 @@ const CMSDashboard = () => {
 
         {/* Page Details */}
         <main className="flex-1 p-6 bg-gray-100 ml-64 overflow-y-auto">
-          {selectedSection ? (
+          {selectedSection === "contacts" ? (
+            <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
+              <h2 className="text-2xl font-semibold mb-4">Contacts</h2>
+              <table className="table-auto text-sm w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr>
+                    {Object.keys(formData.contacts[0] || {}).map((header) => (
+                      <th key={header} className="border border-gray-300 px-4 py-2">
+                        {header.charAt(0).toUpperCase() + header.slice(1)} {/* Capitalize the first letter */}
+                      </th>
+                    ))}
+                    <th className="border border-gray-300 px-4 py-2">Actions</th> {/* New column for actions */}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.values(formData.contacts || {}).map((contact, index) => (
+                    <tr key={index}>
+                      {Object.entries(contact).map(([key, value], idx) => (
+                        <td key={idx} className="border border-gray-300 px-4 py-2">
+                          {key === "date"
+                            ? new Date(value * 1000).toLocaleString() // Display date and time in client's system timezone
+                            : value}
+                        </td>
+                      ))}
+                      <td className="border border-gray-300 px-4 py-2">
+                        <button
+                          onClick={() => deleteContact(contact.id || contact._id)} // Ensure correct ID field is used
+                          className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : selectedSection ? (
             <h2 className="text-2xl font-semibold mb-4">
               Edit {selectedPage || ""} {selectedSection || "Section"}
             </h2>
@@ -313,13 +383,18 @@ const CMSDashboard = () => {
                          );
                        }
                      })}
-                <button
+                     {
+                      Object.entries(formData[selectedPage][selectedSection] || {}).length !== 0 && (
+                        <button
                   type="button"
                   onClick={handleSave}
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                   Save Changes
                 </button>
+                      )
+                     }
+               
               </form>
             ) : (
               <div className="flex justify-center items-center h-64 text-gray-500">

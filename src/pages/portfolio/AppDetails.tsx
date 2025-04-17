@@ -53,7 +53,7 @@ export default function AppDetails() {
       <ul className="ml-0 mt-2 space-y-1 text-md md:text-lg px-6 py-4">
         {app.details.map((feature: string, index: number) => (
           <li key={index}>
-            <span className="mr-4 text-green-500">✔</span>
+            <span className="mr-4 text-[#f0b73f]">✔</span>
             {feature}
           </li>
         ))}

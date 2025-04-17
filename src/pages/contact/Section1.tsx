@@ -28,9 +28,9 @@ export const Section1: React.FC<SectionProps> = ({ data }) => {
             <div className="p-4 ">
               <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
               <div className="flex justify-left space-x-4 mt-2 text-blue-600">
-                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                {/* <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
                   <FaTwitter className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-600' />
-                </a>
+                </a> */}
                 <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
                   <FaInstagram className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-800' />
                 </a>

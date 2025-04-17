@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 import { SectionProps } from '../home/Section1';
 
@@ -9,8 +10,15 @@ interface Tab {
 }
 
 export const Section6: React.FC<SectionProps> = ({ data }) => {   
+  const navigate = useNavigate(); // Initialize navigate function
   const sectionData:any=data || null;
   const { title1, highlight1, highlight2, tabs } = sectionData;
+
+  const handleReadMore = (tab: Tab) => {
+    navigate(`/industry/${encodeURIComponent(tab.title.toLowerCase().replace(/\s+/g, '-'))}`, {
+      state: { tab }, // Pass the tab details in the state
+    });
+  };
 
   return (
     <section className="w-full py-[120px] px-4 md:px-0 h-auto">
@@ -42,7 +50,8 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
               >
               {tab.description}
               </div>
-              <div className="w-full flex flex-row font-bold items-center justify-end cursor-pointer text-[14px] text-[#043A53]">
+              <div className="w-full flex flex-row font-bold items-center justify-end cursor-pointer text-[14px] text-[#043A53]" 
+                onClick={() => handleReadMore(tab)}> {/* Add onClick */}
               READ MORE
               <svg
                 xmlns="http://www.w3.org/2000/svg"

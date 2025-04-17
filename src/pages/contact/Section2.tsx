@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import { SectionProps } from '../home/Section1';
+import { API_BASE_URI } from '../../config/apiConfig';
+
 
 export const ContactForm: React.FC<SectionProps> = ({ data }) => {   
   const [successMessage, setSuccessMessage] = useState("");
@@ -13,7 +15,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
   }
   const sectionData: SectionData = data as SectionData;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -30,9 +32,33 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
     }
 
     setErrors({});
-    form.reset();
-    setSuccessMessage("Your message has been sent successfully. We will connect with you soon!");
-    setTimeout(() => setSuccessMessage(""), 5000); // Clear message after 5 seconds
+    const timestamp = Math.floor(Date.now() / 1000); // Get current timestamp in seconds
+    try {
+      const response = await fetch(`${API_BASE_URI}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          service: formData.get("service"),
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+          date:timestamp
+        }),
+      });
+
+      if (response.ok) {
+        form.reset();
+        setSuccessMessage("Your message has been sent successfully. We will connect with you soon!");
+        setTimeout(() => setSuccessMessage(""), 5000); // Clear message after 5 seconds
+      } else {
+        const errorData = await response.json();
+        setErrors({ general: errorData.message || "Something went wrong. Please try again." });
+      }
+    } catch (error) {
+      setErrors({ general: "Failed to send your message. Please try again later." });
+    }
   };
 
   const { title, highlight, buttonText, services } = sectionData;

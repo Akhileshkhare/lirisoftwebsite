@@ -20,6 +20,7 @@ import OurWork from './pages/OurWork'; // Import OurWork page
 import Technology from "./pages/Technology"; // Import Technology page
 import ConsultationForm from "./pages/consultation/ConsultationForm"; // Import ConsultationForm page
 import AppDetails from './pages/portfolio/AppDetails'; // Import AppDetails page
+import { IndustryDetails } from "./pages/portfolio/IndustryDetails"; // Import IndustryDetails
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -132,6 +133,7 @@ const App = () => {
         <Route path="/technologies" element={<DefaultLayout><Technology /></DefaultLayout>} /> {/* Added route */}
         <Route path="/consultation" element={<DefaultLayout><ConsultationForm /></DefaultLayout>} /> {/* Add ConsultationForm route */}
         <Route path="/app-details" element={<DefaultLayout><AppDetails /></DefaultLayout>} /> {/* Add AppDetails route */}
+        <Route path="/industry/:slug" element={<DefaultLayout><IndustryDetails /></DefaultLayout>} /> {/* Add dynamic route */}
       </Routes>
     </Router>
   );

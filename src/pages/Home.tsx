@@ -54,7 +54,7 @@ const HomePageSection = () => {
       <Section5 data={sectionData?.section5} />
       <Section6 data={sectionData?.section6} />
       <Section7 data={sectionData?.section7} />
-      <Section8 data={sectionData?.section8} />
+      {/* <Section8 data={sectionData?.section8} /> */}
       <Footer />
     </>
   );
