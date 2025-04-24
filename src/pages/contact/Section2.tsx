@@ -64,12 +64,13 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
   const { title, highlight, buttonText, services } = sectionData;
 
   return (
-    <section className="w-full px-4 md:px-0 bg-[#F2F5F6]">
-      <div className="max-w-2xl mx-auto px-6 py-20">
-        <h2 className="text-5xl font-bold my-10 text-center">
+    <section className="w-full px-4 md:px-0 bg-[#043A53]">
+      <div className="max-w-3xl mx-auto px-6 py-6">
+       
+        <form className="space-y-4 bg-[#F2F5F6] text-left px-10 py-4 shadow-lg" onSubmit={handleSubmit}>
+        <h2 className="text-5xl font-bold my-8 text-gray-800 text-center">
           {title} <span className="text-[#043A53] text-5xl">{highlight}</span>
         </h2>
-        <form className="space-y-4" onSubmit={handleSubmit}>
           {/* Service Dropdown */}
           <div>
             <label className="block text-gray-900 text-sm font-semibold mb-2">

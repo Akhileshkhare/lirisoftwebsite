@@ -34,9 +34,9 @@ export default function ContactUs() {
   }
   return (
     <>
-      <Section1  data={sectionData?.section1}></Section1>
-    <ContactForm  data={sectionData?.section2}></ContactForm>        
-        <Section3  data={sectionData?.section3}></Section3>
+      <Section1  data={sectionData?.section1} data1={sectionData?.section2}></Section1>
+           
+        {/* <Section3  data={sectionData?.section3}></Section3> */}
        <Footer></Footer>
     </>
   )

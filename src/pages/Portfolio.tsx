@@ -46,8 +46,8 @@ const PortfolioPage = () => {
       <Section2 data={sectionData?.section2} />
       <Section3 data={sectionData?.section3} />
       <Section4 data={sectionData?.section4} />
-      <Section5 data={sectionData?.section5} />
-      <Section6 data={sectionData?.section6} />
+      {/* <Section5 data={sectionData?.section5} />
+      <Section6 data={sectionData?.section6} /> */}
       <Footer />
     </>
   );

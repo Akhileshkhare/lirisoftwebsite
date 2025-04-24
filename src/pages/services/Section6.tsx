@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { SectionProps } from '../home/Section1';
+import { API_BASE_URI } from '../../config/apiConfig';
 
 export const Section6: React.FC<SectionProps> = ({ data }) => {   
   const sectionData:any=data || null;
@@ -15,7 +16,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, budgetOptions } = sectionData;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -30,9 +31,35 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      form.reset();
-      setSuccessMessage("Your proposal was sent successfully!");
-      setTimeout(() => setSuccessMessage(null), 5000);
+      const payload = {
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+        contactNumber: formData.get("contactNumber"),
+        projectDescription: formData.get("projectDescription"),
+        date: Math.floor(Date.now() / 1000), // Timestamp in seconds
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URI}/api/proposal`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          form.reset();
+          setSuccessMessage("Your proposal was sent successfully!");
+          setTimeout(() => setSuccessMessage(null), 5000);
+        } else {
+          const errorData = await response.json();
+          setFormErrors({ apiError: errorData.message || "Failed to send proposal" });
+        }
+      } catch (error) {
+        setFormErrors({ apiError: "An error occurred while sending the proposal" });
+      }
     }
   };
 

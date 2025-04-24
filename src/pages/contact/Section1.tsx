@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
 import { SectionProps } from '../home/Section1';
+import { ContactForm } from './Section2';
 
-export const Section1: React.FC<SectionProps> = ({ data }) => {   
+export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {   
   const sectionData:any=data || null;
 
   const { title1, highlight1, contactSupport, corporateOffice,corporateOfficeemail, indiaOffice,indinofficeemail, socialLinks } = sectionData;
 
   return (
-    <section className="w-full px-4 md:px-0 bg-[#043A53] h-[900px] md:h-[880px]">
+    <section className="w-full px-4 md:px-0 bg-[#043A53] h-auto">
       <div className="w-full mx-auto flex flex-col items-center">
         <div className='text-center text-white w-full'>
-          <h1 className='text-[38px] md:text-5xl font-bold pt-[80px] md:pt-[200px]'>{title1}</h1>
-          <h2 className='text-[#97F03F] pt-8 text-[18px]'>{highlight1}</h2>
+          <h1 className='text-[38px] md:text-5xl font-bold pt-[80px] md:pt-[80px] pb-16'>{title1}</h1>
+          {/* <h2 className='text-[#97F03F] pt-8 text-[18px]'>{highlight1}</h2> */}
+          <ContactForm  data={data1}></ContactForm> 
         </div>
         <div className="max-w-6xl mx-auto p-6 text-white">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[20px] md:pt-[180px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[20px] md:pt-[40px] pb-8">
             
             {/* Contact Support */}
             <div className="p-4 ">

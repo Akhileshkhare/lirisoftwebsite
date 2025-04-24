@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Footer from '../Footer';
+import { API_BASE_URI } from '../../config/apiConfig';
 
 const ConsultationForm: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -18,9 +19,32 @@ const ConsultationForm: React.FC = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      form.reset();
-      setSuccessMessage("Your consultation request was sent successfully!");
-      setTimeout(() => setSuccessMessage(null), 5000);
+      const payload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+        date: Math.floor(Date.now() / 1000), // Timestamp in seconds
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URI}/api/consultation`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          form.reset();
+          setSuccessMessage("Your consultation request was sent successfully!");
+          
+          setTimeout(() => setSuccessMessage(null), 5000);
+        } else {
+          const errorData = await response.json();
+          setFormErrors({ general: errorData.message || "Something went wrong" });
+        }
+      } catch (error) {
+        setFormErrors({ general: "Failed to send request. Please try again later." });
+      }
     }
   };
 
@@ -47,6 +71,7 @@ const ConsultationForm: React.FC = () => {
             <textarea name="message" className="w-full p-2 border border-gray-300" rows={4}></textarea>
             {formErrors.message && <p className="text-red-500 text-sm">{formErrors.message}</p>}
           </div>
+          {formErrors.general && <p className="text-red-500 text-sm">{formErrors.general}</p>}
           <div className="flex justify-center py-4">
             <button
               type="submit"

@@ -51,12 +51,14 @@ export default function AppDetails() {
           <p className="text-lg bg-gray-100 px-4 py-3 shadow md:text-xl font-bold  ">
           Key Features</p>
       <ul className="ml-0 mt-2 space-y-1 text-md md:text-lg px-6 py-4">
-        {app.details.map((feature: string, index: number) => (
-          <li key={index}>
-            <span className="mr-4 text-[#f0b73f]">✔</span>
-            {feature}
-          </li>
-        ))}
+        {(Array.isArray(app.details) ? app.details : app.details.split(',')).map(
+          (feature: string, index: number) => (
+            <li key={index}>
+              <span className="mr-4 text-[#f0b73f]">✔</span>
+              {feature}
+            </li>
+          )
+        )}
       </ul>
         </div>
 

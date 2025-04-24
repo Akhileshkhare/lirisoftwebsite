@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export interface SectionProps {
   data: any; // Replace 'any' with the specific type of data if known
+  data1?:any;
 }
 
 const Section1: React.FC<SectionProps> = ({ data }) => {

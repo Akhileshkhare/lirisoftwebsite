@@ -35,6 +35,7 @@ const CMSDashboard = () => {
           Career: <FaUserTie />,
           Contact: <FaEnvelope />,
           Product: <FaBoxOpen />,
+          Contacts: <FaEnvelope />,
         };
 
         const pagesWithIcons = Object.keys(data).map((page) => ({
@@ -55,11 +56,11 @@ const CMSDashboard = () => {
       setSelectedSection(null);
     } else {
       setSelectedPage(page);
-      if (page === "contacts") {
-        const contactsData = Object.values(formData[page] || {});
+      if (page === "contacts" || page === "proposals" || page === "consultations") {
+        const data = Object.values(formData[page] || {});
         setSections([]); // Clear sections as we are displaying a table
-        setSelectedSection("contacts"); // Set a special section for contacts
-        console.log("Contacts Data:", contactsData); // Debugging contacts data
+        setSelectedSection(page); // Set a special section for the selected page
+        console.log(`${page.charAt(0).toUpperCase() + page.slice(1)} Data:`, data); // Debugging data
       } else {
         setSections(Object.keys(formData[page] || {}));
         setSelectedSection(null);
@@ -99,7 +100,14 @@ const CMSDashboard = () => {
 
   const handleSave = () => {
     const transformedData = Object.keys(formData).reduce((acc, page) => {
-      acc[page] = formData[page]; // Adjust transformation logic as needed
+      acc[page] = Object.keys(formData[page]).reduce((pageAcc, section) => {
+        pageAcc[section] = Object.keys(formData[page][section]).reduce((sectionAcc, key) => {
+          const value = formData[page][section][key];
+          sectionAcc[key] = Array.isArray(value) ? value : value.toString();
+          return sectionAcc;
+        }, {});
+        return pageAcc;
+      }, {});
       return acc;
     }, {});
 
@@ -217,13 +225,15 @@ const CMSDashboard = () => {
 
         {/* Page Details */}
         <main className="flex-1 p-6 bg-gray-100 ml-64 overflow-y-auto">
-          {selectedSection === "contacts" ? (
+          {selectedSection === "contacts" || selectedSection === "proposals" || selectedSection === "consultations" ? (
             <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
-              <h2 className="text-2xl font-semibold mb-4">Contacts</h2>
+              <h2 className="text-2xl font-semibold mb-4">
+                {selectedSection.charAt(0).toUpperCase() + selectedSection.slice(1)}
+              </h2>
               <table className="table-auto text-sm w-full border-collapse border border-gray-300">
                 <thead>
                   <tr>
-                    {Object.keys(formData.contacts[0] || {}).map((header) => (
+                    {Object.keys(formData[selectedSection][0] || {}).map((header) => (
                       <th key={header} className="border border-gray-300 px-4 py-2">
                         {header.charAt(0).toUpperCase() + header.slice(1)} {/* Capitalize the first letter */}
                       </th>
@@ -232,9 +242,9 @@ const CMSDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.values(formData.contacts || {}).map((contact, index) => (
+                  {Object.values(formData[selectedSection] || {}).map((item, index) => (
                     <tr key={index}>
-                      {Object.entries(contact).map(([key, value], idx) => (
+                      {Object.entries(item).map(([key, value], idx) => (
                         <td key={idx} className="border border-gray-300 px-4 py-2">
                           {key === "date"
                             ? new Date(value * 1000).toLocaleString() // Display date and time in client's system timezone
@@ -243,7 +253,7 @@ const CMSDashboard = () => {
                       ))}
                       <td className="border border-gray-300 px-4 py-2">
                         <button
-                          onClick={() => deleteContact(contact.id || contact._id)} // Ensure correct ID field is used
+                          onClick={() => deleteContact(item.id || item._id)} // Ensure correct ID field is used
                           className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
                         >
                           Delete
