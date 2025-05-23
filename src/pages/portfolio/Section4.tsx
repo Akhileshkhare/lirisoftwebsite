@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Added import
+import React from "react";
 import { SectionProps } from '../home/Section1';
 
 interface Tab {
@@ -21,10 +20,6 @@ interface SectionData {
 
 export const Section4: React.FC<SectionProps> = ({ data }) => {   
   const sectionData:SectionData=data || null;
-
-  const navigate = useNavigate(); // Added hook
-
-
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, tabs } = sectionData;
 
@@ -53,26 +48,7 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
             </div>
           ))}
         </div>
-        <button
-          className="px-6 mt-12 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
-          onClick={() => navigate("/technologies")} // Updated button action
-        >
-          <span>{title3}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 7l5 5-5 5M18 12H6"
-            />
-          </svg>
-        </button>
+       
       </div>
     </section>
   );

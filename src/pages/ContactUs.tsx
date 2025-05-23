@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import {Section1} from './contact/Section1'
-import {ContactForm} from './contact/Section2'
-import Footer from './Footer'
-import {Section3} from './contact/Section3'
-import FullPageLoader from '../components/FullPageLoader'
-import { API_BASE_URI } from '../config/apiConfig'
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet'; // Import Helmet for SEO
+import { Section1 } from './contact/Section1';
+import { ContactForm } from './contact/Section2';
+import Footer from './Footer';
+import { Section3 } from './contact/Section3';
+import FullPageLoader from '../components/FullPageLoader';
+import { API_BASE_URI } from '../config/apiConfig';
 
 type SectionData = {
   section1?: any;
-  section2?:any;
-  section3?:any;
+  section2?: any;
+  section3?: any;
 };
 
 export default function ContactUs() {
@@ -17,7 +18,7 @@ export default function ContactUs() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_BASE_URI}/api/homepage`) 
+    fetch(`${API_BASE_URI}/api/homepage`)
       .then((response) => response.json())
       .then((data) => {
         setSectionData(data.Contact);
@@ -34,10 +35,16 @@ export default function ContactUs() {
   }
   return (
     <>
-      <Section1  data={sectionData?.section1} data1={sectionData?.section2}></Section1>
-           
-        {/* <Section3  data={sectionData?.section3}></Section3> */}
-       <Footer></Footer>
+      <Helmet>
+        <title>Contact Us - Lirisoft</title>
+        <meta
+          name="description"
+          content="Help is here when you need it. Email support 7 days a week, with live chat on weekdays from 9AM-6PM Eastern Time."
+        />
+      </Helmet>
+      <Section1 data={sectionData?.section1} data1={sectionData?.section2}></Section1>
+      {/* <Section3  data={sectionData?.section3}></Section3> */}
+      <Footer></Footer>
     </>
-  )
+  );
 }

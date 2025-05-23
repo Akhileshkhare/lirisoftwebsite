@@ -23,26 +23,26 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
           {/* Left Part (30%) */}
           <div className="w-full md:w-1/4 max-w-md space-y-6 md:space-y-8 text-left md:text-left">
             <button className="px-6 py-3 text-white bg-[#043A53] rounded-3xl flex items-center space-x-2 mx-auto md:mx-0">
-              <span>{sectionData.buttonText}</span>
+              <span>{sectionData?.buttonText}</span>
             </button>
             <h2 className="text-gray-900 text-5xl md:text-5xl font-semibold">
-              {sectionData.heading}
+              {sectionData?.heading}
             </h2>
             <p className="text-gray-900 text-base md:text-md">
-              {sectionData.description}
+              {sectionData?.description}
             </p>
           </div>
 
           {/* Right Part (70%) */}
           <div className="w-full md:w-3/4 flex flex-col items-center md:items-stretch sm:flex-row gap-6 py-8 md:gap-3">
-            {sectionData.features.map((feature, index) => (
+            {sectionData?.features?.map((feature, index) => (
               <div key={index} className="flex flex-col items-center p-6 gap-6 md:gap-8 bg-[#F2F5F6] rounded-2xl w-full max-w-[215.33px] h-auto text-center">
                 <div className="w-28 h-28 flex items-center justify-center">
-                  <img src={feature.img} alt={feature.title} className="w-full h-full object-cover" />
+                  <img src={feature?.img} alt={feature?.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="space-y-2 text-left">
-                  <h3 className="text-gray-900 text-lg font-semibold">{feature.title}</h3>
-                  <p className="text-gray-900 text-sm">{feature.desc}</p>
+                  <h3 className="text-gray-900 text-lg font-semibold">{feature?.title}</h3>
+                  <p className="text-gray-900 text-sm">{feature?.desc}</p>
                 </div>
               </div>
             ))}

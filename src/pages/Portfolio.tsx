@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet'; // Import Helmet for SEO
 import Footer from './Footer';
 import FullPageLoader from '../components/FullPageLoader';
 import {Section1} from './portfolio/Section1';
@@ -8,6 +9,7 @@ import {Section4} from './portfolio/Section4';
 import {Section5} from './portfolio/Section5';
 import {Section6} from './portfolio/Section6';
 import { API_BASE_URI } from '../config/apiConfig';
+import ProductPage from './Product';
 
 
 type SectionData = {
@@ -42,12 +44,20 @@ const PortfolioPage = () => {
 
   return (
     <>
-     <Section1 data={sectionData?.section1} />
+      <Helmet>
+        <title>Our Portfolio - Lirisoft</title>
+        <meta
+          name="description"
+          content="Take a look at some of our work. For over half a decade, Lirisoft has been passionately engaged in offering all-inclusive IT solutions to clients from diverse industries."
+        />
+      </Helmet>
+      <Section1 data={sectionData?.section1} />
       <Section2 data={sectionData?.section2} />
       <Section3 data={sectionData?.section3} />
       <Section4 data={sectionData?.section4} />
       {/* <Section5 data={sectionData?.section5} />
       <Section6 data={sectionData?.section6} /> */}
+      <ProductPage />
       <Footer />
     </>
   );

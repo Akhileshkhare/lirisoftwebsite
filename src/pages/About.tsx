@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet'; // Import Helmet for SEO
 import Footer from './Footer';
 import FullPageLoader from '../components/FullPageLoader';
 import {Section1} from './about/Section1';
@@ -8,6 +9,7 @@ import {Section4} from './about/Section4';
 import {Section5} from './about/Section5';
 import {Section6} from './about/Section6';
 import { API_BASE_URI } from '../config/apiConfig';
+import ServicesPage from './Services';
 
 // ...import other sections as needed...
 
@@ -43,12 +45,20 @@ const AboutPage = () => {
 
   return (
     <>
-     <Section1 data={sectionData?.section1} />
+      <Helmet>
+        <title>About Lirisoft - What Drives Us Defines Us</title>
+        <meta
+          name="description"
+          content="Founded in 2017, Lirisoft has been a provider of IT consulting and software development services. We help non-IT organizations and software companies improve business performance and quickly win new customers."
+        />
+      </Helmet>
+      <Section1 data={sectionData?.section1} />
       <Section2 data={sectionData?.section2} />
       <Section4 data={sectionData?.section4} />
       <Section3 data={sectionData?.section3} />
      
-      {/* <Section6 data={sectionData?.section5} /> */}
+<ServicesPage/>
+     
       <Footer />
     </>
   );

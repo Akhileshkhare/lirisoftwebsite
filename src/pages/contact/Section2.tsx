@@ -78,7 +78,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
             </label>
             <select
               name="service"
-              className="w-full p-2 border border-gray-300"
+              className="w-full p-2 text-gray-700 border border-gray-300"
               defaultValue={""}
             >
               <option value="" disabled></option>

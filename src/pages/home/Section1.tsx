@@ -9,7 +9,7 @@ export interface SectionProps {
 const Section1: React.FC<SectionProps> = ({ data }) => {
   const navigate = useNavigate();
 
-  const { title, description, buttonText, buttonIcon, imageSrc } = data;
+  const { title, description, buttonText, buttonIcon, imageSrc } = data || {};
 
   return (
     <section className="w-full bg-gray-100 dark:bg-gray-900 py-12 transition duration-300">

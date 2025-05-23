@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import { API_BASE_URI } from '../config/apiConfig';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'; // Import Helmet for SEO
 
 export default function OurWork() {
   const [sectionData, setSectionData] = useState<{
@@ -37,6 +38,13 @@ export default function OurWork() {
 
   return (
 <>
+      <Helmet>
+        <title>Our Work - Lirisoft</title>
+        <meta
+          name="description"
+          content="Discover how Lirisoft delivers innovative solutions to help businesses thrive in the digital era with confidence and innovation."
+        />
+      </Helmet>
 <section className="w-full py-10 px-4 md:px-0 h-auto">
          <div className="w-full h-[550px] mt-[90px] bg-[#F2F5F6] absolute top-0 left-0"></div>
       <div className="w-full relative max-w-7xl mx-auto flex flex-col items-center gap-10 md:gap-20">

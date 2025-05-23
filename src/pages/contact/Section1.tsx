@@ -33,10 +33,10 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
                 {/* <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
                   <FaTwitter className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-600' />
                 </a> */}
-                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                <a href='https://www.instagram.com/lirisoft_it?igsh=bWNxMnV1MTZlMmdq' target="_blank" rel="noopener noreferrer">
                   <FaInstagram className='bg-white p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-red-800' />
                 </a>
-                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+                <a href='https://www.linkedin.com/company/79745135' target="_blank" rel="noopener noreferrer">
                   <FaLinkedinIn className='bg-blue-800 p-1 cursor-pointer shadow-lg w-[24px] h-[24px] rounded-lg text-white' />
                 </a>
               </div>

@@ -8,6 +8,7 @@ import {Section4} from './services/Section4';
 import {Section5} from './services/Section5';
 import {Section6} from './services/Section6';
 import { API_BASE_URI } from '../config/apiConfig';
+import { Helmet } from 'react-helmet';
 
 
 type SectionData = {
@@ -41,13 +42,20 @@ const ServicesPage = () => {
 
   return (
     <>
-         <Section1 data={sectionData?.section1} />
+     {/* <Helmet>
+        <title>Our Services - Lirisoft</title>
+        <meta
+          name="description"
+          content="Invent, build, integrate, scale and upgrade your applications with Lirisoft! We deliver high-quality software solutions and a wide range of related professional services."
+        />
+      </Helmet>
+         <Section1 data={sectionData?.section1} /> */}
           <Section2 data={sectionData?.section2} />
           <Section3 data={sectionData?.section3} />
           <Section4 data={sectionData?.section4} />
           <Section5 data={sectionData?.section5} />
           <Section6 data={sectionData?.section6} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

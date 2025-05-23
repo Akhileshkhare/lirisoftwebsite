@@ -29,7 +29,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-10 md:gap-20">
         <div className="flex flex-col md:flex-row justify-between items-center mt-10 md:mt-[90px] w-full px-4 md:px-20">
           <h2 className="text-3xl md:text-6xl font-semibold text-left text-gray-900">
-            {sectionData.heading.title} <span className="text-[#043A53]">{sectionData.heading.highlight}</span>
+            {sectionData?.heading?.title} <span className="text-[#043A53]">{sectionData?.heading?.highlight}</span>
           </h2>
           <Link
             to="/case-studies"
@@ -53,15 +53,15 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
           </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-start w-full gap-6 px-4 md:px-20">
-          {sectionData.caseStudies.map((study) => (
+          {sectionData?.caseStudies?.map((study) => (
             <div
-              key={study.id}
+              key={study?.id}
               className="flex flex-col bg-white shadow-md rounded-xl w-full max-w-[358px] h-auto"
             >
               {/* Image Part */}
               <div className="w-full h-[200px] md:h-[257px]">
                 <img
-                  src={study.image}
+                  src={study?.image}
                   alt="Feature Icon"
                   className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl"
                 />
@@ -70,17 +70,17 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
               {/* Text Part */}
               <div className="text-left p-4 md:p-6 space-y-3">
                 <h3 className="text-gray-900 text-sm md:text-md">
-                  <span className="font-bold">{study.date}, </span>
-                  {study.author}
+                  <span className="font-bold">{study?.date}, </span>
+                  {study?.author}
                 </h3>
                 <p className="text-gray-900 text-lg md:text-xl font-semibold">
-                  {study.title}
+                  {study?.title}
                 </p>
                 <p className="text-gray-900 text-sm md:text-md">
-                  {study.description}
+                  {study?.description}
                 </p>
                 <Link
-                  to={`/case-studies/${study.id}`}
+                  to={`/case-studies/${study?.id}`}
                   className="flex flex-row font-semibold items-center cursor-pointer text-md"
                 >
                   Read Story

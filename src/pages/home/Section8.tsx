@@ -27,11 +27,11 @@ export const Section8: React.FC<SectionProps> = ({ data }) => {
           <div className="w-full max-w-6xl flex flex-col md:flex-row gap-8 mt-10 md:mt-[40px]">
             <div className="flex flex-col w-full max-w-[247px] h-auto">
               <h3 className="text-[#043A53] text-3xl md:text-4xl font-bold">
-                {sectionData.title}
-                <span className="text-yellow-300">{sectionData.subtitleHighlight}</span>
+                {sectionData?.title}
+                <span className="text-yellow-300">{sectionData?.subtitleHighlight}</span>
               </h3>
               <div className="w-full flex flex-row items-center mt-6 md:mt-[40px] space-x-4">
-                {sectionData.icons.map((icon, index) => (
+                {sectionData?.icons?.map((icon, index) => (
                   <img
                     key={index}
                     src={icon}
@@ -42,11 +42,11 @@ export const Section8: React.FC<SectionProps> = ({ data }) => {
               </div>
             </div>
             <div className="flex flex-col w-full max-w-[395px] h-auto px-4 md:px-10">
-              <p className="text-sm md:text-base text-gray-900">{sectionData.description}</p>
+              <p className="text-sm md:text-base text-gray-900">{sectionData?.description}</p>
             </div>
             <div className="flex flex-col w-full max-w-[114px] h-auto">
               <ul className="list-none space-y-4 md:space-y-4 text-gray-900">
-                {sectionData.menuItems.map((item, index) => (
+                {sectionData?.menuItems?.map((item, index) => (
                   <li
                     key={index}
                     className={index === 0 ? "font-semibold text-lg md:text-xl" : ""}
@@ -57,8 +57,8 @@ export const Section8: React.FC<SectionProps> = ({ data }) => {
               </ul>
             </div>
             <div className="flex flex-col w-full max-w-[247px] h-auto">
-              <h1 className="font-semibold text-lg md:text-xl mb-3">{sectionData.about.title}</h1>
-              <p className="text-sm md:text-base text-gray-900">{sectionData.about.email}</p>
+              <h1 className="font-semibold text-lg md:text-xl mb-3">{sectionData?.about?.title}</h1>
+              <p className="text-sm md:text-base text-gray-900">{sectionData?.about?.email}</p>
             </div>
           </div>
         </div>

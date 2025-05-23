@@ -5,7 +5,7 @@ import { SectionProps } from '../home/Section1';
 export const Section5: React.FC<SectionProps> = ({ data }) => {   
   const sectionData:any=data || null;
   return (
-    <section className="bg-gray-100 py-10 text-center w-full ">
+    <section className=" py-10 text-center w-full ">
     <h2 className="text-2xl font-semibold text-gray-800 mb-4">
       Get Started Today
     </h2>
