@@ -6,7 +6,28 @@ import { SectionProps } from '../home/Section1';
 export const Section4: React.FC<SectionProps> = ({ data }) => {   
   const sectionData:any=data || null;
 
-  const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3 } = sectionData;
+  const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, sliderImages } = sectionData;
+
+  // Use sliderImages if provided, otherwise fallback to [imageSrc]
+  const images: { src: string; alt: string }[] = sliderImages && Array.isArray(sliderImages) && sliderImages.length > 0
+    ? sliderImages
+    : [
+        { src: imageSrc, alt: imageAlt },
+        { src: imageSrc, alt: imageAlt },
+        { src: imageSrc, alt: imageAlt }
+      ];
+
+  const [current, setCurrent] = useState(0);
+
+  const goPrev = () => setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const goNext = () => setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
@@ -21,22 +42,48 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
         </div>
         <div className="w-full rounded-md bg-white pl-0 md:h-auto flex flex-col md:flex-row items-center justify-center items-stretch pt-0 gap-3">
           <div className="w-full p-0 h-[670px] md:h-[680px] relative flex items-start flex-col">
-            <div className="flex w-full justify-center items-center flex-col">
-              {/* <button className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
+            <div className="flex w-full justify-center items-center flex-col relative" style={{ height: "400px" }}>
+              {/* Slider navigation and image */}
+              <button
+                className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                onClick={goPrev}
+                aria-label="Previous"
+                type="button"
+              >
                 <FaPlay size={12} className="rotate-180" />
-              </button> */}
+              </button>
               <img
-                src={imageSrc}
-                alt={imageAlt}
+                src={images[current].src}
+                alt={images[current].alt}
                 style={{
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
+                  height: "100%", // Fixed height for image
+                  maxHeight: "400px", // Ensures image doesn't exceed container
+                  width: "auto"
                 }}
-                className="w-[90%] h-full object-cover pt-10"
+                className="w-[90%] object-cover pt-10"
               />
-              {/* <button className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center">
+              <button
+                className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                onClick={goNext}
+                aria-label="Next"
+                type="button"
+              >
                 <FaPlay size={12} />
-              </button> */}
+              </button>
+              {/* Dots navigation */}
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {images.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`w-3 h-3 rounded-full ${current === idx ? "bg-[#043A53]" : "bg-gray-300"}`}
+                    onClick={() => setCurrent(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    type="button"
+                  />
+                ))}
+              </div>
             </div>
             <div className="p-10 pl-12 text-[#12141D] flex flex-col gap-4">
               <h1 className="font-bold">{highlight2}</h1>

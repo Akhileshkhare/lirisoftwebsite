@@ -41,11 +41,11 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
         {/* Left Part */}
         <div className="w-full md:w-1/2 pl-10 md:pl-20">
           <h2 className="text-4xl md:text-5xl pt-10 md:pt-0 md:text-5xl font-semibold text-gray-100 mb-6 leading-tight">
-            {sectionData?.title}
+            {sectionData.title}
           </h2>
 
           <button onClick={() => navigate('/contact')}  className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-2">
-            <span className="mr-2">{sectionData?.buttonText}</span>
+            <span className="mr-2">{sectionData.buttonText}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-8 h-8 bg-gray-500 opacity-60 rounded-full p-1"
@@ -57,11 +57,11 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={sectionData?.buttonIcon?.path}
+                d={sectionData.buttonIcon.path}
               />
             </svg>
           </button>
-          {/* <p className="text-gray-400 mt-5">{sectionData?.contactText}</p> */}
+          {/* <p className="text-gray-400 mt-5">{sectionData.contactText}</p> */}
         </div>
 
         {/* Right Part (Image) */}
@@ -79,7 +79,7 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
             <img src="./Icons2.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[5px] bottom-[20px]" />
           <div
             className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
-            style={{ backgroundImage: `url('${sectionData?.images?.background?.src}')` }}
+            style={{ backgroundImage: `url('${sectionData.images.background.src}')` }}
           ></div>
         </div>
       </div>

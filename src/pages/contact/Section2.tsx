@@ -7,6 +7,11 @@ import { API_BASE_URI } from '../../config/apiConfig';
 export const ContactForm: React.FC<SectionProps> = ({ data }) => {   
   const [successMessage, setSuccessMessage] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [captchaQuestion, setCaptchaQuestion] = useState<{a: number, b: number}>({a: Math.floor(Math.random()*10)+1, b: Math.floor(Math.random()*10)+1});
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+
   interface SectionData {
     title: string;
     highlight: string;
@@ -15,8 +20,29 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
   }
   const sectionData: SectionData = data as SectionData;
 
+  const verifyCaptcha = () => {
+    if (parseInt(captchaInput) === captchaQuestion.a + captchaQuestion.b) {
+      setCaptchaVerified(true);
+      setCaptchaError("");
+    } else {
+      setCaptchaError("Incorrect answer. Please try again.");
+      setCaptchaVerified(false);
+    }
+  };
+
+  const resetCaptcha = () => {
+    setCaptchaQuestion({a: Math.floor(Math.random()*10)+1, b: Math.floor(Math.random()*10)+1});
+    setCaptchaInput("");
+    setCaptchaError("");
+    setCaptchaVerified(false);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    if (!captchaVerified) {
+      setCaptchaError("Please solve the captcha before submitting.");
+      return;
+    }
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const newErrors: { [key: string]: string } = {};
@@ -52,6 +78,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
         form.reset();
         setSuccessMessage("Your message has been sent successfully. We will connect with you soon!");
         setTimeout(() => setSuccessMessage(""), 5000); // Clear message after 5 seconds
+        resetCaptcha(); // Reset captcha after successful submit
       } else {
         const errorData = await response.json();
         setErrors({ general: errorData.message || "Something went wrong. Please try again." });
@@ -66,7 +93,6 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
   return (
     <section className="w-full px-4 md:px-0 bg-[#043A53]">
       <div className="max-w-3xl mx-auto px-6 py-6">
-       
         <form className="space-y-4 bg-[#F2F5F6] text-left px-10 py-4 shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-5xl font-bold my-8 text-gray-800 text-center">
           {title} <span className="text-[#043A53] text-5xl">{highlight}</span>
@@ -81,7 +107,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
               className="w-full p-2 text-gray-700 border border-gray-300"
               defaultValue={""}
             >
-              <option value="" disabled></option>
+              <option value="" disabled>Select a service</option>
               {services.map((service, index) => (
                 <option key={index} value={service.name}>
                   {service.name}
@@ -99,7 +125,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
               <input
                 type="text"
                 name="name"
-                className="w-full p-2 border border-gray-300"
+                className="w-full p-2 border border-gray-300 text-gray-900"
               />
               {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
             </div>
@@ -110,7 +136,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
               <input
                 type="email"
                 name="email"
-                className="w-full p-2 border border-gray-300"
+                className="w-full p-2 border border-gray-300 text-gray-900"
               />
               {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
             </div>
@@ -123,32 +149,71 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
             </label>
             <textarea
               name="message"
-              className="w-full p-2 border border-gray-300"
+              className="w-full p-2 border border-gray-300 text-gray-900"
               rows={4}
             ></textarea>
             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
           </div>
 
-          <button
-            type="submit"
-            className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
-          >
-            <span>{buttonText}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Captcha */}
+          <div className="flex justify-end items-center space-x-2">
+            <label className="block text-gray-900 text-sm font-semibold mb-0">
+              Captcha: What is {captchaQuestion.a} + {captchaQuestion.b}?
+            </label>
+            <input
+              type="text"
+              value={captchaInput}
+              onChange={e => {
+                setCaptchaInput(e.target.value);
+                setCaptchaVerified(false);
+                setCaptchaError("");
+              }}
+              className="w-20 p-2 border border-gray-300 text-gray-900"
+              disabled={captchaVerified}
+            />
+            <button
+              type="button"
+              onClick={verifyCaptcha}
+              className={`px-3 py-2 bg-blue-500 text-white rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={captchaVerified}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 7l5 5-5 5M18 12H6"
-              />
-            </svg>
-          </button>
+              Verify
+            </button>
+            <button
+              type="button"
+              onClick={resetCaptcha}
+              className={`px-3 py-2 bg-gray-300 text-gray-800 rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={captchaVerified}
+            >
+              Reset
+            </button>
+            {captchaError && <span className="text-red-500 text-sm ml-2">{captchaError}</span>}
+            {captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
+          </div>
+
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={!captchaVerified}
+            >
+              <span>{buttonText}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 7l5 5-5 5M18 12H6"
+                />
+              </svg>
+            </button>
+          </div>
 
           <div
             className={`mt-4 h-[50px] text-center py-3 text-green-900 font-semibold rounded ${
