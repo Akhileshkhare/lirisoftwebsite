@@ -13,8 +13,23 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
 
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
+  const [captchaQuestion, setCaptchaQuestion] = useState('');
+  const [captchaAnswer, setCaptchaAnswer] = useState('');
+  const [captchaUserInput, setCaptchaUserInput] = useState('');
 
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, budgetOptions } = sectionData;
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const generateCaptcha = () => {
+    const a = Math.floor(Math.random() * 10) + 1;
+    const b = Math.floor(Math.random() * 10) + 1;
+    setCaptchaQuestion(`What is ${a} + ${b}?`);
+    setCaptchaAnswer((a + b).toString());
+    setCaptchaUserInput('');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +42,14 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
     if (!formData.get("email")) errors.email = "Email Address is required";
     if (!formData.get("contactNumber")) errors.contactNumber = "Contact Number is required";
     if (!formData.get("projectDescription")) errors.projectDescription = "Project Description is required";
+
+    // Only check captcha if no other errors
+    if (Object.keys(errors).length === 0) {
+      if (captchaUserInput.trim() !== captchaAnswer) {
+        errors.captcha = 'Captcha answer is incorrect.';
+        generateCaptcha();
+      }
+    }
 
     setFormErrors(errors);
 
@@ -53,6 +76,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
           form.reset();
           setSuccessMessage("Your proposal was sent successfully!");
           setTimeout(() => setSuccessMessage(null), 5000);
+          generateCaptcha();
         } else {
           const errorData = await response.json();
           setFormErrors({ apiError: errorData.message || "Failed to send proposal" });
@@ -102,7 +126,23 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
             <textarea name="projectDescription" className="w-full p-2 border border-gray-300" rows={4}></textarea>
             {formErrors.projectDescription && <p className="text-red-500 text-sm">{formErrors.projectDescription}</p>}
           </div>
-          <div className="flex justify-center py-4">
+          <div className="flex justify-end items-center py-2 gap-4">
+            <label className="block text-white text-sm font-semibold mb-2 whitespace-nowrap mb-0">Captcha: {captchaQuestion}</label>
+            <input
+              type="text"
+              className="w-32 p-2 border border-gray-300 text-black ml-2"
+              value={captchaUserInput}
+              onChange={e => setCaptchaUserInput(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
+         
+            <div className="flex justify-end h-[40px]">
+               {formErrors.captcha && (
+              <p className="text-red-500 text-sm mt-1">{formErrors.captcha}</p>
+             )} </div>
+        
+          <div className="flex justify-end py-0">
             <button
               type="submit"
               className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
