@@ -18,15 +18,29 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
           <ContactForm  data={data1}></ContactForm> 
         </div>
         <div className="max-w-6xl mx-auto p-6 text-white">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left pt-[20px] md:pt-[40px] pb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left pt-[20px] md:pt-[40px] pb-8">
             
             {/* Contact Support */}
-            <div className="p-4 ">
+            {/* <div className="p-4 ">
               <h3 className="text-xl font-semibold mb-4">Contact Support</h3>
               <p className="text-left text-sm text-[#A9CAE7]">{contactSupport}</p>
+            </div> */}
+
+          
+
+            {/* Corporate Office */}
+            <div className="p-4 ">
+              <h3 className="text-xl font-semibold mb-4">Corporate Office</h3>
+              <p className="text-left text-sm text-[#A9CAE7]">{corporateOffice} <br/> {corporateOfficeemail}</p>
             </div>
 
-            {/* Connect with Us */}
+            {/* India Office */}
+            <div className="p-4 ">
+              <h3 className="text-xl font-semibold mb-4">India Office</h3>
+              <p className="text-left text-sm text-[#A9CAE7]">{indiaOffice}</p>
+              <p className="text-left text-sm text-[#A9CAE7] mt-2">{indinofficeemail}</p>
+            </div>
+  {/* Connect with Us */}
             <div className="p-4 ">
               <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
               <div className="flex justify-left space-x-4 mt-2 text-blue-600">
@@ -41,20 +55,6 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
                 </a>
               </div>
             </div>
-
-            {/* Corporate Office */}
-            <div className="p-4 ">
-              <h3 className="text-xl font-semibold mb-4">Corporate Office</h3>
-              <p className="text-left text-sm text-[#A9CAE7]">{corporateOffice} <br/> {corporateOfficeemail}</p>
-            </div>
-
-            {/* India Office */}
-            <div className="p-4 ">
-              <h3 className="text-xl font-semibold mb-4">India Office</h3>
-              <p className="text-left text-sm text-[#A9CAE7]">{indiaOffice}</p>
-              <p className="text-left text-sm text-[#A9CAE7] mt-2">{indinofficeemail}</p>
-            </div>
-
           </div>
         </div>
       </div>
