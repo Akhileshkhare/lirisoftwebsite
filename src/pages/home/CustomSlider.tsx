@@ -29,7 +29,33 @@ const CustomSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
+
+  // Custom Arrow Components
+  function SampleNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "#a3a3a3", borderRadius: "50%" }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "#a3a3a3", borderRadius: "50%" }}
+        onClick={onClick}
+      />
+    );
+  }
 
   return (
     <div className="w-full md:w-[850px] mx-auto ">
@@ -37,11 +63,12 @@ const CustomSlider = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="md:h-[227px] h-[277px] bg-white p-8 flex flex-col items-center justify-center rounded-lg shadow-md"
+            className="bg-white p-8 flex flex-col items-center justify-center rounded-lg shadow-md min-h-[277px] md:min-h-[227px]"
+            style={{ minHeight: '227px', height: 'auto' }}
           >
             {/* Text Content */}
             <p className="text-8xl font-['arial'] text-yellow-300 text-left p-0 m-0 mb-[-50px]">“</p>
-            <p className="text-1xl text-gray-700 text-left">{slide.text}</p>
+            <p className="text-[18px] text-gray-800 text-left break-words whitespace-pre-line">{slide.text}</p>
 
             {/* User Card */}
             <div className="w-[301px] h-[53px] flex items-center gap-4 mt-6 p-3 bg-white rounded-lg">

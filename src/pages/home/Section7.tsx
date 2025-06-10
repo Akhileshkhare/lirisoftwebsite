@@ -44,7 +44,7 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
             {sectionData.title}
           </h2>
 
-          <button onClick={() => navigate('/contact')}  className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-2">
+          <button onClick={() => navigate('/contact')}  className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-4 mt-12">
             <span className="mr-2">{sectionData.buttonText}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

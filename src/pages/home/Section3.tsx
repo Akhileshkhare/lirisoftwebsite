@@ -22,13 +22,13 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start px-4 md:px-20 lg:px-40 py-10 gap-10 md:gap-10">
           {/* Left Part (30%) */}
           <div className="w-full md:w-1/4 max-w-md space-y-6 md:space-y-8 text-left md:text-left">
-            <button className="px-6 py-3 text-white bg-[#043A53] rounded-3xl flex items-center space-x-2 mx-auto md:mx-0">
+            <button className="px-6 py-2 text-white bg-[#043A53] rounded-3xl flex items-center space-x-2 mx-auto md:mx-0">
               <span>{sectionData?.buttonText}</span>
             </button>
-            <h2 className="text-gray-900 text-5xl md:text-5xl font-semibold">
+            <h2 className="text-gray-900 text-5xl md:text-5xl font-semibold leading-relaxed" style={{ lineHeight: '1.2' }}>
               {sectionData?.heading}
             </h2>
-            <p className="text-gray-900 text-base md:text-md">
+            <p className="text-gray-900 text-base md:text-[15px]">
               {sectionData?.description}
             </p>
           </div>
@@ -41,8 +41,8 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
                   <img src={feature?.img} alt={feature?.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="space-y-2 text-left">
-                  <h3 className="text-gray-900 text-lg font-semibold">{feature?.title}</h3>
-                  <p className="text-gray-900 text-sm">{feature?.desc}</p>
+                  <h3 className="text-gray-900 text-[18px] font-semibold">{feature?.title}</h3>
+                  <p className="text-gray-900 text-[15px]">{feature?.desc}</p>
                 </div>
               </div>
             ))}
