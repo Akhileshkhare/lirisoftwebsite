@@ -13,16 +13,9 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
             Why Choose Us?
           </h2>
           <p className="text-gray-600 md:mr-5">
-            We are committed to delivering exceptional value to our
-            clients. Our team of experts works tirelessly to ensure that
-            our solutions meet your unique needs and exceed your
-            expectations. With years of experience in the industry, we
-            pride ourselves on our ability to innovate and adapt to the
-            ever-changing technological landscape. Our dedication to
-            customer satisfaction, combined with our cutting-edge
-            technology, makes us the ideal partner for your business.
-            Trust us to help you achieve your goals with confidence and
-            efficiency.
+            We are committed to delivering exceptional value to our clients. Our team of experts works tirelessly to ensure that our solutions meet your unique needs and exceed your expectations.<br />
+            <span>With years of experience in the industry, we pride ourselves on our ability to innovate and adapt to the ever-changing technological landscape.</span><br />
+            <span>Our dedication to customer satisfaction, combined with our cutting-edge technology, makes us the ideal partner for your business. Trust us to help you achieve your goals with confidence and efficiency.</span>
           </p>
         </div>
 

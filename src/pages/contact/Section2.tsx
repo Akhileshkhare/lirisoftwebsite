@@ -100,7 +100,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           {/* Service Dropdown */}
           <div>
             <label className="block text-gray-900 text-sm font-semibold mb-2">
-              Service I am looking for
+              Service I am looking for <span className='text-red-500'>*</span>
             </label>
             <select
               name="service"
@@ -120,7 +120,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-900 text-sm font-semibold mb-2">
-                Your Name
+                Full Name <span className='text-red-500'>*</span>
               </label>
               <input
                 type="text"
@@ -131,7 +131,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
             </div>
             <div>
               <label className="block text-gray-900 text-sm font-semibold mb-2">
-                Email Address
+                Email Address <span className='text-red-500'>*</span>
               </label>
               <input
                 type="email"
@@ -145,7 +145,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           {/* Message */}
           <div>
             <label className="block text-gray-900 text-sm font-semibold mb-2">
-              Your Message
+              Message <span className='text-red-500'>*</span>
             </label>
             <textarea
               name="message"
@@ -156,37 +156,41 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           </div>
 
           {/* Captcha */}
-          <div className="flex justify-end items-center space-x-2">
-            <label className="block text-gray-900 text-sm font-semibold mb-0">
-              Captcha: What is {captchaQuestion.a} + {captchaQuestion.b}?
-            </label>
-            <input
-              type="text"
-              value={captchaInput}
-              onChange={e => {
-                setCaptchaInput(e.target.value);
-                setCaptchaVerified(false);
-                setCaptchaError("");
-              }}
-              className="w-20 p-2 border border-gray-300 text-gray-900"
-              disabled={captchaVerified}
-            />
-            <button
-              type="button"
-              onClick={verifyCaptcha}
-              className={`px-3 py-2 bg-blue-500 text-white rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={captchaVerified}
-            >
-              Verify
-            </button>
-            <button
-              type="button"
-              onClick={resetCaptcha}
-              className={`px-3 py-2 bg-gray-300 text-gray-800 rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={captchaVerified}
-            >
-              Reset
-            </button>
+          <div className="flex flex-col md:flex-row justify-end items-center md:space-x-2 space-y-2 md:space-y-0">
+            <div className="flex items-center space-x-2 w-full md:w-auto">
+              <label className="block text-gray-900 text-sm font-semibold mb-0">
+                Captcha: What is {captchaQuestion.a} + {captchaQuestion.b}?
+              </label>
+              <input
+                type="text"
+                value={captchaInput}
+                onChange={e => {
+                  setCaptchaInput(e.target.value);
+                  setCaptchaVerified(false);
+                  setCaptchaError("");
+                }}
+                className="w-20 p-2 border border-gray-300 text-gray-900"
+                disabled={captchaVerified}
+              />
+            </div>
+            <div className="flex space-x-2 w-full md:w-auto justify-end">
+              <button
+                type="button"
+                onClick={verifyCaptcha}
+                className={`px-3 py-2 bg-blue-500 text-white rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={captchaVerified}
+              >
+                Verify
+              </button>
+              <button
+                type="button"
+                onClick={resetCaptcha}
+                className={`px-3 py-2 bg-gray-300 text-gray-800 rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={captchaVerified}
+              >
+                Reset
+              </button>
+            </div>
             {captchaError && <span className="text-red-500 text-sm ml-2">{captchaError}</span>}
             {captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
           </div>

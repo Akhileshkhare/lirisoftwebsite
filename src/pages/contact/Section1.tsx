@@ -13,7 +13,7 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
     <section className="w-full px-4 md:px-0 bg-[#043A53] h-auto">
       <div className="w-full mx-auto flex flex-col items-center">
         <div className='text-center text-white w-full'>
-          <h1 className='text-[38px] md:text-5xl font-bold pt-[80px] md:pt-[80px] pb-16'>{title1}</h1>
+          <h1 className='text-[38px] md:text-[38px] font-bold pt-[80px] md:pt-[80px] pb-16'>{title1}</h1>
           {/* <h2 className='text-[#97F03F] pt-8 text-[18px]'>{highlight1}</h2> */}
           <ContactForm  data={data1}></ContactForm> 
         </div>
@@ -35,13 +35,13 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
             </div>
 
             {/* India Office */}
-            <div className="p-4 ">
+            <div className="p-4  mr-[70px]">
               <h3 className="text-xl font-semibold mb-4">India Office</h3>
               <p className="text-left text-sm text-[#A9CAE7]">{indiaOffice}</p>
               <p className="text-left text-sm text-[#A9CAE7] mt-2">{indinofficeemail}</p>
             </div>
   {/* Connect with Us */}
-            <div className="p-4 ">
+            <div className="p-4 md:ml-10 ">
               <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
               <div className="flex justify-left space-x-4 mt-2 text-blue-600">
                 {/* <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
