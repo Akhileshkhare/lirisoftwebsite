@@ -145,7 +145,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
           <div className="flex justify-end py-0">
             <button
               type="submit"
-              className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
+              className="px-6 py-3 text-gray-800 font-semibold bg-yellow-400 rounded-xl flex items-center space-x-2 hover:bg-yellow-300  hover:shadow-lg"
             >
               <span>{title3}</span>
             </button>

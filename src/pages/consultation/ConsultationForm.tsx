@@ -51,8 +51,8 @@ const ConsultationForm: React.FC = () => {
   return (
   <>
     <section className="w-full px-4 md:px-0 bg-[#043A53]">
-      <div className="max-w-2xl mx-auto px-6 py-10">
-        <h2 className="text-[24px] my-10 text-left text-white">
+      <div className="max-w-2xl mx-auto px-6 py-1">
+        <h2 className="text-[24px] my-8 text-left text-white">
           Request a <span className="font-bold">Consultation</span>
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ const ConsultationForm: React.FC = () => {
             {formErrors.message && <p className="text-red-500 text-sm">{formErrors.message}</p>}
           </div>
           {formErrors.general && <p className="text-red-500 text-sm">{formErrors.general}</p>}
-          <div className="flex justify-center py-4">
+          <div className="flex justify-center py-[15px]">
             <button
               type="submit"
               className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"

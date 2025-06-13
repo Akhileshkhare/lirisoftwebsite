@@ -156,7 +156,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           </div>
 
           {/* Captcha */}
-          <div className="flex flex-col md:flex-row justify-end items-center md:space-x-2 space-y-2 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-end items-center md:space-x-2 space-y-2 md:space-y-0 w-full">
             <div className="flex items-center space-x-2 w-full md:w-auto">
               <label className="block text-gray-900 text-sm font-semibold mb-0">
                 Captcha: What is {captchaQuestion.a} + {captchaQuestion.b}?
@@ -191,14 +191,17 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                 Reset
               </button>
             </div>
+            {/* Empty div for spacing/alignment on mobile */}
+          </div>
+          <div className="min-h-[24px] mt-[4px] flex items-center justify-end w-full space-y-0">
             {captchaError && <span className="text-red-500 text-sm ml-2">{captchaError}</span>}
-            {captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
+            {!captchaError && captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
           </div>
 
           <div className="flex justify-end">
             <button
               type="submit"
-              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded-xl flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
               disabled={!captchaVerified}
             >
               <span>{buttonText}</span>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReusableButton from "../../components/ReusableButton";
 
 export interface SectionProps {
   data: any; // Replace 'any' with the specific type of data if known
@@ -22,28 +23,13 @@ const Section1: React.FC<SectionProps> = ({ data }) => {
           <p className="text-[18px] text-[#6F8BA4] mb-8">
             {description}
           </p>
-          <button
-            className="px-6 py-3 text-white font-semibold bg-yellow-400 rounded-3xl flex items-center space-x-2"
-            onClick={() => navigate("/consultation")}
-          >
-            <span>{buttonText}</span>
-            {buttonIcon && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 7l5 5-5 5M18 12H6"
-                />
-              </svg>
-            )}
-          </button>
+           <ReusableButton
+          text={buttonText}
+          widthClass="px-6"
+          onClick={() => navigate('/consultation')}
+          showArrow={true}
+        />
+          
         </div>
 
         {/* Right Part (Rectangles and Owl Image Section) */}

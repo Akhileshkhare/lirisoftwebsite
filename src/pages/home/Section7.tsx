@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionProps } from "./Section1";
+import ReusableButton from "../../components/ReusableButton";
 
 interface Section7Data {
   title: string;
@@ -43,24 +44,13 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
           <h2 className="text-4xl md:text-5xl pt-10 md:pt-0 md:text-5xl font-semibold text-gray-100 mb-6 leading-tight">
             {sectionData.title}
           </h2>
-
-          <button onClick={() => navigate('/contact')}  className="px-6 py-4 text-white text-lg font-semibold bg-[#F0B73F] rounded-full flex items-center space-x-4 mt-12">
-            <span className="mr-2">{sectionData.buttonText}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 bg-gray-500 opacity-60 rounded-full p-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={sectionData.buttonIcon.path}
-              />
-            </svg>
-          </button>
+        <ReusableButton
+          text={sectionData.buttonText}
+          widthClass="px-6 text-[17px] font-semibold mt-12"
+          onClick={() => navigate('/contact')}
+          showArrow={true}
+        />
+         
           {/* <p className="text-gray-400 mt-5">{sectionData.contactText}</p> */}
         </div>
 
