@@ -38,10 +38,10 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
 
               {/* Text Part */}
               <div className="text-left p-4 space-y-3 text-[#043A53]">
-              <h3 className="text-sm md:text-md mt-0">
+              <h3 className="text-sm md:text-md mt-0 md:h-[25px]">
                 {item.highlight2}
               </h3>
-              <p className="text-lg md:text-xl font-semibold border-b border-b-gray-400 border-b-[1px] pb-[6px]">
+              <p className="text-lg md:h-[60px] md:text-xl font-semibold border-b border-b-gray-400 border-b-[1px] pb-[6px]">
                 {item.title2}
               </p>
               <div

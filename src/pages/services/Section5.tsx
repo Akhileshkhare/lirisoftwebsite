@@ -38,7 +38,7 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
               <img
                 src={service.imageSrc}
                 alt={service.imageAlt}
-                className="w-12 h-12 object-cover mb-2"
+                className="w-12 h-12  mb-2"
               />
               <p className="text-center text-sm text-gray-700">{service.title}</p>
               </div>

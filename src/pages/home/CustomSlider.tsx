@@ -40,7 +40,7 @@ const CustomSlider = () => {
     const { className, style, onClick } = props;
     return (
        <button
-                     className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                     className="absolute right-[-80px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
                     onClick={onClick}
                      aria-label="Next"
                      type="button"
@@ -54,7 +54,7 @@ const CustomSlider = () => {
     const { className, style, onClick } = props;
     return (
       <button
-                      className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                      className="absolute left-[-80px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
         onClick={onClick}
                       aria-label="Previous"
                       type="button"

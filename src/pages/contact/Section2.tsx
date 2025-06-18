@@ -201,11 +201,12 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded-xl flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={!captchaVerified}
+                    className={`px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-xl flex items-center justify-center mx-auto md:mx-0  transition duration-200 hover:bg-[#d49c2e]  hover:shadow-lg ${!captchaVerified ? "opacity-90 cursor-not-allowed" : ""}`}
+
+               disabled={!captchaVerified}
             >
               <span>{buttonText}</span>
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
                 fill="none"
@@ -218,7 +219,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                   strokeWidth="2"
                   d="M13 7l5 5-5 5M18 12H6"
                 />
-              </svg>
+              </svg> */}
             </button>
           </div>
 

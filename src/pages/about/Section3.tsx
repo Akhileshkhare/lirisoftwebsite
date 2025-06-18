@@ -24,11 +24,11 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
         <div className="w-full pt-12">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 md:gap-16 gap-6 p-0">
             {images.map((img: { src: string }, index: number) => (
-              <div key={index} className="w-full h-auto flex items-center justify-center bg-white border border-gray-300 md:px-12 px-4 py-4">
+              <div key={index} className="w-full h-[200px]  flex items-center justify-center bg-white border border-gray-300 md:px-12 px-4 py-4">
               <img
                 src={img.src}
                   alt={`Partner ${index + 1}`}
-                  className="w-full h-auto max-w-[150px] md:max-w-[200px] object-contain"
+                  className="w-full h-auto max-w-[150px] md:max-w-[200px] object-contain p-4"
                 />
               </div>
             ))}
