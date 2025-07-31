@@ -99,17 +99,34 @@ const CMSDashboard = () => {
   };
 
   const handleSave = () => {
-    const transformedData = Object.keys(formData).reduce((acc, page) => {
-      acc[page] = Object.keys(formData[page]).reduce((pageAcc, section) => {
-        pageAcc[section] = Object.keys(formData[page][section]).reduce((sectionAcc, key) => {
-          const value = formData[page][section][key];
-          sectionAcc[key] = Array.isArray(value) ? value : value.toString();
-          return sectionAcc;
-        }, {});
-        return pageAcc;
-      }, {});
-      return acc;
-    }, {});
+    // Recursively process data: convert only primitives to string, keep arrays/objects as is
+    const processValue = (value) => {
+      if (Array.isArray(value)) {
+        return value.map(processValue);
+      } else if (value !== null && typeof value === 'object') {
+        const obj = {};
+        for (const k in value) {
+          obj[k] = processValue(value[k]);
+        }
+        return obj;
+      } else if (typeof value === 'number' || typeof value === 'boolean') {
+        return value.toString();
+      } else {
+        return value;
+      }
+    };
+
+    const transformedData = {};
+    for (const page in formData) {
+      if (typeof formData[page] === 'object' && formData[page] !== null) {
+        transformedData[page] = {};
+        for (const section in formData[page]) {
+          transformedData[page][section] = processValue(formData[page][section]);
+        }
+      } else {
+        transformedData[page] = formData[page];
+      }
+    }
 
     axios
       .post(`${API_BASE_URI}/api/homepage`, transformedData)
