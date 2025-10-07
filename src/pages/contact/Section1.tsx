@@ -13,7 +13,7 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
     <section className="w-full px-4 md:px-0 bg-[#043A53] h-auto">
       <div className="w-full mx-auto flex flex-col items-center">
         <div className='text-center text-white w-full'>
-          <h1 className='text-[38px] md:text-[38px] font-bold pt-[80px] md:pt-[80px] pb-16'>{title1}</h1>
+          <h1 className='text-[38px] md:text-[40px] font-semibold pt-[40px] md:pt-[80px] pb-6 md:pb-16'>{title1}</h1>
           {/* <h2 className='text-[#97F03F] pt-8 text-[18px]'>{highlight1}</h2> */}
           <ContactForm  data={data1}></ContactForm> 
         </div>
@@ -30,7 +30,7 @@ export const Section1: React.FC<SectionProps> = ({ data,data1 }) => {
 
             {/* Corporate Office */}
             <div className="p-4 ">
-              <h3 className="text-xl font-semibold mb-4">Corporate Office</h3>
+              <h3 className="text-xl font-semibold mb-4">US Office</h3>
               <p className="text-left text-sm text-[#A9CAE7]">{corporateOffice} <br/> {corporateOfficeemail}</p>
             </div>
 

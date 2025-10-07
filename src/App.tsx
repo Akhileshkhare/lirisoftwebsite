@@ -5,7 +5,6 @@ import HomePageSection from "./pages/Home";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Portfolio from "./pages/Portfolio";
-import Services from "./pages/Services";
 import Product from "./pages/Product";
 import Career from "./pages/Career";
 import CaseStudies from "./pages/home/CaseStudies";
@@ -18,24 +17,29 @@ import TermsOfService from './pages/TermsOfService';
 import Partners from './pages/Partners'; // Import Partners page
 import OurWork from './pages/OurWork'; // Import OurWork page
 import Technology from "./pages/Technology"; // Import Technology page
+import UxDesign from "./pages/services/UxDesign";
+import AppDevelopment from "./pages/services/AppDevelopment";
+import ApiDevelopment from "./pages/services/ApiDevelopment";
+import Automation from "./pages/services/Automation";
+import CyberSecurity from "./pages/services/CyberSecurity";
 import ConsultationForm from "./pages/consultation/ConsultationForm"; // Import ConsultationForm page
 import AppDetails from './pages/portfolio/AppDetails'; // Import AppDetails page
 import { IndustryDetails } from "./pages/portfolio/IndustryDetails"; // Import IndustryDetails
 
-const ScrollToTop = () => {
-  const location = useLocation();
+// const ScrollToTop = () => {
+//   const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [location]);
 
-  return null;
-};
+//   return null;
+// };
 
 const App = () => {
   return (
     <Router>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Routes>
         <Route
           path="/"
@@ -134,6 +138,11 @@ const App = () => {
         <Route path="/consultation" element={<DefaultLayout><ConsultationForm /></DefaultLayout>} /> {/* Add ConsultationForm route */}
         <Route path="/app-details" element={<DefaultLayout><AppDetails /></DefaultLayout>} /> {/* Add AppDetails route */}
         <Route path="/industry/:slug" element={<DefaultLayout><IndustryDetails /></DefaultLayout>} /> {/* Add dynamic route */}
+  <Route path="/services/UxDesign" element={<DefaultLayout><UxDesign /></DefaultLayout>} />
+  <Route path="/services/AppDevelopment" element={<DefaultLayout><AppDevelopment /></DefaultLayout>} />
+  <Route path="/services/ApiDevelopment" element={<DefaultLayout><ApiDevelopment /></DefaultLayout>} />
+  <Route path="/services/Automation" element={<DefaultLayout><Automation /></DefaultLayout>} />
+  <Route path="/services/CyberSecurity" element={<DefaultLayout><CyberSecurity /></DefaultLayout>} />
       </Routes>
     </Router>
   );

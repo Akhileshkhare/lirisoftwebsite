@@ -13,7 +13,7 @@ export const Section1: React.FC<SectionProps> = ({ data }) => {
       style={{ backgroundImage: `url(${imageSrc})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
     >
       <div
-        className="ml-20 w-[360px] text-center left-[6%] bg-white bg-opacity-50 text-[#043A53] p-1 md:p-4 rounded-md"
+        className="ml-20 w-[360px] text-center left-[6%] bg-white bg-opacity-50 text-[#043A53] p-4 md:p-4 rounded-md"
       >
         <div className="text-xl md:text-4xl  space-y-0 md:space-y-3 p">
           <p>{title1} <span className='font-bold'>{highlight1}</span></p>

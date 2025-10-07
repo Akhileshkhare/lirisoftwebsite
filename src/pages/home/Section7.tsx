@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionProps } from "./Section1";
 import ReusableButton from "../../components/ReusableButton";
@@ -44,14 +44,13 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
           <h2 className="text-4xl md:text-5xl pt-10 md:pt-0 md:text-5xl font-semibold text-gray-100 mb-6 leading-tight">
             {sectionData.title}
           </h2>
-        <ReusableButton
+
+       <ReusableButton
           text={sectionData.buttonText}
           widthClass="px-6 text-[17px] font-semibold mt-12"
           onClick={() => navigate('/contact')}
           showArrow={true}
         />
-         
-          {/* <p className="text-gray-400 mt-5">{sectionData.contactText}</p> */}
         </div>
 
         {/* Right Part (Image) */}
@@ -68,7 +67,7 @@ export const Section7: React.FC<SectionProps> = ({ data }) => {
           </div>
             <img src="./Icons2.svg" alt="Icons" className="w-[72px] h-[72px] absolute left-[5px] bottom-[20px]" />
           <div
-            className="relative w-auto h-[200px] md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
+            className="relative w-auto h-[320px]  md:w-[723px] md:h-[805px] bg-[length:155%] bg-no-repeat bg-[position:-22px_-27px] md:bg-[position:-158px_-53px]"
             style={{ backgroundImage: `url('${sectionData.images.background.src}')` }}
           ></div>
         </div>

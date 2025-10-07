@@ -17,12 +17,12 @@ const ReusableButton: React.FC<ReusableButtonProps> = ({
 }) => {
   return (
     <button
-      className={`px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-xl flex items-center ${showArrow ? 'justify-center md:justify-start space-x-3' : 'justify-center'} mx-auto md:mx-0 ${widthClass} ${className} transition duration-200 hover:bg-[#d49c2e]  hover:shadow-lg`}
+      className={`px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-lg flex items-center ${showArrow ? 'justify-center md:justify-start space-x-3' : 'justify-center'} mx-auto md:mx-0 ${widthClass} ${className} transition duration-200 hover:bg-[#CA9A35]  hover:shadow-lg`}
       onClick={onClick}
     >
       <span className={showArrow ? 'mr-3' : ''}>{text}</span>
       {showArrow && (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 bg-[#CA9A35] opacity-60 rounded-full p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 bg-[#CA9A35]  rounded-full p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5-5 5M18 12H6" />
         </svg>
       )}

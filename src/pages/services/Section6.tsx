@@ -122,7 +122,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
           </div>
           {/* Message */}
           <div>
-            <label className="block text-white text-sm font-semibold mb-2">Message</label>
+            <label className="block text-white text-sm font-semibold mb-2">Project Description</label>
             <textarea name="projectDescription" className="w-full p-2 border border-gray-300" rows={4}></textarea>
             {formErrors.projectDescription && <p className="text-red-500 text-sm">{formErrors.projectDescription}</p>}
           </div>
@@ -145,7 +145,7 @@ export const Section6: React.FC<SectionProps> = ({ data }) => {
           <div className="flex justify-end py-0">
             <button
               type="submit"
-      className={`px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-xl flex items-center justify-center mx-auto md:mx-0  transition duration-200 hover:bg-[#d49c2e]  hover:shadow-lg`}
+              className="px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2"
             >
               <span>{title3}</span>
             </button>

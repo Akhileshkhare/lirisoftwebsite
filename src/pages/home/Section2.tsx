@@ -21,10 +21,10 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full" style={{ background: sectionData.backgroundColor }}>
-      <div className="w-4/5 mx-auto flex flex-col items-center py-0 h-[1044px]">
-      <div className="flex w-4/5 flex-col space-y-6 md:flex-row justify-start items-start px-0 md:px-10 pt-[50px] md:pt-[100px]">
+      <div className="w-4/5 mx-auto flex flex-col items-start py-0 md:h-[1044px] h-[520px]">
+      <div className="flex w-4/5 flex-col space-y-6 md:flex-row justify-start items-start px-0  pt-[50px] md:pt-[100px]">
           {/* Left Part - Heading */}
-          <div className="w-full  h-[144px]">
+          <div className="w-full  h-[144px] mb-12 md:mb-0">
             <h2 className="text-white text-5xl font-semibold ml-[5px] leading-[50px]">
               {sectionData.heading.title} <br />
               <span className="text-[#F0B73F]">{sectionData.heading.highlight}</span>
@@ -41,27 +41,30 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
           </div> */}
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center px-0">
-          <div className="mr-10 hidden md:block">
+          {/* <div className="mr-10 hidden md:block">
             <img
               src={sectionData.images.left.src}
               alt="Lirisoft Home Page"
               className="object-cover w-full h-[511px] rounded"
             />
-          </div>
+          </div> */}
           <div>
-            <img
-              src={sectionData.images.center.src}
-              alt="Lirisoft Home Page"
-              className="object-cover w-full h-[636px] rounded-lg"
-            />
+            <video
+              src="/aboutus.mp4"
+              controls
+              className="object-cover w-full h-auto md:h-[636px] rounded-lg"
+              poster="/backimage.png"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <div className="ml-10 hidden md:block">
+          {/* <div className="ml-10 hidden md:block">
             <img
               src={sectionData.images.right.src}
               alt="Lirisoft Home Page"
               className="object-cover w-full h-[511px] rounded"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

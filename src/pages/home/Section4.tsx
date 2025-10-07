@@ -22,27 +22,27 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
   return (
     <section className='w-full flex flex-col md:flex-row items-center justify-between py-10 px-4 md:px-0 h-auto md:h-[687px]'>
       {/* Left Part */}
-      <div className="w-full md:w-1/2 h-[300px] md:h-full">
+      <div className="w-full md:w-1/2 h-[300px] md:h-full px-3 md:px-0">
         <img
           src={sectionData?.imageSrc}
           alt={sectionData?.imageAlt}
-          className="object-cover w-full h-full rounded-tr-xl rounded-br-xl"
+          className="object-cover w-full h-full rounded-xl"
         />
       </div>
 
       {/* Right Part (Rectangles and Owl Image Section) */}
       <div className="w-full md:w-1/2 px-6 md:px-20 text-left md:text-left mt-6 md:mt-0">
-        <h2 className="text-2xl md:text-5xl font-semibold text-gray-900 mb-4 md:mb-6 leading-tight md:leading-[60px]">
+        <h2 className="text-2xl md:text-5xl font-semibold text-[#043A53] mb-4 md:mb-6 leading-tight md:leading-[60px]">
           {sectionData?.title}<br />
           <span className="pt-2 text-[#92A7B0]">{sectionData?.subtitle}</span>
         </h2>
-        <p className="text-base md:text-lg text-gray-900 mb-6 md:mb-8">
+        <p className="text-base md:text-lg text-[#043A53] mb-6 md:mb-8">
           {sectionData?.description}
         </p>
-        <ReusableButton
+       <ReusableButton
           text={sectionData?.buttonText}
-          widthClass=""
-          onClick={() => navigate('/portfolio')}
+ widthClass="px-6"          
+ onClick={() => navigate('/portfolio')}
           showArrow={true}
         />
       </div>

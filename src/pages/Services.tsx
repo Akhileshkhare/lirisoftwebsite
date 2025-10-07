@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import FullPageLoader from '../components/FullPageLoader';
-import {Section1} from './services/Section1';
+// import {Section1} from './services/Section1';
 import {Section2} from './services/Section2';
 import {Section3} from './services/Section3';
 import {Section4} from './services/Section4';
 import {Section5} from './services/Section5';
-import {Section6} from './services/Section6';
+// import {Section6} from './services/Section6';
 import { API_BASE_URI } from '../config/apiConfig';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 
 
 type SectionData = {
@@ -54,7 +54,7 @@ const ServicesPage = () => {
           <Section3 data={sectionData?.section3} />
           <Section4 data={sectionData?.section4} />
           <Section5 data={sectionData?.section5} />
-          <Section6 data={sectionData?.section6} />
+          {/* <Section6 data={sectionData?.section6} /> */}
       {/* <Footer /> */}
     </>
   );

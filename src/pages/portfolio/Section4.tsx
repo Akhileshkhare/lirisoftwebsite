@@ -35,9 +35,20 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
               key={index}
               className="flex flex-col w-[400px] h-[280px] bg-white border-[2px] border-gray-300 pt-8 pl-8 items-center justify-center text-center"
             >
-              <p className="text-lg font-semibold text-[#043A53] text-left mb-12 w-full">
+              <a
+                href={
+                  tab.title === 'UX Design' ? '/services/UxDesign' :
+                  tab.title === 'APP Development' ? '/services/AppDevelopment' :
+                  tab.title === 'API Development' ? '/services/ApiDevelopment' :
+                  tab.title === 'Automation' ? '/services/Automation' :
+                  tab.title === 'Cyber Security' ? '/services/CyberSecurity' :
+                  '#'
+                }
+                className="text-lg font-semibold text-[#043A53] text-left mb-12 w-full hover:text-[#F0B73F] transition-colors duration-200"
+                style={{ cursor: 'pointer' }}
+              >
                 {tab.title}
-              </p>
+              </a>
               <div className="w-full h-auto flex items-center justify-center overflow-hidden">
                 <img
                   src={tab.src}

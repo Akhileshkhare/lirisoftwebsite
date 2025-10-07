@@ -11,6 +11,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [contactNumber, setContactNumber] = useState("");
 
   interface SectionData {
     title: string;
@@ -70,7 +71,8 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           name: formData.get("name"),
           email: formData.get("email"),
           message: formData.get("message"),
-          date:timestamp
+          date:timestamp,
+          contactNumber // Include contact number in the request
         }),
       });
 
@@ -92,10 +94,10 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full px-4 md:px-0 bg-[#043A53]">
-      <div className="max-w-3xl mx-auto px-6 py-6">
+      <div className="max-w-3xl mx-auto px-0 md:px-6 py-6">
         <form className="space-y-4 bg-[#F2F5F6] text-left px-10 py-4 shadow-lg" onSubmit={handleSubmit}>
-        <h2 className="text-5xl font-bold my-8 text-gray-800 text-center">
-          {title} <span className="text-[#043A53] text-5xl">{highlight}</span>
+        <h2 className="text-3xl font-semibold my-8 text-gray-800 text-left">
+          {title} <span className="text-[#043A53] text-3xl">{highlight}</span>
         </h2>
           {/* Service Dropdown */}
           <div>
@@ -141,7 +143,21 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
               {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
             </div>
           </div>
-
+{/* Contact Number - New Field */}
+          <div>
+            <label htmlFor="contactNumber" className="block text-gray-900 text-sm font-semibold mb-2">
+              Contact Number (optional)
+            </label>
+            <input
+              type="tel"
+              id="contactNumber"
+              name="contactNumber"
+              className="w-full p-2 border border-gray-300 text-gray-900"
+              value={contactNumber}
+              onChange={e => setContactNumber(e.target.value)}
+              
+            />
+          </div>
           {/* Message */}
           <div>
             <label className="block text-gray-900 text-sm font-semibold mb-2">
@@ -155,10 +171,13 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
           </div>
 
+ 
+
+
           {/* Captcha */}
-          <div className="flex flex-col md:flex-row justify-end items-center md:space-x-2 space-y-2 md:space-y-0 w-full">
-            <div className="flex items-center space-x-2 w-full md:w-auto">
-              <label className="block text-gray-900 text-sm font-semibold mb-0">
+          <div className="flex flex-col md:flex-row justify-end items-center md:space-x-2 space-y-2 md:space-y-0">
+            <div className="flex items-center space-x-2 w-full md:w-auto justify-end">
+              <label className="block w-40 text-gray-900 text-sm font-semibold mb-0">
                 Captcha: What is {captchaQuestion.a} + {captchaQuestion.b}?
               </label>
               <input
@@ -169,7 +188,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                   setCaptchaVerified(false);
                   setCaptchaError("");
                 }}
-                className="w-20 p-2 border border-gray-300 text-gray-900"
+                className="w-auto p-2 border border-gray-300 text-gray-900"
                 disabled={captchaVerified}
               />
             </div>
@@ -191,22 +210,19 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                 Reset
               </button>
             </div>
-            {/* Empty div for spacing/alignment on mobile */}
-          </div>
-          <div className="min-h-[24px] mt-[4px] flex items-center justify-end w-full space-y-0">
             {captchaError && <span className="text-red-500 text-sm ml-2">{captchaError}</span>}
-            {!captchaError && captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
+            {captchaVerified && <span className="text-green-600 text-sm ml-2">Captcha verified!</span>}
           </div>
 
+         
           <div className="flex justify-end">
             <button
               type="submit"
-                    className={`px-5 py-3 text-white font-semibold bg-[#F0B73F] rounded-xl flex items-center justify-center mx-auto md:mx-0  transition duration-200 hover:bg-[#d49c2e]  hover:shadow-lg ${!captchaVerified ? "opacity-90 cursor-not-allowed" : ""}`}
-
-               disabled={!captchaVerified}
+              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={!captchaVerified}
             >
               <span>{buttonText}</span>
-              {/* <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
                 fill="none"
@@ -219,7 +235,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                   strokeWidth="2"
                   d="M13 7l5 5-5 5M18 12H6"
                 />
-              </svg> */}
+              </svg>
             </button>
           </div>
 

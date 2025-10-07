@@ -10,17 +10,20 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full px-4 md:px-0">
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center md:pt-24 pt-16 pb-24">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center md:pt-20 pt-8 pb-24">
         <div className='text-left w-full'>
-          <h1 className='text-3xl font-bold pt-4'>{heading}</h1>
+          <h1 className='text-3xl font-bold pt-4 text-[#043A53]'>{heading}</h1>
         </div>
         <div className='w-full pt-6 text-right md:pl-[300px] pl-[10px]'>
           <p className='text-left mb-4'>{description}</p>
           <ul className="space-y-4 text-left">
             {listItems.map((item: string, index: number) => (
               <li key={index} className="flex items-start gap-2">
-              <FaCheck className="text-white bg-[#043A53] rounded-full p-1 mt-1 mr-1" size={18} />
-              {item}
+                <FaCheck
+                  className={`text-white bg-[#043A53] rounded-full p-[4px] mt-1 mr-1 ${index === 0 ? 'w-[20px]' : 'w-[24px]'}`}
+                  size={18}
+                />
+                {item}
               </li>
             ))}
           </ul>

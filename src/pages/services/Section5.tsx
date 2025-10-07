@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { SectionProps } from '../home/Section1';
 
@@ -27,7 +27,7 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
         <div className="w-full bg-white pt-10 md:h-auto flex flex-col md:flex-row items-center justify-center items-stretch">
           <div className="grid grid-cols-3 grid-rows-3 w-full">
             {services.map((service: Service, index: number) => (
-              <div
+               <div
               key={index}
               className={`flex flex-col items-center justify-center  p-6 ${
                 index < 6 ? "border-b" : ""

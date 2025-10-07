@@ -26,12 +26,12 @@ const Navbar = () => {
     >
       <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="w-[219px] h-[90px] absolute top-[-2px] " /></div>
       <div className="hidden md:flex gap-6 text-md font-semibold ">
-        {['Home', 'Portfolio','About',  'Contact'].map((item) => (
+        {['Home', 'What we work','About',  'Contact'].map((item) => (
           <NavLink 
           key={item} 
-          to={item === 'Portfolio' ? '/portfolio' : `/${item.toLowerCase()}`}
+          to={item === 'What we work' ? '/portfolio' : `/${item.toLowerCase()}`}
           className={({ isActive }: { isActive: boolean }) => 
-            `relative hover:text-blue-700 after:content-[''] mx-2 after:absolute font-semibold after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-blue-700 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100 text-blue-700' : ''}`
+            `relative hover:text-[#043a53] after:content-[''] mx-2 after:absolute font-semibold after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-[#043a53] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100 text-[#043a53]' : ''}`
           }
         >
           {item}
@@ -42,19 +42,23 @@ const Navbar = () => {
         className="md:hidden"
         onClick={() => {
           setIsOpen(!isOpen);
-          if (!isOpen) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }
+          //           if (!isOpen) {
+          //   window.scrollTo({ top: 0, behavior: "smooth" });
+          // }
+
         }}
       >
         {isOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white flex flex-col items-center gap-4 py-4 shadow-md md:hidden">
-          {['Home',  'Portfolio','About',  'Contact'].map((item) => (
-            <Link key={item} to={item === 'Portfolio' ? '/portfolio' : `/${item.toLowerCase()}`}
-            className="relative hover:text-blue-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-blue-700 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
->
+        <div className="fixed top-[80px] left-0 w-full bg-white flex flex-col items-center gap-4 py-4 shadow-md z-50 md:hidden transition-all duration-300">
+          {['Home',  'What we work','About',  'Contact'].map((item) => (
+            <Link 
+              key={item} 
+              to={item === 'What we work' ? '/portfolio' : `/${item.toLowerCase()}`}
+              className="relative hover:text-[#043a53] after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-[#043a53] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+              onClick={() => setIsOpen(false)}
+            >
               {item}
             </Link>
           ))}

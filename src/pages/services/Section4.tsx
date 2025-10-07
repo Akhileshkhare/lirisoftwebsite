@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaPlay } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 import { SectionProps } from '../home/Section1';
 
@@ -45,12 +45,13 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
             <div className="flex w-full justify-center items-center flex-col relative" style={{ height: "400px" }}>
               {/* Slider navigation and image */}
               <button
-                className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-[#a3a3a3] hover:bg-[#F0B73F] border-none p-0 rounded-full shadow-sm flex items-center justify-center z-10 w-[26px] h-[27px] transition-colors duration-200"
                 onClick={goPrev}
                 aria-label="Previous"
                 type="button"
+                style={{ cursor: 'pointer' }}
               >
-                <FaPlay size={12} className="rotate-180" />
+                <FaChevronCircleLeft size={22} color="#fff" />
               </button>
               <img
                 src={images[current].src}
@@ -65,12 +66,13 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
                 className="w-[90%] object-cover pt-10"
               />
               <button
-                className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+                className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-[#a3a3a3] hover:bg-[#F0B73F] border-none p-0 rounded-full shadow-sm flex items-center justify-center z-10 w-[26px] h-[27px] transition-colors duration-200"
                 onClick={goNext}
                 aria-label="Next"
                 type="button"
+                style={{ cursor: 'pointer' }}
               >
-                <FaPlay size={12} />
+                <FaChevronCircleRight size={22} color="#fff" />
               </button>
               {/* Dots navigation */}
               <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">

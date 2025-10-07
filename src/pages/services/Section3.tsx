@@ -29,16 +29,16 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
   const { title1, highlight1, title2,title3, imageSrc, imageAlt } = sectionData;
 
   return (
-    <section className="w-full  py-20 px-4 md:px-0 h-auto">
-            <div className="w-full max-w-6xl mx-auto text-center pt-10">
+    <section className="w-full  py-8 md:py-16 px-4 md:px-0 h-auto">
+            <div className="w-full max-w-6xl mx-auto text-center pt-2">
 
         {/* <Slider {...settings}> */}
 
      
       <div className="w-full   mx-auto flex flex-row  items-center gap-10 md:gap-20 relative px-8 md:px-20">
-        <div className="w-full  mx-auto flex flex-row  items-center space-x-6">
+        <div className="w-full  mx-auto flex flex-col md:flex-row  items-center space-x-6">
        
-        <div className="w-full md:w-1/2 pl-0 md:h-[480px]  flex justify-center items-start pt-16">
+        <div className="w-full md:w-1/2 pl-0 md:h-[480px]  flex justify-center items-start pt-2 md:pt-16">
           <div className="w-full h-[391px] md:h-[340px]">
             <img
               src={imageSrc}

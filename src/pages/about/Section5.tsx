@@ -23,7 +23,7 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center py-10 md:py-20">
         {/* Section Title */}
         <div className="text-left w-full">
-          <h1 className="text-3xl font-bold pt-4">{title}</h1>
+          <h1 className="text-3xl font-bold pt-4 text-[#043A53]">{title}</h1>
         </div>
 
         {/* Team Members Grid */}

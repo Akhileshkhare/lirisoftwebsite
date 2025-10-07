@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { API_BASE_URI } from "../../config/apiConfig";
-import { FaPlay } from "react-icons/fa";
+import { FaChevronCircleLeft } from "react-icons/fa";
 
 const CustomSlider = () => {
   interface Slide {
@@ -37,16 +37,32 @@ const CustomSlider = () => {
 
   // Custom Arrow Components
   function SampleNextArrow(props: any) {
+
     const { className, style, onClick } = props;
     return (
-       <button
-                     className="absolute right-[-80px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
-                    onClick={onClick}
-                     aria-label="Next"
-                     type="button"
-                   >
-                     <FaPlay size={12} />
-                   </button>
+      <button
+        type="button"
+        className={className}
+        style={{
+          ...style,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        background: "#a3a3a3",
+          width: 24,
+          height: 23,
+        borderRadius:'50%',
+          zIndex: 2,
+          cursor: "pointer",
+          border: "none",
+          transition: "background 0.2s"
+        }}
+        onClick={onClick}
+        onMouseOver={e => (e.currentTarget.style.background = '#F0B73F')}
+        onMouseOut={e => (e.currentTarget.style.background = '#a3a3a3')}
+        
+      >
+      </button>
     );
   }
 
@@ -54,23 +70,34 @@ const CustomSlider = () => {
     const { className, style, onClick } = props;
     return (
       <button
-                      className="absolute left-[-80px] top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
+        type="button"
+        className={className}
+        style={{
+          ...style,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#a3a3a3",
+          width: 24,
+          height: 23,
+        borderRadius:'50%',
+          zIndex: 2,
+          cursor: "pointer",
+          border: "none",
+          transition: "background 0.2s"
+        }}
         onClick={onClick}
-                      aria-label="Previous"
-                      type="button"
-                    >
-                      <FaPlay size={12} className="rotate-180" />
-                    </button>
-      // <div 
-      //   className={className}
-      //   style={{ ...style, display: "block", background: "#a3a3a3", borderRadius: "50%" }}
-      //   onClick={onClick}
-      // />
+        onMouseOver={e => (e.currentTarget.style.background = '#F0B73F')}
+        onMouseOut={e => (e.currentTarget.style.background = '#a3a3a3')}
+       
+      >
+      <span>  <FaChevronCircleLeft/></span>
+      </button>
     );
   }
 
   return (
-    <div className="w-full md:w-[850px] mx-auto ">
+    <div className="w-[96%] md:w-[850px] ">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div
