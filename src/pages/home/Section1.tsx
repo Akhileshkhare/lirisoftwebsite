@@ -36,13 +36,13 @@ const Section1: React.FC<SectionProps> = ({ data }) => {
         {/* Right Part (Rectangles and Owl Image Section) */}
         <div className="relative md:h-[800px] h-[585px] w-full md:w-1/2 flex justify-center items-center overflow-hidden">
           {/* Rectangle 1 */}
-          <div className="w-[90px] h-[166px] absolute top-[336px] left-[42px] rounded-[180.5px] border border-[#0B9DE0] opacity-100 z-[12] 
+          <div className="w-[90px] h-[166px] absolute  left-[42px] rounded-[180.5px] border border-[#0B9DE0] opacity-100 z-[12] 
             sm:w-[80px] sm:h-[150px] sm:top-[300px] sm:left-[20px]
             md:w-[100px] md:h-[183px] md:top-[336px] md:left-[35px] top-[213px]">
           </div>
 
           {/* Rectangle 2 */}
-          <div className="w-[130px] h-[245px] absolute top-[450px] left-[58px] rounded-[180.5px] bg-[#043A53] opacity-100 z-[11] 
+          <div className="w-[130px] h-[245px] absolute  left-[58px] rounded-[180.5px] bg-[#043A53] opacity-100 z-[11] 
             sm:w-[120px] sm:h-[220px] sm:top-[400px] sm:left-[30px]
             md:w-[159px] md:h-[293px] md:top-[450px] md:left-[58px] top-[312px] ">
           </div>
