@@ -36,7 +36,7 @@ export default function Section2() {
   } = sectionData;
 
   return (
-    <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
+    <section className="w-full py-8 px-4 md:px-0 h-auto bg-gray-100">
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center py-8">
         <h2 className="text-4xl md:text-5xl font-bold text-left text-gray-900 pb-16">
           {title1} <span className="text-[#043A53]">{highlight1}</span>

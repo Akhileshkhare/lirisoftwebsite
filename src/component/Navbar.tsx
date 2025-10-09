@@ -24,7 +24,7 @@ const Navbar = () => {
         isScrolled ? "fixed top-0 left-0 bg-white shadow-md z-50 w-full px-[10%]" : "w-4/5 mx-auto"
       }`}
     >
-      <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="w-[219px] h-[90px] absolute top-[-2px] " /></div>
+      <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="w-[219px] h-[65px] mt-4 md:h-[90px] absolute top-[-2px] " /></div>
       <div className="hidden md:flex gap-6 text-md font-semibold ">
         {['Home', 'What we work','About',  'Contact'].map((item) => (
           <NavLink 

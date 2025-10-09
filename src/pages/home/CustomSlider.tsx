@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { API_BASE_URI } from "../../config/apiConfig";
-import { FaChevronCircleLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaChevronCircleLeft, FaChevronCircleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const CustomSlider = () => {
   interface Slide {
@@ -28,71 +28,58 @@ const CustomSlider = () => {
     speed: 500,
     slidesToShow: 1, // Show 1 slide at a time
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    autoplay: false, // Stop auto scroll
     arrows: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow/>,
+    prevArrow: <SamplePrevArrow  class="flex flex-row-reverse"/>,
   };
 
   // Custom Arrow Components
   function SampleNextArrow(props: any) {
-
     const { className, style, onClick } = props;
+    const [hover, setHover] = useState(false);
     return (
-      <button
-        type="button"
-        className={className}
+      <div
         style={{
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        background: "#a3a3a3",
-          width: 24,
-          height: 23,
-        borderRadius:'50%',
+          borderRadius: '50%',
           zIndex: 2,
           cursor: "pointer",
           border: "none",
-          transition: "background 0.2s"
+          transition: "background 0.2s",
+          position: 'absolute',
+          top: '45%',
+          right: '-22px'
         }}
         onClick={onClick}
-        onMouseOver={e => (e.currentTarget.style.background = '#F0B73F')}
-        onMouseOut={e => (e.currentTarget.style.background = '#a3a3a3')}
-        
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-      </button>
+        <FaChevronRight size={24} color={hover ? "#F0B73F" : "#818181"} />
+      </div>
     );
   }
 
   function SamplePrevArrow(props: any) {
     const { className, style, onClick } = props;
+    const [hover, setHover] = useState(false);
     return (
-      <button
-        type="button"
-        className={className}
+      <div
         style={{
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#a3a3a3",
-          width: 24,
-          height: 23,
-        borderRadius:'50%',
+          borderRadius: '50%',
           zIndex: 2,
           cursor: "pointer",
           border: "none",
-          transition: "background 0.2s"
+          transition: "background 0.2s",
+          position: 'absolute',
+          top: '45%',
+          left: '-22px'
         }}
         onClick={onClick}
-        onMouseOver={e => (e.currentTarget.style.background = '#F0B73F')}
-        onMouseOut={e => (e.currentTarget.style.background = '#a3a3a3')}
-       
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-      <span>  <FaChevronCircleLeft/></span>
-      </button>
+        <FaChevronLeft size={24} color={hover ? "#F0B73F" : "#818181"} />
+      </div>
     );
   }
 

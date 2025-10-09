@@ -28,7 +28,7 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
     <section className="w-full py-10 px-4 md:px-0 h-auto">
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center gap-10 md:gap-20">
         <div className="flex flex-col md:flex-row justify-between items-center mt-10 md:mt-[90px] w-full ">
-          <h2 className="text-3xl md:text-6xl font-normal md:text-left text-center text-[#043A53]">
+          <h2 className="text-4xl md:text-6xl font-normal md:text-left text-left text-[#043A53]">
             {title1} <span className="text-[#043A53] font-bold">{highlight1}</span>
           </h2>
         </div>

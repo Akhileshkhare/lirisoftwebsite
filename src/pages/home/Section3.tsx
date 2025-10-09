@@ -18,13 +18,15 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full px-4 md:px-0">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center py-10 md:py-20">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start px-4 md:px-20 lg:px-40 py-10 gap-10 md:gap-10">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-start py-10 md:py-20">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-start px-4 md:px-20 lg:px-40 py-10 gap-10 md:gap-10">
           {/* Left Part (30%) */}
           <div className="w-full md:w-1/4 max-w-md space-y-6 md:space-y-8 text-left md:text-left">
-            <button className="px-6 py-2 text-white bg-[#043A53] rounded-3xl flex items-center space-x-2 mx-auto md:mx-0">
-              <span>{sectionData?.buttonText}</span>
-            </button>
+            <div className='w-full flex justify-start items-start'>
+              <button className="px-6 py-2 text-white bg-[#043A53] rounded-3xl flex items-center space-x-2">
+                <span>{sectionData?.buttonText}</span>
+              </button>
+            </div>
             <h2 className="text-[#043A53] text-5xl md:text-5xl font-semibold leading-relaxed" style={{ lineHeight: '1.2' }}>
               {sectionData?.heading}
             </h2>

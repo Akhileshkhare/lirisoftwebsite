@@ -24,7 +24,7 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, tabs } = sectionData;
 
   return (
-    <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
+    <section className="w-full py-8 px-4 md:px-0 h-auto bg-gray-100">
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center py-8">
         <h2 className="text-4xl md:text-5xl font-normal text-left text-[#043A53] pb-16">
           {title1} <span className="text-[#043A53] font-bold">{highlight1}</span>, {title2} <span className="text-[#043A53] font-bold">{highlight2}</span>

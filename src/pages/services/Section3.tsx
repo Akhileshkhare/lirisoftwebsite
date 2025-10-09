@@ -39,17 +39,17 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
         <div className="w-full  mx-auto flex flex-col md:flex-row  items-center space-x-6">
        
         <div className="w-full md:w-1/2 pl-0 md:h-[480px]  flex justify-center items-start pt-2 md:pt-16">
-          <div className="w-full h-[391px] md:h-[340px]">
+          <div className="w-full h-auto  md:h-[340px]">
             <img
               src={imageSrc}
               alt={imageAlt}
               style={{ backgroundRepeat: 'no-repeat' }}
-              className="w-full h-[440px] object-cover rounded-xl"
+              className="w-full md:h-[440px] h-auto object-cover rounded-xl"
             />
           </div>
         </div>
         <div className="w-full md:w-1/2 pl-0 md:h-[480px] flex items-start flex-col">
-          <p className="text-3xl md:text-[34px] font-normal text-left mt-16  text-[#043A53] leading-snug md:leading-normal">
+          <p className="text-3xl md:text-[34px] font-normal text-left mt-10 md:mt-16  text-[#043A53] leading-snug md:leading-normal">
             <span className="font-bold">{highlight1}</span> {title1}
           </p>
           <p className="text-1xl md:text-[17px] text-left mt-4 leading-relaxed pr-0">

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
 
+import React, { useState } from 'react';
 import { SectionProps } from '../home/Section1';
+import ReusableButton from '../../components/ReusableButton';
 import { API_BASE_URI } from '../../config/apiConfig';
 
 
@@ -188,7 +189,7 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
                   setCaptchaVerified(false);
                   setCaptchaError("");
                 }}
-                className="w-auto p-2 border border-gray-300 text-gray-900"
+                className="w-[100px] md:w-auto p-2 border border-gray-300 text-gray-900"
                 disabled={captchaVerified}
               />
             </div>
@@ -196,16 +197,21 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
               <button
                 type="button"
                 onClick={verifyCaptcha}
-                className={`px-3 py-2 bg-blue-500 text-white rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
                 disabled={captchaVerified}
+                className={`p-0 bg-transparent border-none flex ${captchaVerified ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                Verify
+                <ReusableButton
+                  text={'Verify'}
+                  widthClass="px-6"
+                  className={`text-gray-900 font-semibold bg-yellow-400 hover:bg-yellow-500`}
+                  showArrow={false}
+                />
               </button>
               <button
                 type="button"
                 onClick={resetCaptcha}
-                className={`px-3 py-2 bg-gray-300 text-gray-800 rounded ${captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
-                disabled={captchaVerified}
+                className={`px-3 py-2 bg-gray-300 text-gray-800 rounded ${!captchaVerified ? "" : ""}`}
+               
               >
                 Reset
               </button>
@@ -218,24 +224,15 @@ export const ContactForm: React.FC<SectionProps> = ({ data }) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className={`px-6 py-3 text-gray-900 font-semibold bg-yellow-400 rounded flex items-center space-x-2 transition-opacity ${!captchaVerified ? "opacity-50 cursor-not-allowed" : ""}`}
               disabled={!captchaVerified}
+              className="p-0 bg-transparent border-none flex"
             >
-              <span>{buttonText}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 7l5 5-5 5M18 12H6"
-                />
-              </svg>
+              <ReusableButton
+                text={buttonText}
+                widthClass="px-6"
+                className={`text-gray-900 font-semibold bg-yellow-400 hover:bg-yellow-500 ${!captchaVerified ? 'opacity-50 cursor-not-allowed' : ''}`}
+                showArrow={true}
+              />
             </button>
           </div>
 

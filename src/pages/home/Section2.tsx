@@ -21,7 +21,7 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full" style={{ background: sectionData.backgroundColor }}>
-      <div className="w-4/5 mx-auto flex flex-col items-start py-0 md:h-[1044px] h-[520px]">
+      <div className="w-4/5 mx-auto flex flex-col items-start py-0 md:h-[1044px] h-[480px]">
       <div className="flex w-4/5 flex-col space-y-6 md:flex-row justify-start items-start px-0  pt-[50px] md:pt-[100px]">
           {/* Left Part - Heading */}
           <div className="w-full  h-[144px] mb-12 md:mb-0">
