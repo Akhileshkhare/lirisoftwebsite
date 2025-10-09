@@ -7,11 +7,11 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
   const sectionData:any=data || null;
   return (
     <section className="w-full  bg-white">
-    <div className="w-full max-w-5xl mx-auto flex flex-col md:items-center items-start gap-10 md:gap-6 relative py-20 px-8 md:px-0">
+    <div className="w-full max-w-5xl mx-auto flex flex-col md:items-center items-start gap-10 md:gap-6 relative py-12 px-8 md:px-0">
       <h2 className="text-4xl font-normal text-[#043A53] mb-4">
         Key <span className="font-bold text-[#043A53]">Features</span>
       </h2>
-      <div className="w-full flex flex-col md:flex-row items-center gap-10 ">
+  <div className="w-full flex flex-col-reverse md:flex-row items-center gap-10 ">
         {/* First Column */}
         <div className="p-5  flex-1 ">
           <div className="grid grid-cols-1 gap-1 space-y-2 md:space-y-2">
