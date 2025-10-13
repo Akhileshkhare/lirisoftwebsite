@@ -25,7 +25,7 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
   // Removed auto scroll effect
 
   return (
-    <section className="w-full py-8 px-4 md:px-0 h-auto bg-gray-100">
+    <section className="w-full py-8 px-6 md:px-0 h-auto bg-gray-100">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-2">
         <div className="w-full pl-0 flex justify-center items-start flex-col">
           <p className="text-3xl md:text-[34px] font-normal text-left text-[#043A53] leading-snug md:leading-normal">
@@ -98,7 +98,7 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
                 ))}
               </div>
             </div>
-            <div className="p-10 pl-12 text-[#12141D] flex flex-col gap-4">
+            <div className="md:p-10 p-8 text-[#12141D] flex flex-col gap-4">
               <h1 className="font-bold">{highlight2}</h1>
               <p>{title3}</p>
             </div>

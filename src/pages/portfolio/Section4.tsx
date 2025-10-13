@@ -25,15 +25,15 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
 
   return (
     <section className="w-full py-8 px-4 md:px-0 h-auto bg-gray-100">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center py-8">
-        <h2 className="text-4xl md:text-5xl font-normal text-left text-[#043A53] pb-16">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center py-8 px-4 md:px-0">
+        <h2 className="text-4xl md:text-5xl font-normal text-left text-[#043A53] pb-10 md:pb-16">
           {title1} <span className="text-[#043A53] font-bold">{highlight1}</span>, {title2} <span className="text-[#043A53] font-bold">{highlight2}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-6">
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className="flex flex-col w-[400px] h-[280px] bg-white border-[2px] border-gray-300 pt-8 pl-8 items-center justify-center text-center"
+              className="flex flex-col min-w-[340px]  w-auto md:w-[400px] h-[280px] bg-white border-[2px] border-gray-300 pt-8 pl-8 items-center justify-center text-center"
             >
               <a
                 href={

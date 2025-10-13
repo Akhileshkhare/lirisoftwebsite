@@ -13,7 +13,7 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
       </h2>
   <div className="w-full flex flex-col-reverse md:flex-row items-center gap-10 ">
         {/* First Column */}
-        <div className="p-5  flex-1 ">
+        <div className="md:p-5 p-0  flex-1 ">
           <div className="grid grid-cols-1 gap-1 space-y-2 md:space-y-2">
             <div className="bg-white shadow-lg px-4 py-5 flex items-center">
               <FaCloud className="w-12 h-12 text-blue-600 mr-4" />

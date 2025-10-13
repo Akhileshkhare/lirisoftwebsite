@@ -11,7 +11,7 @@ export const Section1: React.FC<SectionProps> = ({ data }) => {
       <img
         src="/About_banner.png"
         alt="About Banner"
-        className="w-full h-[240px] md:h-auto object-cover"
+        className="w-full h-[215px] md:h-auto object-cover"
         style={{ display: 'block' }}
       />
     </section>

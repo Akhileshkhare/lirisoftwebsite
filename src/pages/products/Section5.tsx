@@ -13,7 +13,7 @@ export const Section5: React.FC<SectionProps> = ({ data }) => {
     <h2 className="text-3xl text-white font-semibold text-gray-800 mb-4">
       Get Started Today
     </h2>
-    <p className="text-gray-50 text-[16px] mb-5 px-16 md:px-0">
+    <p className="text-gray-50 text-[16px] mb-5 px-8 md:px-0 text-left">
       Contact us to learn more about our product and how it can benefit
       your business.
     </p>
