@@ -5,9 +5,9 @@ import { SectionProps } from '../home/Section1';
 export const Section4: React.FC<SectionProps> = ({ data }) => {   
   const sectionData:any=data || null;
   return (
-    <section className=" w-full bg-gray-100 py-10 px-8 md:px-20">
-    <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-0 md:py-16">
-  <div className="flex flex-col-reverse md:flex-row items-center">
+    <section className=" w-full bg-gray-100 py-10 px-5 md:px-20">
+    <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-20">
+      <div className="flex flex-col md:flex-row items-center gap-10">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Why Choose Us?
@@ -20,9 +20,9 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
         </div>
 
         <img
-          src="/Videoplaceholder.png"
+          src="/Company4.jpeg"
           alt="Why Choose Us"
-          className="w-full md:w-1/2 rounded-lg mt-0 mb-4 md:mb-0 md:mt-0"
+          className="w-full md:w-1/2 rounded-lg shadow-lg mt-5 md:mt-0"
         />
       </div>
     </div>

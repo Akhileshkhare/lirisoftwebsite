@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft, FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 
 import { SectionProps } from '../home/Section1';
 
@@ -22,10 +22,15 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
   const goPrev = () => setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   const goNext = () => setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
-  // Removed auto scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <section className="w-full py-8 px-6 md:px-0 h-auto bg-gray-100">
+    <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-2">
         <div className="w-full pl-0 flex justify-center items-start flex-col">
           <p className="text-3xl md:text-[34px] font-normal text-left text-[#043A53] leading-snug md:leading-normal">
@@ -40,21 +45,12 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
             <div className="flex w-full justify-center items-center flex-col relative" style={{ height: "400px" }}>
               {/* Slider navigation and image */}
               <button
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 border-none p-0 rounded-full shadow-sm flex items-center justify-center z-10 w-[26px] h-[27px] transition-colors duration-200"
+                className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
                 onClick={goPrev}
                 aria-label="Previous"
                 type="button"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={e => {
-                  const icon = e.currentTarget.firstChild as HTMLElement;
-                  if (icon) icon.style.color = '#F0B73F';
-                }}
-                onMouseLeave={e => {
-                  const icon = e.currentTarget.firstChild as HTMLElement;
-                  if (icon) icon.style.color = '#818181';
-                }}
               >
-                <FaChevronLeft size={22} color="#818181" />
+                <FaPlay size={12} className="rotate-180" />
               </button>
               <img
                 src={images[current].src}
@@ -66,24 +62,15 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
                   maxHeight: "400px", // Ensures image doesn't exceed container
                   width: "auto"
                 }}
-                className="w-[90%] object-cover md:pt-10 pt-0"
+                className="w-[90%] object-cover pt-10"
               />
               <button
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 border-none p-0 rounded-full shadow-sm flex items-center justify-center z-10 w-[26px] h-[27px] transition-colors duration-200"
+                className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
                 onClick={goNext}
                 aria-label="Next"
                 type="button"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={e => {
-                  const icon = e.currentTarget.firstChild as HTMLElement | null;
-                  if (icon) icon.style.color = '#F0B73F';
-                }}
-                onMouseLeave={e => {
-                  const icon = e.currentTarget.firstChild as HTMLElement | null;
-                  if (icon) icon.style.color = '#818181';
-                }}
               >
-                <FaChevronRight size={22} color="#818181" />
+                <FaPlay size={12} />
               </button>
               {/* Dots navigation */}
               <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
@@ -98,7 +85,7 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
                 ))}
               </div>
             </div>
-            <div className="md:p-10 p-8 text-[#12141D] flex flex-col gap-4">
+            <div className="p-10 pl-12 text-[#12141D] flex flex-col gap-4">
               <h1 className="font-bold">{highlight2}</h1>
               <p>{title3}</p>
             </div>

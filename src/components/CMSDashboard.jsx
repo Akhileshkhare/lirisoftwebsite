@@ -10,9 +10,11 @@ import {
   FaUserTie,
   FaEnvelope,
   FaBoxOpen,
+  FaBlog,
 } from "react-icons/fa";
 import { API_BASE_URI } from "../config/apiConfig";
 import CommonInputField from "./CommonInputField";
+import BlogManagement from "./BlogManagement";
 
 const CMSDashboard = () => {
   const [mainPages, setMainPages] = useState([]);
@@ -36,12 +38,19 @@ const CMSDashboard = () => {
           Contact: <FaEnvelope />,
           Product: <FaBoxOpen />,
           Contacts: <FaEnvelope />,
+          Blogs: <FaBlog />,
         };
 
         const pagesWithIcons = Object.keys(data).map((page) => ({
           name: page,
           icon: pageIcons[page] || <FaFileAlt />,
         }));
+
+        // Add Blogs as a special page
+        pagesWithIcons.push({
+          name: "Blogs",
+          icon: <FaBlog />,
+        });
 
         setMainPages(pagesWithIcons);
         setFormData(data);
@@ -56,7 +65,11 @@ const CMSDashboard = () => {
       setSelectedSection(null);
     } else {
       setSelectedPage(page);
-      if (page === "contacts" || page === "proposals" || page === "consultations") {
+      if (page === "Blogs") {
+        // Special handling for Blogs
+        setSections([]);
+        setSelectedSection("Blogs");
+      } else if (page === "contacts" || page === "proposals" || page === "consultations") {
         const data = Object.values(formData[page] || {});
         setSections([]); // Clear sections as we are displaying a table
         setSelectedSection(page); // Set a special section for the selected page
@@ -242,7 +255,9 @@ const CMSDashboard = () => {
 
         {/* Page Details */}
         <main className="flex-1 p-6 bg-gray-100 ml-64 overflow-y-auto">
-          {selectedSection === "contacts" || selectedSection === "proposals" || selectedSection === "consultations" ? (
+          {selectedSection === "Blogs" ? (
+            <BlogManagement />
+          ) : selectedSection === "contacts" || selectedSection === "proposals" || selectedSection === "consultations" ? (
             <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
               <h2 className="text-2xl font-semibold mb-4">
                 {selectedSection.charAt(0).toUpperCase() + selectedSection.slice(1)}
@@ -289,10 +304,10 @@ const CMSDashboard = () => {
             ""
           )}
           <div className="bg-white p-4 rounded shadow-md w-5/6 mx-auto">
-            {selectedSection ? (
+            {selectedSection && selectedPage !== "Blogs" && formData[selectedPage] && formData[selectedPage][selectedSection] ? (
                      <form className="space-y-4">
                      {Object.entries(formData[selectedPage][selectedSection] || {}).map(([key, value]) => {
-                       if ((key === "images" ||key === "services" ||key === "budgetOptions" || key === "tabs" || key === "appSolutions" || key === "features" || key === "slides" || key === "caseStudies") && Array.isArray(value)) {
+                       if ((key === "images" ||key === "services" ||key === "budgetOptions" || key === "tabs" || key === "appSolutions" || key === "features" || key === "slides" || key === "caseStudies" || key === "sliderImages") && Array.isArray(value)) {
                          return (
                            <div key={key} className="space-y-4">
                              <h3 className="font-medium">{key}</h3>
@@ -423,11 +438,11 @@ const CMSDashboard = () => {
                      }
                
               </form>
-            ) : (
+            ) : selectedSection !== "Blogs" && selectedSection !== "contacts" && selectedSection !== "proposals" && selectedSection !== "consultations" ? (
               <div className="flex justify-center items-center h-64 text-gray-500">
                 Section not Selected
               </div>
-            )}
+            ) : null}
           </div>
         </main>
       </div>

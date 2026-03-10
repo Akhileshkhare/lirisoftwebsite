@@ -1,0 +1,97 @@
+/* Try each of these, depending on the version */
+.rsc-header-avatar {
+  background-color: #ffffff !important;
+  border-radius: 100% !important;
+  padding: 4px !important;
+}
+
+.rcb-header-avatar img, .rcb-header-avatar {
+  background: #fff !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
+  /* Optional: add box-shadow or border if needed */
+}
+
+/* Strong specificity for react-chatbotify header avatar */
+.rcb-header-avatar,
+.rcb-header-avatar img,
+.rsc-header-avatar,
+.rsc-header-avatar img {
+  background: #fff !important;
+  background-color: #fff !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
+  box-sizing: border-box !important;
+  /* Optional: add a border for visibility */
+  border: 2px solid #fff !important;
+}
+
+/* If the avatar is an SVG or uses another tag, target it as well */
+.rcb-header-avatar svg,
+.rsc-header-avatar svg {
+  background: #fff !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
+  box-sizing: border-box !important;
+  border: 2px solid #fff !important;
+}
+
+/* Force white background on avatar container and image/SVG */
+.rcb-header-avatar,
+.rcb-header-avatar img,
+.rcb-header-avatar svg,
+.rsc-header-avatar,
+.rsc-header-avatar img,
+.rsc-header-avatar svg {
+  background: #fff !important;
+  background-color: #fff !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
+  box-sizing: border-box !important;
+  border: 2px solid #fff !important;
+  /* Add shadow for visibility if needed */
+  /* box-shadow: 0 0 0 2px #fff !important; */
+}
+
+/* If the avatar is a direct child of the header, target it as well */
+.rcb-header .rcb-header-avatar,
+.rsc-header .rsc-header-avatar {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
+/* Optional: Remove background from parent if it interferes */
+.rcb-header,
+.rsc-header {
+  background: inherit !important;
+}
+
+.rcb-bot-avatar {
+    background-size: cover !important;
+    background-color: #fff !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    margin-right: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.rcb-bot-avatar img,
+.rcb-bot-avatar svg {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    border: 2px solid #fff !important;
+    padding: 4px !important;
+}

@@ -21,12 +21,12 @@ const Navbar = () => {
   return (
     <nav
       className={`py-0 flex justify-between items-center h-[80px]  ${
-        isScrolled ? "fixed top-0 left-0 bg-white shadow-md z-50 w-full px-6" : "w-4/5 mx-auto"
+        isScrolled ? "fixed top-0 left-0 bg-white shadow-md z-50 w-full px-[10%]" : "w-4/5 mx-auto"
       }`}
     >
-      <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="md:w-[219px] w-auto h-[65px] mt-4 md:mt-0 md:h-[90px] absolute md:top-[-2px] top-[-4px]" /></div>
+      <div className="text-2xl font-extrabold"> <img src="/Logo.svg" alt="Logo"  className="w-[219px] h-[90px] absolute top-[-2px] " /></div>
       <div className="hidden md:flex gap-6 text-md font-semibold ">
-        {['Home', 'What we work','About',  'Contact'].map((item) => (
+        {['Home', 'What we work','About', 'Blogs', 'Contact'].map((item) => (
           <NavLink 
           key={item} 
           to={item === 'What we work' ? '/portfolio' : `/${item.toLowerCase()}`}
@@ -39,25 +39,24 @@ const Navbar = () => {
         ))}
       </div>
       <button
-        className="md:hidden"
+        className="md:hidden relative z-[60]"
         onClick={() => {
           setIsOpen(!isOpen);
-          //           if (!isOpen) {
-          //   window.scrollTo({ top: 0, behavior: "smooth" });
-          // }
-
+          if (!isOpen) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }}
       >
         {isOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
       {isOpen && (
-        <div className="fixed top-[80px] left-0 w-full bg-white flex flex-col items-center gap-4 py-4 shadow-md z-50 md:hidden transition-all duration-300">
-          {['Home',  'What we work','About',  'Contact'].map((item) => (
+        <div className="absolute top-16 left-0 w-full bg-white flex flex-col items-center gap-4 py-4 shadow-md md:hidden z-[60]">
+          {['Home',  'What we work','About', 'Blogs', 'Contact'].map((item) => (
             <Link 
               key={item} 
               to={item === 'What we work' ? '/portfolio' : `/${item.toLowerCase()}`}
-              className="relative hover:text-[#043a53] after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-[#043a53] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
               onClick={() => setIsOpen(false)}
+              className="relative hover:text-[#043a53] after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-[#043a53] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
             >
               {item}
             </Link>

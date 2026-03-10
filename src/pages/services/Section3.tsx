@@ -29,60 +29,35 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
   const { title1, highlight1, title2,title3, imageSrc, imageAlt } = sectionData;
 
   return (
-    <section className="w-full  py-8 md:py-16 px-0 h-auto">
-            <div className="w-full max-w-6xl mx-auto text-center pt-2">
-
-        {/* <Slider {...settings}> */}
-
-     
-      <div className="w-full   mx-auto flex flex-row  items-center gap-10 md:gap-20 relative px-6 md:px-20">
-        <div className="w-full  mx-auto flex flex-col md:flex-row  items-center space-x-0 md:space-x-6">
-       
-        <div className="w-full md:w-1/2 pl-0 md:h-[480px]  flex justify-center items-start pt-2 md:pt-16">
-          <div className="w-full h-auto  md:h-[340px]">
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              style={{ backgroundRepeat: 'no-repeat' }}
-              className="w-full md:h-[440px] h-auto object-cover rounded-xl"
-            />
+    <section className="w-full py-12 md:py-20 px-4 md:px-0 min-h-[400px]">
+      <div className="w-full max-w-6xl mx-auto text-center pt-6 md:pt-10">
+        <div className="w-full mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-10 relative px-4 md:px-8">
+          
+          {/* Image Section - Shows first on mobile, left on desktop */}
+          <div className="w-full md:w-1/2 flex justify-center items-center order-1 md:order-1">
+            <div className="w-full max-w-[500px]">
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className="w-full h-auto max-h-[300px] md:max-h-[440px] object-cover rounded-xl"
+              />
+            </div>
           </div>
-        </div>
-        <div className="w-full md:w-1/2 pl-0 md:h-[480px] flex items-start flex-col">
-          <p className="text-3xl md:text-[34px] font-normal text-left mt-10 md:mt-16  text-[#043A53] leading-snug md:leading-normal">
-            <span className="font-bold">{highlight1}</span> {title1}
-          </p>
-          <p className="text-1xl md:text-[17px] text-left mt-4 leading-relaxed pr-0">
-            {title2}          
-          </p>
-          <p className='text-1xl md:text-[17px] text-left mt-2 leading-relaxed pr-0'>  {title3}</p>
-        </div>
-        </div>
-      </div>
-      {/* <div className="w-full  mx-auto flex md:flex-row flex-col items-center gap-10 md:gap-20 relative px-8 md:px-20">
-      <div className="w-full  mx-auto flex flex-row  items-center">
 
-        <div className="w-full md:w-1/2 pl-0 md:h-[480px] flex justify-center items-start flex-col">
-          <p className="text-3xl md:text-[34px] font-normal text-left text-[#043A53] leading-snug md:leading-normal">
-            <span className="font-bold">{highlight1}</span> {title1}
-          </p>
-          <p className="text-1xl md:text-[17px] text-left mt-4 leading-relaxed">
-            {title2}
-          </p>
-        </div>
-        <div className="w-full md:w-1/2 pl-0 md:h-[480px] flex justify-center items-start pt-16">
-          <div className="w-full h-[391px] md:h-[340px]">
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              style={{ backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
-              className="w-full h-full object-cover"
-            />
+          {/* Text Section - Shows second on mobile, right on desktop */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-start order-2 md:order-2 px-2 md:px-0">
+            <p className="text-2xl md:text-[34px] font-normal text-left text-[#043A53] leading-snug md:leading-normal mb-4">
+              <span className="font-bold">{highlight1}</span> {title1}
+            </p>
+            <p className="text-base md:text-[17px] text-left leading-relaxed mb-3">
+              {title2}          
+            </p>
+            <p className='text-base md:text-[17px] text-left leading-relaxed'>
+              {title3}
+            </p>
           </div>
+
         </div>
-      </div>
-      </div> */}
-      {/* </Slider> */}
       </div>
     </section>
   );

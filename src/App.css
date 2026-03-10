@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* Try each of these, depending on the version */
+.rsc-header-avatar,
+.rcb-header-avatar,
+.rcb-avatar {
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
 }
+

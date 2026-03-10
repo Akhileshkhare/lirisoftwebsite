@@ -7,13 +7,18 @@ export const Section1: React.FC<SectionProps> = ({ data }) => {
   // const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3 } = sectionData;
 
   return (
-    <section className="w-full bg-[#043A53] text-white flex items-center justify-center flex-col h-auto md:h-auto relative">
-      <img
-        src="/About_banner.png"
-        alt="About Banner"
-        className="w-full h-[215px] md:h-auto object-cover"
-        style={{ display: 'block' }}
-      />
+    <section
+      className="w-full bg-[#043A53] text-white flex items-center justify-center flex-col h-auto md:h-[906px] relative"
+      style={{
+        backgroundImage: `url('/About_banner.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '762px',
+        height: 'auto',
+      }}
+    >
+     
     </section>
   );
 }

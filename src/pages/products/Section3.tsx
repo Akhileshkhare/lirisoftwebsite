@@ -7,13 +7,13 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
   const sectionData:any=data || null;
   return (
     <section className="w-full  bg-white">
-    <div className="w-full max-w-5xl mx-auto flex flex-col md:items-center items-start gap-10 md:gap-6 relative py-12 px-8 md:px-0">
-      <h2 className="text-4xl font-normal text-[#043A53] mb-4">
+    <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-10 md:gap-6 relative py-20">
+      <h2 className="text-4xl font-semibold text-gray-800 mb-4 text-gray-800">
         Key <span className="font-bold text-[#043A53]">Features</span>
       </h2>
-  <div className="w-full flex flex-col-reverse md:flex-row items-center gap-10 ">
+      <div className="w-full flex flex-col md:flex-row items-center gap-4 ">
         {/* First Column */}
-        <div className="md:p-5 p-0  flex-1 ">
+        <div className="p-5  flex-1 ">
           <div className="grid grid-cols-1 gap-1 space-y-2 md:space-y-2">
             <div className="bg-white shadow-lg px-4 py-5 flex items-center">
               <FaCloud className="w-12 h-12 text-blue-600 mr-4" />
@@ -44,7 +44,7 @@ export const Section3: React.FC<SectionProps> = ({ data }) => {
         {/* Second Column */}
         <div className="flex-1">
           <img
-            src="/Rectangle8.png"
+            src="/Company2.jpeg"
             alt="Key Features Illustration"
             className="w-full rounded-lg shadow-lg"
           />

@@ -22,9 +22,14 @@ import AppDevelopment from "./pages/services/AppDevelopment";
 import ApiDevelopment from "./pages/services/ApiDevelopment";
 import Automation from "./pages/services/Automation";
 import CyberSecurity from "./pages/services/CyberSecurity";
+import UserExperience from "./pages/services/UserExperience";
+import WebDevelopment from "./pages/services/WebDevelopment";
 import ConsultationForm from "./pages/consultation/ConsultationForm"; // Import ConsultationForm page
 import AppDetails from './pages/portfolio/AppDetails'; // Import AppDetails page
 import { IndustryDetails } from "./pages/portfolio/IndustryDetails"; // Import IndustryDetails
+import Blogs from './pages/Blogs'; // Import Blogs page
+import BlogPost from './pages/BlogPost'; // Import BlogPost page
+import "./App.css"; // Import the chatbot overrides CSS
 
 // const ScrollToTop = () => {
 //   const location = useLocation();
@@ -143,6 +148,11 @@ const App = () => {
   <Route path="/services/ApiDevelopment" element={<DefaultLayout><ApiDevelopment /></DefaultLayout>} />
   <Route path="/services/Automation" element={<DefaultLayout><Automation /></DefaultLayout>} />
   <Route path="/services/CyberSecurity" element={<DefaultLayout><CyberSecurity /></DefaultLayout>} />
+  <Route path="/services/cyber-security" element={<DefaultLayout><CyberSecurity /></DefaultLayout>} />
+  <Route path="/services/user-experience" element={<DefaultLayout><UserExperience /></DefaultLayout>} />
+  <Route path="/services/web-development" element={<DefaultLayout><WebDevelopment /></DefaultLayout>} />
+  <Route path="/blogs" element={<DefaultLayout><Blogs /></DefaultLayout>} /> {/* Add Blogs route */}
+  <Route path="/blogs/:id" element={<DefaultLayout><BlogPost /></DefaultLayout>} /> {/* Add BlogPost route */}
       </Routes>
     </Router>
   );

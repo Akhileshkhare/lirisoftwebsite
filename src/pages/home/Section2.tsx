@@ -14,56 +14,38 @@ interface SectionData {
   };
 }
 
-export const Section2: React.FC<SectionProps> = ({ data }) => {
-  const sectionData: SectionData = data || {};
-  const backgroundColor = sectionData.backgroundColor || '#043A53';
-  const heading = sectionData.heading || { title: '', highlight: '' };
+export const Section2: React.FC<SectionProps> = ({ data }) => {  
+  const sectionData:SectionData=data || null;
 
-  if (!heading.title && !heading.highlight) return null;
+  if (!sectionData) return null;
 
   return (
-    <section className="w-full" style={{ background: backgroundColor }}>
-      <div className="w-4/5 mx-auto flex flex-col items-start py-0 md:h-[1044px] h-[480px]">
-        <div className="flex w-4/5 flex-col space-y-6 md:flex-row justify-start items-start px-0  pt-[50px] md:pt-[100px]">
+    <section className="w-full" style={{ background: sectionData.backgroundColor }}>
+      <div className="w-11/12 md:w-4/5 mx-auto flex flex-col items-center py-8 md:py-12 min-h-[375px]">
+        <div className="flex w-full md:w-4/5 flex-col space-y-6 md:flex-row justify-start items-start px-4 md:px-10 pt-[30px] md:pt-[50px] mb-6 md:mb-10">
           {/* Left Part - Heading */}
-          <div className="w-full  h-[144px] mb-12 md:mb-0">
-            <h2 className="text-white text-5xl font-semibold ml-[5px] leading-[50px]">
-              {heading.title} <br />
-              <span className="text-[#F0B73F]">{heading.highlight}</span>
+          <div className="w-full">
+            <h2 className="text-white text-3xl md:text-5xl font-semibold ml-0 md:ml-[5px] leading-[40px] md:leading-[50px]">
+              {sectionData.heading.title} <br />
+              <span className="text-[#F0B73F]">{sectionData.heading.highlight}</span>
             </h2>
           </div>
-          {/* Right Part - Description */}
-          {/* <div className="w-full md:w-2/5 h-[144px]">
-            <p className="text-white text-md md:text-md px-0">
-              {sectionData.description || ''}
-            </p>
-          </div> */}
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center px-0">
-          {/* <div className="mr-10 hidden md:block">
-            <img
-              src={sectionData.images?.left?.src || ''}
-              alt="Lirisoft Home Page"
-              className="object-cover w-full h-[511px] rounded"
-            />
-          </div> */}
-          <div>
+        <div className="flex flex-col md:flex-row justify-center items-center px-4 md:px-0 w-full">
+          <div className="w-full md:w-auto">
             <video
               src="/aboutus.mp4"
               controls
-              className="object-cover w-full h-auto md:h-[636px] rounded-lg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="object-cover w-full md:w-[900px] h-auto md:h-[636px] rounded-lg mx-auto"
               poster="/backimage.png"
             >
               Your browser does not support the video tag.
             </video>
           </div>
-          {/* <div className="ml-10 hidden md:block">
-            <img
-              src={sectionData.images?.right?.src || ''}
-              alt="Lirisoft Home Page"
-              className="object-cover w-full h-[511px] rounded"
-            />
-          </div> */}
         </div>
       </div>
     </section>
