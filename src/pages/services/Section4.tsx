@@ -21,16 +21,18 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
       ];
 
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const goPrev = () => setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   const goNext = () => setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isPaused]);
 
   return (
     <section className="w-full py-10 px-4 md:px-0 h-auto bg-gray-100">
@@ -45,7 +47,12 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
         </div>
         <div className="w-full rounded-md bg-white pl-0 md:h-auto flex flex-col md:flex-row items-center justify-center items-stretch pt-0 gap-3">
           <div className="w-full p-0 h-[670px] md:h-[680px] relative flex items-start flex-col">
-            <div className="flex w-full justify-center items-center flex-col relative" style={{ height: "400px" }}>
+            <div
+              className="flex w-full justify-center items-center flex-col relative"
+              style={{ height: "400px" }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               {/* Slider navigation and image */}
               <button
                 className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border-gray-200 border p-3 rounded-full shadow-sm flex items-center justify-center z-10"
