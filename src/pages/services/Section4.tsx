@@ -9,7 +9,10 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
   const { title1, highlight1, title2, imageSrc, imageAlt, highlight2, title3, sliderImages } = sectionData;
 
   // Use sliderImages if provided, otherwise fallback to [imageSrc]
-  const images: { src: string; alt: string }[] = sliderImages && Array.isArray(sliderImages) && sliderImages.length > 0
+  const images: {
+    title3: string;
+    highlight2: string; src: string; alt: string 
+}[] = sliderImages && Array.isArray(sliderImages) && sliderImages.length > 0
     ? sliderImages
     : [
         { src: imageSrc, alt: imageAlt },
@@ -86,8 +89,8 @@ export const Section4: React.FC<SectionProps> = ({ data }) => {
               </div>
             </div>
             <div className="p-10 pl-12 text-[#12141D] flex flex-col gap-4">
-              <h1 className="font-bold">{highlight2}</h1>
-              <p>{title3}</p>
+              <h1 className="font-bold">{images[current].highlight2}</h1>
+              <p>{images[current].title3}</p>
             </div>
           </div>
         </div>
