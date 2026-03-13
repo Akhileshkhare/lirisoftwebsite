@@ -1,9 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import { API_BASE_URI } from '../config/apiConfig';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet'; // Import Helmet for SEO
-
+// TypeScript: declare custom window property for app solutions
+declare global {
+  interface Window {
+    __APP_SOLUTIONS__?: any[];
+  }
+}
 export default function OurWork() {
   const [sectionData, setSectionData] = useState<{
     title1: string;
@@ -13,7 +19,7 @@ export default function OurWork() {
     imageAlt: string;
     highlight2: string;
     title3: string;
-    appSolutions: { imageSrc: string; imageAlt: string; highlight2: string; title2: string }[]
+    appSolutions: { imageSrc: string; imageAlt: string; highlight2: string; title2: string; slug?: string }[]
   }>({
     title1: "",
     highlight1: "",
@@ -28,13 +34,18 @@ export default function OurWork() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${API_BASE_URI}/api/homepage`) 
+    fetch(`${API_BASE_URI}/api/homepage`)
       .then((response) => response.json())
-      .then((data) => setSectionData(data.Portfolio.section2))
+      .then((data) => {
+        setSectionData(data.Portfolio.section2);
+        if (typeof window !== 'undefined') {
+          window.__APP_SOLUTIONS__ = data.Portfolio.section2.appSolutions;
+        }
+      })
       .catch((error) => console.error("Error fetching JSON:", error));
   }, []);
 
-  const { title1, highlight1, title2, appSolutions } = sectionData;
+  const { title1, highlight1, appSolutions } = sectionData;
 
   return (
 <>
@@ -77,7 +88,11 @@ export default function OurWork() {
                 </p>
                 <div
                   className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53]"
-                  onClick={() => navigate(`/app-details`, { state: { app: item } })}
+                  onClick={() => {
+                    // Generate slug from title2 (or use item.slug if present)
+                    const slug = (item.slug || item.title2.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+                    navigate(`/app/${slug}`, { state: { app: item } });
+                  }}
                 >
                   READ MORE
                   <svg

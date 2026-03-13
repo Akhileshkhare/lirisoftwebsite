@@ -141,7 +141,7 @@ const App = () => {
         <Route path="/our-work" element={<DefaultLayout><OurWork /></DefaultLayout>} /> {/* Add OurWork route */}
         <Route path="/technologies" element={<DefaultLayout><Technology /></DefaultLayout>} /> {/* Added route */}
         <Route path="/consultation" element={<DefaultLayout><ConsultationForm /></DefaultLayout>} /> {/* Add ConsultationForm route */}
-        <Route path="/app-details" element={<DefaultLayout><AppDetails /></DefaultLayout>} /> {/* Add AppDetails route */}
+        <Route path="/app/:slug" element={<DefaultLayout><AppDetails /></DefaultLayout>} /> {/* Dynamic AppDetails route by slug */}
         <Route path="/industry/:slug" element={<DefaultLayout><IndustryDetails /></DefaultLayout>} /> {/* Add dynamic route */}
   <Route path="/services/UxDesign" element={<DefaultLayout><UxDesign /></DefaultLayout>} />
   <Route path="/services/AppDevelopment" element={<DefaultLayout><AppDevelopment /></DefaultLayout>} />

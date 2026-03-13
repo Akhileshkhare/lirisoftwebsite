@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { SectionProps } from '../home/Section1';
 
 interface AppSolution {
+  slug: string;
   imageSrc: string;
   imageAlt: string;
   highlight2: string;
@@ -48,7 +49,10 @@ export const Section2: React.FC<SectionProps> = ({ data }) => {
                 </div>
                 <div
                   className="flex flex-row font-bold items-center justify-end cursor-pointer text-[12px] text-[#043A53] mt-3 group"
-                  onClick={() => navigate(`/app-details`, { state: { app: item } })}
+                  onClick={() => {
+                    const slug = (item.slug || item.title2.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+                    navigate(`/app/${slug}`, { state: { app: item } });
+                  }}
                 >
                   READ MORE
                   <svg
